@@ -1,0 +1,47 @@
+// some additions to the existing dumped code
+.lp-button-wrapper {
+	text-align: center;
+	padding: 20px 0;
+	.b-button {
+		min-width: 220px;
+		font-size: 1.063em;
+		margin: 0 27px 15px;
+		padding: 12px 40px;
+		&:hover {
+			filter: invert(100%);//except border
+		}
+		@include max-767 {
+			min-width: 250px;
+		}
+	}
+	&_white {
+		.b-button {
+			background-color: #fff;
+			color: #000 !important;
+			border: 1px solid #fff;
+			&:hover {
+				border: 1px solid #000;
+			}
+		}
+	}
+	&_black {
+		.b-button {
+			background-color: #000;
+			color: #fff !important;
+			border: 1px solid #000;
+			&:hover {
+				border: 1px solid #fff;
+			}
+		}
+	}
+	&_big {
+		.b-button {
+			min-width: 285px;
+			font-size: 1.063em;
+			margin: 0 34px 15px;
+			padding: 14px 40px;
+		}
+
+	}
+
+}

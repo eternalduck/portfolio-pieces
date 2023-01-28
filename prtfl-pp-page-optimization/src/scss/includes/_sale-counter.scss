@@ -1,0 +1,45 @@
+// clean code
+.sale {
+	position: relative;
+	background-color: #000;
+	margin-bottom: 15px;
+	&__content {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 100px auto 20px;
+		color: #fff;
+		@include min-768 {
+			margin: 125px auto 10px;
+		}
+	}
+	&__title {//h1
+		margin: 0 0 117px;
+		text-align: center;
+		color: #fff;
+	}
+}
+
+.counter {
+	width: 300px;
+	text-align: center;
+	align-items: center;
+	margin-bottom: 23px;
+	&__headers {
+		display: flex;
+	}
+	&__name {
+		text-align: center;
+		font-size: 0.5rem;
+		text-transform: uppercase;
+		flex: 1;
+	}
+	&__value {
+		word-spacing: 9px;
+		font-size: 2.095rem;
+		font-weight: 700;
+		line-height: 1;
+	}
+
+}

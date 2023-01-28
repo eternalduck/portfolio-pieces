@@ -1,0 +1,771 @@
+<div class="content-asset"><!-- dwMarker="content" dwContentID="8741a9f10c9e9f912f4781ee5f" -->
+<script src="static/js/jquery/jquery_slim_last.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="></script>
+<link rel="stylesheet" href="static/js/libs/swiper/swiper.min.css">
+<script src="static/js/libs/swiper/swiper.min.js"></script>
+<script src="static/js/libs/imagesloaded.min.js"></script>
+
+<style>
+    .showroom {
+        position: relative;
+        padding: 0;
+    }
+
+    .showroom .b-content > .content-asset {
+        position: relative;
+    }
+
+    .showroom__container {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        padding-bottom: 50px;
+        max-width: 1440px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        z-index: 2;
+    }
+
+    .showroom__container:first-of-type {
+        padding-bottom: 0;
+    }
+
+    .showroom__mod {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        position: relative;
+    }
+
+    .showroom__poster {
+        border: 0;
+        width: 60%;
+        margin-top: 15px;
+    }
+
+    .showroom__freestanding--first {
+        top: 40%;
+        right: 4%;
+    }
+
+    .showroom__freestanding--second {
+        top: 10%;
+        left: 4%;
+        bottom: auto;
+        right: auto;
+    }
+
+    .showroom__freestanding--third {
+        bottom: 35%;
+        right: 4%;
+        top: auto;
+        left: auto;
+    }
+
+    .showroom__freestanding--sixth {
+        bottom: 10%;
+        left: 4%;
+    }
+
+    .showroom__mod--mobile {
+        display: none;
+    }
+
+    .showroom__mod--desktop {
+        display: block;
+    }
+
+    .showroom__slider--mobile {
+        display: none;
+        margin-top: 0;
+    }
+
+    .showroom__slider--desktop {
+        display: block;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    .freestanding {
+        position: absolute;
+        width: 30%;
+    }
+
+    .freestanding__shape--hex {
+        position: relative;
+    }
+
+    .freestanding__footer {
+        position: absolute;
+        bottom: 2%;
+        left: 0;
+        right: 0;
+    }
+
+    .freestanding__text {
+        font-weight: 800;
+        font-size: 1.15em;
+        letter-spacing: 1px;
+        margin-top: 5px;
+    }
+
+    @media screen and (max-width: 767px) {
+        .showroom__container:first-of-type {
+            padding-bottom: 0;
+        }
+
+        .showroom__mod {
+            padding-bottom: 20px;
+        }
+
+        .showroom__mod--mobile {
+            display: block;
+        }
+
+        .showroom__mod--desktop {
+            display: none;
+        }
+
+        .showroom__poster {
+            width: 80%;
+            margin-top: 8%;
+        }
+
+        .showroom__slider--mobile {
+            display: block;
+        }
+
+        .showroom__slider--desktop {
+            display: none;
+        }
+
+        .showroom__freestanding--mobile {
+            position: relative;
+            width: 92%;
+            left: 4%;
+        }
+
+        .freestanding__text--mobile {
+            padding-top: 0;
+            font-size: 1.1em;
+            letter-spacing: 0.5px;
+        }
+
+        .showroom__freestanding--first,
+        .showroom__freestanding--third {
+            display: none;
+        }
+    }
+
+    .freestanding__text--mobile {
+        padding: 0 5px 20px 5px;
+		text-align: center;
+    }
+
+    .showroom__slider .swiper-button-next {
+        background-image: url("https://www.plein.com/on/demandware.static/-/Library-Sites-philipp-plein-shared-library/en_RU/v1622627570382/homepage/00-2020/02-06/freccia_slider2.svg");
+        transform: scale(0.5) rotate(-180deg);
+        -webkit-transform: scale(0.5) rotate(-180deg);
+        -moz-transform: scale(0.5) rotate(-180deg);
+        -ms-transform: scale(0.5) rotate(-180deg);
+        -o-transform: scale(0.5) rotate(-180deg);
+        right: 20px;
+    }
+
+    .showroom__slider .swiper-button-next::after,
+    .showroom__slider .swiper-container-rtl .swiper-button-prev::after {
+        content: '';
+    }
+
+    .showroom__slider .swiper-button-prev2 {
+        background-image: url("https://www.plein.com/on/demandware.static/-/Library-Sites-philipp-plein-shared-library/en_RU/v1622627570382/homepage/00-2019/05-06/freccia_slider2.svg");
+        transform: scale(0.5);
+        left: 20px;
+        position: absolute;
+        top: 50%;
+        width: 27px;
+        height: 44px;
+        margin-top: -22px;
+        z-index: 10;
+        cursor: pointer;
+        background-size: 27px 44px;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .showroom__slider .swiper-button-next.mobile {
+        right: -8px;
+        top: 50%;
+    }
+
+    .showroom__slider .swiper-button-prev2.mobile {
+        left: -8px;
+        top: 50%;
+    }
+
+    .slider__container--mobile .swiper-slide {
+        padding: 20px 0;
+    }
+
+    .slider__container--mobile .swiper-slide > a > div {
+        background: white;
+        box-shadow: none;
+        min-height: 150px;
+    }
+
+    .slider__container--mobile .swiper-slide > a {
+        text-decoration: none;
+    }
+
+    @media all and (min-width: 767px) and (max-width: 1050px) {
+        .freestanding__footer {
+            bottom: 5%;
+        }
+
+        .freestanding__text {
+            font-size: 0.65em;
+            margin-top: 0;
+        }
+    }
+
+    .freestanding__text {
+        text-transform: uppercase;
+    }
+
+    @media screen and (max-width: 767px) {
+        .showroom__mod{
+padding-top: 0rem!important;
+}
+        .showroom__slider .swiper-button-next {
+            background-image: url("https://www.plein.com/on/demandware.static/-/Library-Sites-philipp-plein-shared-library/default/dw3c7b8780/homepage/00-2020/02-06/freccia_slider_2.svg");
+        }
+
+        .showroom__slider .swiper-button-prev2 {
+            background-image: url("https://www.plein.com/on/demandware.static/-/Library-Sites-philipp-plein-shared-library/default/dw3c7b8780/homepage/00-2020/02-06/freccia_slider_2.svg");
+        }
+    }
+
+    .showroom__slider .swiper-slide div {
+        margin: 0 10%;
+        position: relative;
+    }
+
+    .dNone {
+        display: none;
+    }
+	#custom-slideshow-products{position: relative;}
+	.m-bg-grey_light{position: relative;}
+	#custom-slideshow-products .showroom(display: none;)
+</style>
+
+<div class="grid-col-100 grid-col-100-mobile m-left m-first m-margin-bottom m-bg-grey_light">
+	<div id="custom-slideshow-products">
+
+
+
+
+
+
+	<div class="showroom" style="display: block;">
+			<div class="showroom__container">
+				<div class="showroom__mod showroom__mod--mobile">
+					<a href="https://www.plein.com/ru/en/men/new-arrivals/">
+						<img class="showroom__poster tattoo_big_1_w" src="static/images/hp_big_m_medium.jpg">
+					</a>
+
+				</div>
+
+
+				<div class="showroom__mod showroom__mod--desktop">
+					<a href="https://www.plein.com/ru/en/men/new-arrivals/">
+						<img class="showroom__poster tattoo_big_1_w" src="static/images/hp_big_m_big.jpg">
+					</a>
+					<div class="freestanding showroom__freestanding--second">
+						<img style="top:2px;" class="freestanding__shape--hex" src="static/images/hex_wo_border.svg">
+						<a style="position:absolute;left:0;top:1%;width:100%" href="https://www.plein.com/ru/en/men/new-arrivals/">
+							<img class="tattoo_w1 tattoo_w1_1" style="filter:none;width:98%;margin-top:.5%;" src="static/images/hp_hex_m1_big.png">
+						</a>
+						<div class="freestanding__footer">
+							<h3 class="freestanding__text m-color-black">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="aad8e3605f36cac5c390f65d78" -->
+shop now
+</div> <!-- End content-asset -->
+
+
+
+
+							</h3>
+						</div>
+					</div>
+					<div class="freestanding showroom__freestanding--third">
+						<img style="top:2px;" class="freestanding__shape--hex" src="static/images/hex_wo_border.svg">
+						<a style="position:absolute;left:0;top:1%;width:100%" href="https://www.plein.com/ru/en/men/new-arrivals/">
+							<img class="tattoo_w1 tattoo_w1_1" style="filter:none;width:98%;margin-top:.5%;" src="static/images/hp_hex_m2_big.png">
+						</a>
+
+						<div class="freestanding__footer">
+							<h3 class="freestanding__text m-color-black">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="aad8e3605f36cac5c390f65d78" -->
+shop now
+</div> <!-- End content-asset -->
+
+
+
+
+							</h3>
+						</div>
+					</div>
+					<div class="freestanding showroom__freestanding--sixth">
+						<img style="top:2px; display: none; " class="freestanding__shape--hex" src="static/images/hex_wo_border.svg">
+						<a style="left: -11px;
+							top: 3px;
+							position: relative;
+							width: 105%;
+							height: 103%;
+							padding-top: 20px;
+							display: block;" href="https://www.plein.com/ru/en/men/new-arrivals/">
+							<img class="tattoo_w3 tattoo_w3_1" style="filter:none;" src="static/images/hp_hex_m3_big.png">
+						</a>
+						<div class="freestanding__footer m-color-black">
+							<h3 class="freestanding__text" style="padding-bottom: 10px;">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="aad8e3605f36cac5c390f65d78" -->
+shop now
+</div> <!-- End content-asset -->
+
+
+
+
+							</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><div class="showroom" style="display: none;">
+			<div class="showroom__container">
+				<div class="showroom__mod showroom__mod--mobile">
+					<a href="https://www.plein.com/ru/en/women/new-arrivals/">
+						<img class="showroom__poster tattoo_big_1_w" src="static/images/hp_big_w_medium.jpg">
+					</a>
+
+				</div>
+
+
+				<div class="showroom__mod showroom__mod--desktop">
+					<a href="https://www.plein.com/ru/en/women/new-arrivals/">
+						<img class="showroom__poster tattoo_big_1_w" src="static/images/hp_big_w_big.jpg">
+					</a>
+					<div class="freestanding showroom__freestanding--second">
+						<img style="top:2px;" class="freestanding__shape--hex" src="static/images/hex_wo_border.svg">
+						<a style="position:absolute;left:0;top:1%;width:100%" href="https://www.plein.com/ru/en/women/new-arrivals/">
+							<img class="tattoo_w1 tattoo_w1_1" style="filter:none;width:98%;margin-top:.5%;" src="static/images/hp_hex_w1_big.png">
+						</a>
+						<div class="freestanding__footer">
+							<h3 class="freestanding__text m-color-black">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="aad8e3605f36cac5c390f65d78" -->
+shop now
+</div> <!-- End content-asset -->
+
+
+
+
+							</h3>
+						</div>
+					</div>
+					<div class="freestanding showroom__freestanding--third">
+						<img style="top:2px;" class="freestanding__shape--hex" src="static/images/hex_wo_border.svg">
+						<a style="position:absolute;left:0;top:1%;width:100%" href="https://www.plein.com/ru/en/women/new-arrivals/">
+							<img class="tattoo_w1 tattoo_w1_1" style="filter:none;width:98%;margin-top:.5%;" src="static/images/hp_hex_w2_big.png">
+						</a>
+
+						<div class="freestanding__footer">
+							<h3 class="freestanding__text m-color-black">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="aad8e3605f36cac5c390f65d78" -->
+shop now
+</div> <!-- End content-asset -->
+
+
+
+
+							</h3>
+						</div>
+					</div>
+					<div class="freestanding showroom__freestanding--sixth">
+						<img style="top:2px; display: none; " class="freestanding__shape--hex" src="static/images/hex_wo_border.svg">
+						<a style="left: -11px;
+							top: 3px;
+							position: relative;
+							width: 105%;
+							height: 103%;
+							padding-top: 20px;
+							display: block;" href="https://www.plein.com/ru/en/women/new-arrivals/">
+							<img class="tattoo_w3 tattoo_w3_1" style="filter:none;" src="static/images/hp_hex_w3_big.png">
+						</a>
+						<div class="freestanding__footer m-color-black">
+							<h3 class="freestanding__text" style="padding-bottom: 10px;">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="aad8e3605f36cac5c390f65d78" -->
+shop now
+</div> <!-- End content-asset -->
+
+
+
+
+							</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div></div>
+
+
+				<div class="showroom__slider showroom__slider--mobile">
+					<div class="freestanding showroom__freestanding--mobile">
+						<div class="showroom__slider" style="width:100%">
+							<div class="swiper-container slider__container--mobile swiper-container-horizontal swiper-container-autoheight">
+								<div class="swiper-wrapper" style="transition-duration: 700ms;"><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4">
+										<a href="https://www.plein.com/ru/en/men/new-arrivals/">
+											<div>
+												<img class="tattoo_w2 tattoo_w2_1" style="margin-top:15px;filter:none;width:90%" src="static/images/hp_hex_m2_medium.png">
+												<h3 class="freestanding__text freestanding__text--mobile">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="aad8e3605f36cac5c390f65d78" -->
+shop now
+</div> <!-- End content-asset -->
+
+
+
+
+												</h3>
+											</div>
+										</a>
+									</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="5">
+										<a href="https://www.plein.com/ru/en/men/new-arrivals/">
+											<div>
+												<img class="tattoo_w3 tattoo_w3_1" style="margin-top:15px;filter:none;width:90%" src="static/images/hp_hex_m3_medium.png">
+												<h3 class="freestanding__text freestanding__text--mobile">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="aad8e3605f36cac5c390f65d78" -->
+shop now
+</div> <!-- End content-asset -->
+
+
+
+
+												</h3>
+											</div>
+										</a>
+									</div>
+									<!-- Slides -->
+									<div class="swiper-slide" data-swiper-slide-index="0">
+										<a href="https://www.plein.com/ru/en/women/new-arrivals/">
+											<div>
+												<img class="tattoo_w1 tattoo_w1_1" style="margin-top:15px;filter:none;width:90%" src="static/images/hp_hex_w1_medium.png">
+												<h3 class="freestanding__text freestanding__text--mobile">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="aad8e3605f36cac5c390f65d78" -->
+shop now
+</div> <!-- End content-asset -->
+
+
+
+
+												</h3>
+											</div>
+										</a>
+									</div>
+
+									<div class="swiper-slide" data-swiper-slide-index="1">
+										<a href="https://www.plein.com/ru/en/women/new-arrivals/">
+											<div>
+												<img class="tattoo_w2 tattoo_w2_1" style="margin-top:15px;filter:none;width:90%" src="static/images/hp_hex_w2_medium.png">
+												<h3 class="freestanding__text freestanding__text--mobile">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="aad8e3605f36cac5c390f65d78" -->
+shop now
+</div> <!-- End content-asset -->
+
+
+
+
+												</h3>
+											</div>
+										</a>
+									</div>
+									<div class="swiper-slide" data-swiper-slide-index="2">
+										<a href="https://www.plein.com/ru/en/women/new-arrivals/">
+											<div>
+												<img class="tattoo_w3 tattoo_w3_1" style="margin-top:15px;filter:none;width:90%" src="static/images/hp_hex_w3_medium.png">
+												<h3 class="freestanding__text freestanding__text--mobile">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="aad8e3605f36cac5c390f65d78" -->
+shop now
+</div> <!-- End content-asset -->
+
+
+
+
+												</h3>
+											</div>
+										</a>
+									</div>
+									<div class="swiper-slide" data-swiper-slide-index="3">
+										<a href="https://www.plein.com/ru/en/men/new-arrivals/">
+											<div>
+												<img class="tattoo_w1 tattoo_w1_1" style="margin-top:15px;filter:none;width:90%" src="static/images/hp_hex_m1_medium.png">
+												<h3 class="freestanding__text freestanding__text--mobile">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="aad8e3605f36cac5c390f65d78" -->
+shop now
+</div> <!-- End content-asset -->
+
+
+
+
+												</h3>
+											</div>
+										</a>
+									</div>
+
+									<div class="swiper-slide" data-swiper-slide-index="4">
+										<a href="https://www.plein.com/ru/en/men/new-arrivals/">
+											<div>
+												<img class="tattoo_w2 tattoo_w2_1" style="margin-top:15px;filter:none;width:90%" src="static/images/hp_hex_m2_medium.png">
+												<h3 class="freestanding__text freestanding__text--mobile">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="aad8e3605f36cac5c390f65d78" -->
+shop now
+</div> <!-- End content-asset -->
+
+
+
+
+												</h3>
+											</div>
+										</a>
+									</div>
+									<div class="swiper-slide" data-swiper-slide-index="5">
+										<a href="https://www.plein.com/ru/en/men/new-arrivals/">
+											<div>
+												<img class="tattoo_w3 tattoo_w3_1" style="margin-top:15px;filter:none;width:90%" src="static/images/hp_hex_m3_medium.png">
+												<h3 class="freestanding__text freestanding__text--mobile">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="aad8e3605f36cac5c390f65d78" -->
+shop now
+</div> <!-- End content-asset -->
+
+
+
+
+												</h3>
+											</div>
+										</a>
+									</div>
+								<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="0">
+										<a href="https://www.plein.com/ru/en/women/new-arrivals/">
+											<div>
+												<img class="tattoo_w1 tattoo_w1_1" style="margin-top:15px;filter:none;width:90%" src="static/images/hp_hex_w1_medium.png">
+												<h3 class="freestanding__text freestanding__text--mobile">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="aad8e3605f36cac5c390f65d78" -->
+shop now
+</div> <!-- End content-asset -->
+
+
+
+
+												</h3>
+											</div>
+										</a>
+									</div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="1">
+										<a href="https://www.plein.com/ru/en/women/new-arrivals/">
+											<div>
+												<img class="tattoo_w2 tattoo_w2_1" style="margin-top:15px;filter:none;width:90%" src="static/images/hp_hex_w2_medium.png">
+												<h3 class="freestanding__text freestanding__text--mobile">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="aad8e3605f36cac5c390f65d78" -->
+shop now
+</div> <!-- End content-asset -->
+
+
+
+
+												</h3>
+											</div>
+										</a>
+									</div></div>
+								<div class="swiper-button-prev2 mobile" tabindex="0" role="button" aria-label="Previous slide"></div>
+								<div class="swiper-button-next mobile" tabindex="0" role="button" aria-label="Next slide"></div>
+							<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+						</div>
+					</div>
+				</div>
+
+
+
+</div>
+
+<script>
+$(document).ready(function() {
+    var mainSwiper = new Swiper(".slider__container--mobile", {
+        autoHeight: true,
+        slidesPerView: 2,
+        spaceBetween: 0,
+        loop: true,
+        speed: 700,
+        autoplay: {
+            delay: 500
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev2"
+        },
+		resizeObserver: true,
+		setWrapperSize: true,
+    });
+
+
+		$("#custom-slideshow-products > div:gt(0)").hide();
+		setInterval(function() {
+		  $('#custom-slideshow-products > div:first')
+		  .hide()
+		  .next()
+		  .show()
+		  .end()
+		  .appendTo('#custom-slideshow-products');
+		}, 2000);
+});
+</script>
+</div>

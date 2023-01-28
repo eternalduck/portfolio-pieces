@@ -1,0 +1,218 @@
+ // clean code
+@import "../vars-mixins";
+.collection {
+	position: relative;
+	&__img-container {// big img
+		width: 100%;
+		height: 610px;
+		display: flex;
+		justify-content: center;
+		position: relative;
+		overflow: hidden;
+		z-index: 1;
+		@include min-768 {
+			height: 1000px;
+		}
+		@include min-1025 {
+			height: 1430px;
+		}
+		@include min-1280 {
+			height: 1630px;
+		}
+	}
+	&__img {//a, blink-img, js switching
+		display: block;
+		width: 100%;
+		max-width: 450px;
+		@include min-768 {
+			max-width: 700px;
+		}
+		@include min-1025 {
+			max-width: 1000px;
+		}
+		@include min-1280 {
+			max-width: 1140px;
+		}
+	}
+	&__header {
+		padding: 40px 0 35px;
+		text-align: center;
+		h3 {
+			margin-bottom: 8px;
+		}
+		h2 {
+			margin: 0;
+		}
+	}
+
+}//collection
+
+.hex {//contains swipe slider on mob
+	&__container {
+		max-width: 1780px;
+		margin: 0 auto;
+		position: relative;
+		z-index: 20;
+	}
+	&__shape {
+		position: relative;
+		background-color: #fff;
+		color: #000;
+		text-align: center;
+		img {max-height: 200px;}
+	}
+	&__title {//h3
+		margin-top: 5px;
+		margin-bottom: 8px;
+		text-transform: none;
+	}
+	&__cta {//p
+		margin-bottom: 0;
+		padding-bottom: 15px;
+		font-size: 1.5rem;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+	// mob slider
+	.swiper-container_mobile {
+		margin: 0 15px;
+	}
+	&__item {//.swiper-slide
+		background-color: #fff;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	// end mob slider
+
+	// desk hex shapes
+	@include min-768 {
+		//.hex
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		&__title {
+			margin-top: 20px;
+		}
+		&__cta {
+			padding-bottom: 0;
+		}
+
+		&__shape {//shape for desk only, turns to rectangle on mob (as swiper slide)
+			$cornerWidth: 90px;//half width
+			$borderWidth: 150px;//half height
+			$bg: #fff;
+			width: 180px;
+			height: 300px;
+			margin: 0 $cornerWidth;
+			&:before, &:after {
+				content: "";
+				display: block;
+				position: absolute;
+				top: 0;
+				width: 0;
+				height: 0;
+				border-top: $borderWidth solid transparent;
+				border-bottom: $borderWidth solid transparent;
+			}
+			&:before {
+				left: -$cornerWidth;
+				border-right: $cornerWidth solid $bg;
+			}
+			&:after {
+				right: -$cornerWidth;
+				border-left: $cornerWidth solid $bg;
+			}
+			img {
+				margin-top: 10px;
+			}
+		}//&__shape
+
+		&__item {//was .swiper-slide on mob
+			position: absolute !important;//swiper override
+			width: auto !important;//
+			background-color: transparent;
+			&:first-of-type {
+				top: 500px;
+			}
+			&:nth-of-type(2) {
+				top: 270px;
+			}
+			&:last-of-type {
+				top: 750px;
+			}
+			// different container sides
+			.hex__container_right & {
+				&:first-of-type {
+					left: 0;
+				}
+				&:nth-of-type(2),
+				&:last-of-type {
+					right: 0;
+				}
+			}//right
+			.hex__container_left & {
+				&:first-of-type {
+					right: 0;
+				}
+				&:nth-of-type(2),
+				&:last-of-type {
+					left: 0;
+				}
+			}//left
+		}//item
+	}//min-768
+
+	@include min-1025 {
+		&__item {
+			&:first-of-type {
+				top: 750px;
+			}
+			&:nth-of-type(2) {
+				top: 365px;
+			}
+			&:last-of-type {
+				top: 1100px;
+			}
+		}
+	}
+
+	@include min-1280 {
+		&__shape {
+			$cornerWidth: 145px;//half width
+			$borderWidth: 245px;//half height
+			$bg: #fff;
+			width: 290px;
+			height: 490px;
+			margin: 0 $cornerWidth;
+			&:before, &:after {
+				border-top: $borderWidth solid transparent;
+				border-bottom: $borderWidth solid transparent;
+			}
+			&:before {
+				left: -$cornerWidth;
+				border-right: $cornerWidth solid $bg;
+			}
+			&:after {
+				right: -$cornerWidth;
+				border-left: $cornerWidth solid $bg;
+			}
+			img {
+				max-height: none;
+				margin-top: 20px;
+			}
+		}//shape
+		// &__item {
+		// 	&:first-of-type {
+		// 		top: 745px;
+		// 	}
+		// 	&:nth-of-type(2) {
+		// 		top: 370px;
+		// 	}
+		// 	&:last-of-type {
+		// 		top: 1180px;
+		// 	}
+		// }//item
+	}//min-1280
+}//hex

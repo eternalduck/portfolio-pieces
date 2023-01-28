@@ -1,0 +1,24 @@
+{% block videoSection %}
+<div class="content-asset">
+	<div class="grid-col-100 grid-col-100-mobile">
+		<div class="m-relative no-padding banner-prefallmays-HLS">
+			<div class="pRelative">
+				<div class="containerVideoPrefallmayHLSFresh">
+					<video autoplay="autoplay" class="videoPrefallmayHLSFresh" id="prefallmayVideoFrontage" loop="loop" muted="muted" playsinline="" preload="auto" src="blob:https://www.plein.com/d96d298f-effa-41e1-a371-29a1d8525638" poster="https://i.vimeocdn.com/video/1143125404_1920x800?r=pad" style="visibility: visible;"></video>
+				</div>
+			</div>
+		</div>{# banner-prefallmays-HLS #}
+
+		<div class="divContainerPrefallmayButton">
+			<h2 class="h2PrefallmayMainTitle h2 h2_big-bold">TEDDY BEAR&trade; Capsule</h2>
+			<p class="m-color-black b-block-centered_m m-padding-x_s-mobile">Teddy bears, Monograms and Shiny Crystals are the main focus for this New Capsule Collection for him and her.</p>
+			{% include "button-set.html" with {
+				'colorClass' : 'lp-button-wrapper_black lp-button-wrapper_big'
+			} %}
+		</div>{# divContainerPrefallmayButton #}
+	</div>
+
+	<script src="static/js/jquery/jquery_slim_last.js"></script>
+	<script src="static/js/libs/hls.js"></script>
+</div>
+{% endblock %}

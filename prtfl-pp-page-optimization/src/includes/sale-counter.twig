@@ -1,0 +1,23 @@
+{% block saleCounter %}
+{% set counterItems = ["days", "hours", "minutes", "seconds"] %}
+{% set counterTitle = "SALE" %}
+
+<div class="content-asset">
+	<section class="sale grid-col-100 grid-col-100-mobile" id="counter-container">
+		<div class="sale__content">
+			<h1 class="sale__title">{{ counterTitle }}</h1>
+			<div class="counter" id="counter">
+				<div class="counter__headers">
+					{% for name in counterItems %}
+						<p class="counter__name">{{name}}</p>
+					{% endfor %}
+				</div>
+				<div class="counter__value" id="counter-value"></div>
+			</div>
+			{% include "button-set.html" with {
+				'colorClass' : 'lp-button-wrapper_white'
+			} %}
+		</div>
+	</section>
+</div>
+{% endblock %}

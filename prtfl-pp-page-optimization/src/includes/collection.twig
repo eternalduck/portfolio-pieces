@@ -1,0 +1,47 @@
+{% block hexagonsSlider %}
+{% set buyTxt = "Shop Now" %}
+<div class="content-asset">
+	<div class="collection bgLightGray grid-col-100 grid-col-100-mobile">
+		<div class="collection__header">
+			<h3>pre-fall 2020</h3>
+			<h2>Teddy Bear Collection</h2>
+		</div>
+		<div class="collection__img-container">
+			<a href="{{ buyURL }}" class="collection__img blink-img">
+				{% for img in mainImg %}
+					<img src="{{ img.mainImgURL }}" alt="{{ img.mainImgAlt }}"/>
+				{% endfor %}
+			</a>
+		</div>{# __img-container #}
+
+		<div class="hex">
+			<div class="swiper-container_mobile">
+				<div class="swiper-wrapper_mobile hex__container {{ hexSideClass }}">
+				{% for hex in hexContent %}
+					<div class="swiper-slide hex__item">
+						<a href="{{ buyURL }}">
+							<div class="hex__shape">
+								<img src="{{ hex.hexImgURL }}" alt="{{ hex.hexImgAlt }}"/>
+								<h3 class="hex__title h3 h3_big">{{ hex.hexTitle }}</h3>
+								<p class="hex__cta">{{ buyTxt }}</p>
+							</div>
+						</a>
+					</div>
+				{% endfor %}
+				</div>{# swiper-wrapper_mobile #}
+				<div class="dNoneDesktop">
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-button-next"></div>
+				</div>
+			</div>{# swiper-container_mobile #}
+		</div>{# hex #}
+
+		
+		
+
+	</div>
+	 <!-- <script src="static/js/jquery/jquery_slim_last.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="></script> -->
+	<link rel="stylesheet" href="static/js/libs/swiper/swiper.min.css">
+	<script src="static/js/libs/swiper/swiper.min.js"></script>
+</div>
+{% endblock %}

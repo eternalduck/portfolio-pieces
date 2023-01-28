@@ -1,0 +1,459 @@
+<div class="content-asset"><!-- dwMarker="content" dwContentID="ffab7642ed738e4c1e613bec15" -->
+<style>
+	.ui-widget-overlay.ui-front.bgBlackOpacity09 {
+		background-color: black;
+		background-color: rgba(0, 0, 0, 0.8);
+	}
+
+	.d-none {
+		display: none;
+	}
+
+	.d-mobile {
+		display: none;
+	}
+
+	.d-desktop {
+		display: initial;
+	}
+
+	@media screen and (max-width: 767px) {
+		.d-mobile {
+			display: initial;
+		}
+
+		.d-desktop {
+			display: none;
+		}
+
+		.closeButton {
+			display: none;
+		}
+	}
+
+	.divPopupSubscriptionNewsletter {
+		width: 100%;
+		max-width: 40vw;
+		position: fixed;
+		left: 1rem;
+		top: 1rem;
+		box-sizing: border-box;
+		z-index: 999;
+	}
+
+	.divPopupSubscriptionNewsletter.positionFixed {
+		position: fixed;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		box-sizing: border-box;
+		z-index: 99999;
+	}
+
+	.divPopupSubscriptionNewsletter .innerContainerPleinOpen {
+		text-align: center;
+		position: relative;
+		min-height: 5rem;
+	}
+
+	.b-back_to_top-container {
+		display: none;
+	}
+
+	@media screen and (max-width: 767px) {
+
+		.divPopupSubscriptionNewsletter {
+			width: calc(100vw - 20px);
+			max-width: calc(100vw - 20px);
+		}
+
+	}
+
+	.dNone {
+		display: none;
+	}
+
+	.fadeInPopup {
+		-webkit-animation: fadein 3s;
+		/* Safari, Chrome and Opera > 12.1 */
+		-moz-animation: fadein 3s;
+		/* Firefox < 16 */
+		-ms-animation: fadein 3s;
+		/* Internet Explorer */
+		-o-animation: fadein 3s;
+		/* Opera < 12.1 */
+		animation: fadein 3s;
+	}
+
+	@keyframes fadein {
+		from {
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+		}
+	}
+
+	/* Firefox < 16 */
+	@-moz-keyframes fadein {
+		from {
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+		}
+	}
+
+	/* Safari, Chrome and Opera > 12.1 */
+	@-webkit-keyframes fadein {
+		from {
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+		}
+	}
+
+	/* Internet Explorer */
+	@-ms-keyframes fadein {
+		from {
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+		}
+	}
+
+	/* Opera < 12.1 */
+	@-o-keyframes fadein {
+		from {
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+		}
+	}
+</style>
+<script src="static/js/jquery/jquery-3.4.1.slim.min.js"></script>
+
+
+<script>
+	function validateEmailPOPUP(inputEmailParam) {
+		if (inputEmailParam == undefined || inputEmailParam == null)
+			return false;
+		var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+		return inputEmailParam.match(mailformat);
+
+	}
+
+	function setCookiePopupSubscriptionNewsletter(cname, cvalue, exhours) {
+		var d = new Date();
+		d.setTime(d.getTime() + exhours * 60 * 60 * 1000);
+		var expires = "expires=" + d.toUTCString();
+		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	}
+
+	function getCookiePopupSubscriptionNewsletter(cname) {
+		var name = cname + "=";
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.split(";");
+		for (var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == " ") {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
+	}
+
+	$(document).ready(function () {
+
+		var calcHourPopupClose = 24;
+
+		function createPopupSubscriptionNewsletter() {
+			$(".divPopupSubscriptionNewsletter").remove();
+			$(".ui-widget-overlay.ui-front").remove();
+			$("#main").on("click", function () {
+				if ($(".divPopupSubscriptionNewsletter") != undefined && $(".divPopupSubscriptionNewsletter") != null) {
+					$(".divPopupSubscriptionNewsletter").remove();
+					$(".ui-widget-overlay.ui-front").remove();
+				}
+			});
+
+			var divPopup = `
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="1b5a0d137acd73ef9bf20d1d3f" -->
+<style>
+
+/*
+ * $-Collector
+ * Author: Mikhail Morshinin <m.morshinin@plein.com>
+ * Version: 1.1.3
+ */
+.b-collector {
+	position: relative;
+	margin: 3rem auto;
+	box-shadow: 0 0 3rem 0 rgba(0, 0, 0, 0.8);
+	letter-spacing: 0;
+	max-width: 600px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+.b-collector-item {
+	position: relative;
+	padding: 0 5%;
+}
+
+.b-collector-item_form {
+	padding: 20px 20%;
+}
+
+.b-collector-item_text {
+	padding: 0 15%;
+}
+
+.b-collector_close {
+	position: absolute;
+	right: 1.5rem;
+	top: 1rem;
+	font-weight: 700;
+	cursor: pointer;
+	z-index: 10;
+	width: 1rem;
+}
+
+.b-collector .b-button,
+.b-collector .f-textinput {
+	width: 100%;
+}
+
+.m-collector-color-white a {
+  color: #fff;
+}
+</style>
+
+<aside class="b-collector m-collector-color-white m-bg-black b-text m-color-white">
+	<svg class="b-collector_close"
+		 xmlns="http://www.w3.org/2000/svg"
+		 enable-background="new 0 0 50 50"
+		 viewBox="0 0 50 50">
+		<path d="m50 5.1-5-5.1-20 20-20-20-5 5 20 20-20 20 5 5 20-20 20 20 5-5.1-20-19.9z" fill="#ffffff"/>
+	</svg>
+	<picture>
+		<img class="collector__image" src="https://www.plein.com/on/demandware.static/-/Library-Sites-philipp-plein-shared-library/default/dwe5e0e2eb/assets/images/fron-137-superfresh/collector/collector_bg.jpg" alt="">
+	</picture>
+	<div class="b-collector-item">
+		<h2>
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="02759e13363fea75cbbe268068" -->
+Subscribe to our Newsletter
+</div> <!-- End content-asset -->
+
+
+
+</h2>
+		<div class="b-collector-item_text">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="7fd7d91f448b540d1c07b10de0" -->
+Get access to the full <span style="text-transform: uppercase; display: inline-block">Philipp Plein</span> Universe!<br />Stay up-to-date on all the latest collections, events &amp; campaigns.
+</div> <!-- End content-asset -->
+
+
+
+
+		</div>
+	</div>
+	<form class="b-collector-item_form" action="#0">
+		<div class="f-field">
+			<label for="collectorEmailSuperFreshHomePage" class="f-label hidden">Email</label>
+			<input type="text" class="f-textinput" id="collectorEmailSuperFreshHomePage" name="collectorEmailSuperFreshHomePage" placeholder="Email"
+				   maxlength="255">
+		</div>
+		<div class="f-field">
+			<button class="b-button m-white" type="button" name="collectorButton" id="collectorButton">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="1e161902214c645bfde9d7f57f" -->
+subscribe
+</div> <!-- End content-asset -->
+
+
+
+
+			</button>
+		</div>
+		<div class="h-hidden success-form">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="54b8a69edf170ad24f35698fd6" -->
+THANK YOU
+</div> <!-- End content-asset -->
+
+
+
+
+		</div>
+		<div class="h-hidden success-form">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="65817b0cea7a0b3ed967a34cc3" -->
+You successfully subscribed
+</div> <!-- End content-asset -->
+
+
+
+
+		</div>
+		<div class="m-text-small">
+
+
+
+
+
+
+
+
+
+<div class="content-asset"><!-- dwMarker="content" dwContentID="721a02bb071783268a54da0d72" -->
+By clicking on "Subscribe" you agree to our <a href="https://www.plein.com/it/en/privacy-policy/privacy-policy.html" target="_blank">Privacy Policy</a>
+</div> <!-- End content-asset -->
+
+
+
+
+		</div>
+	</form>
+</aside>
+</div> <!-- End content-asset -->
+
+
+
+`;
+
+			var divPopupSubscriptionNewsletter = $("<div>").addClass("divPopupSubscriptionNewsletter dNone positionFixed");
+
+			var divInnerContainerPleinOpen = $("<div>").addClass("innerContainerPleinOpen");
+			divInnerContainerPleinOpen.append(divPopup);
+
+			divPopupSubscriptionNewsletter.append(divInnerContainerPleinOpen);
+
+			$("body").append(divPopupSubscriptionNewsletter);
+
+		}
+
+		if (getCookiePopupSubscriptionNewsletter("popupPleinSubscribeNewsletterSuperFresh") == "") {
+			createPopupSubscriptionNewsletter();
+
+			setTimeout(function () {
+				var elementUIMask = document.querySelectorAll(".ui-widget-overlay.ui-front");
+				if (elementUIMask != undefined && elementUIMask != null && elementUIMask.length > 0)
+					$(".ui-widget-overlay.ui-front").remove();
+				$("body").append("<div class='ui-widget-overlay ui-front bgBlackOpacity09'></div>");
+				$(".ui-widget-overlay.ui-front").on("click", function (event) {
+					$(".ui-widget-overlay.ui-front, .divPopupSubscriptionNewsletter").remove();
+					setCookiePopupSubscriptionNewsletter("popupPleinSubscribeNewsletterSuperFresh", Date.now(), calcHourPopupClose);
+				});
+				$(".divPopupSubscriptionNewsletter").removeClass("dNone");
+				$(".divPopupSubscriptionNewsletter").addClass("fadeInPopup");
+
+				$('#collectorButton').on('click', function (event) {
+
+					var emailInputPopup = $('#collectorEmailSuperFreshHomePage').val();
+
+					if (emailInputPopup != undefined && emailInputPopup != null && validateEmailPOPUP(emailInputPopup)) {
+						var jqxr = $.ajax({
+							url: 'https://www.utils-philipp-plein.com/savemail.php',
+							crossDomain: true,
+							method: 'GET',
+							dataType: 'jsonp',
+							data: {
+								'mail': $('#collectorEmailSuperFreshHomePage').val(),
+								'country': getCookiePopupSubscriptionNewsletter('selectedCountry'),
+								'dwfrm_newslettersignup_signup': '',
+								'scope': 'subscribe_newsletter',
+								'source': 'popupSubscribe_SS21',
+								'sendmail': '0',
+								'site': 'plein'
+							}
+						});
+
+						jqxr.always(function () {
+							calcHourPopupClose = 720;
+							$(".b-collector .success-form").removeClass("h-hidden");
+							$(".b-collector .b-collector-item, .b-collector .f-field, .b-collector .m-text-small").addClass("h-hidden");
+							setCookiePopupSubscriptionNewsletter("popupPleinSubscribeNewsletterSuperFresh", Date.now(), calcHourPopupClose);
+						});
+
+					}
+
+				});
+
+				$('.b-collector .b-collector_close').on("click", function (event) {
+					event.preventDefault();
+					$(".divPopupSubscriptionNewsletter").remove();
+					$(".ui-widget-overlay.ui-front").remove();
+					setCookiePopupSubscriptionNewsletter("popupPleinSubscribeNewsletterSuperFresh", Date.now(), calcHourPopupClose);
+				});
+
+			}, 3000);
+
+		}
+	});
+</script>
+</div>
+
+ <!-- End content-asset -->

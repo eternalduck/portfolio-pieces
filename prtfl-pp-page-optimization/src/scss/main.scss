@@ -1,0 +1,141 @@
+// June, 2021
+@import "vars-mixins";
+
+// all present styles for header, footer & page in general are dumped to \src\static\css\style-extracted.css and included as is
+
+// see includes for new sections at bottom
+
+//================
+// Common classes & helpers
+//================
+a,
+a:hover {
+	text-decoration: none;
+}
+
+//================
+// Typography
+//================
+//inheritance issues due to dumped css inclusion order :/
+h1 {
+	font-weight: 700;
+	font-size: 8.125rem;
+	line-height: 1;
+	letter-spacing: -2px;
+	@include min-768 {
+		font-size: 10.125rem;
+		letter-spacing: 5px;
+	}
+}
+h2 {
+	font-size: 3.45rem !important;//2.75rem !important;
+	font-weight: normal !important;
+	line-height: 1 !important;
+	letter-spacing: 2px;
+}
+.h2 {
+		line-height: 1;
+	&_big {
+		font-size: 3rem !important;
+		font-weight: normal !important;
+		letter-spacing: 1px !important;
+		@include min-768 {
+			font-size: 3.5rem !important;
+		}
+		@include min-1280 {
+			font-size: 5.2rem !important;
+		}
+	}
+	&_big-bold {
+		font-size: 2.5rem !important;
+		font-weight: 700 !important;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		@include min-1280 {
+			font-size: 3.75rem !important;
+		}
+	}
+}
+h3 {
+	font-size: 1.2rem !important;
+	font-weight: bold !important;
+	text-transform: uppercase;
+	letter-spacing: 2.5px;
+	@include min-1280 {
+		font-size: 1.75rem !important;
+	}
+}
+.h3 {
+	line-height: 1;
+	&_big {
+		font-size: 1.9rem;
+		letter-spacing: 2px;
+		font-weight: normal;
+	}
+}
+
+//================
+// Overrides
+//================
+header {
+	a {
+		&:hover {
+			border-bottom: none;
+		}
+	}
+}
+.b-navigation-top_link {
+	&_active {
+		font-weight: 900;
+	}
+}
+
+//================
+// New elements
+//================
+
+// promo text line
+.promotion {
+	text-align: center;
+	a {
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 2;
+		letter-spacing: 2px;
+		text-decoration: none;
+	}
+	p {
+		margin-bottom: 0;
+	}
+	&_dark {
+		background-color: #000;
+		a {
+			color: #fff;
+		}
+	}
+}
+.blink-img {//images visibility toggled by js
+	position: relative;
+	display: flex;
+	justify-content: center;
+	padding-bottom: 100%;
+	img {
+		width: 100%;
+		height: auto;
+		position: absolute;
+		top: 0;
+		z-index: 20;
+		&:nth-child(2){
+			z-index: 1;
+		}
+	}
+}
+
+//================
+// Includes
+//================
+@import "./includes/sale-counter";
+@import "./includes/video-section";
+@import "./includes/collection";
+@import "./includes/hot-teaser";
+@import "./includes/button-set";

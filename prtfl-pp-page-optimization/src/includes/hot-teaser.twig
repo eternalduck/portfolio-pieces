@@ -1,0 +1,22 @@
+{% block hotTeaser %}
+<div class="content-asset">
+	<div class="hot-teaser {{sideClass}} grid-col-100 grid-col-100-mobile bgLightGray">
+
+		<div class="hot-teaser__shape">
+			<a class="hot-teaser__inner" href="https://www.plein.com/">
+				<div class="hot-teaser__text">
+					<h3>Spring summer 2020</h3>
+					<h2 class="h2 h2_big">Hot Stuff</h2>
+					<img class="hot-teaser__small-img dNoneMobile" src="{{ smallImgURL }}" alt="Hot Stuff"/>
+				</div>
+				<div class="hot-teaser__img blink-img">
+					{% for img in hexImgURL %}
+						<img src="{{ img }}" alt=""/>
+					{% endfor %}
+				</div>
+			</a>
+		</div>
+
+	</div>
+</div>
+{% endblock %}

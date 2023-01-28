@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)https://www.plein.com/ru/en/home/ -->
+<html lang="en">
+
+{% include "./static/html/head.html" %}
+
+<body>
+
+	<!-- Google Tag Manager (noscript) -->
+	<noscript>
+	<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5RWX79" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+	</noscript>
+	<!-- End Google Tag Manager (noscript) -->
+
+
+	<div id="wrapper" class="pt_storefront">
+
+		{% include "./static/html/header.html" %}
+
+		<div id="main" role="main">
+
+			<div class="b-homepage">
+				<div class="b-content">
+
+					{% include "./includes/sale-counter.twig" %}
+
+					{% include "./includes/video-section.twig" %}
+					
+					{# TODO data should be external #}
+					{# MEN #}
+					{# buyURL - the same everywhere #}
+					{% include "./includes/collection.twig" with {
+						"buyURL": "https://www.plein.com/ru/en/men/new-arrivals/",
+						"mainImg": [
+							{
+								"mainImgURL": "images/teddy-prefall/big-teddy-prefall-men-01.jpg",
+								"mainImgAlt": "Pre-fall Teddy Bead Men Collection"
+							},
+							{
+								"mainImgURL": "images/teddy-prefall/big-teddy-prefall-men-02.jpg",
+								"mainImgAlt": "Pre-fall Teddy Bead Men Collection"
+							},
+						],
+						"hexContent": [
+							{
+								"hexTitle": "Hoodies",
+								"hexImgURL": "images/teddy-prefall/small-teddy-prefall-men-hoodies.jpg",
+								"hexImgAlt": "Pre-fall 2020 Teddy Bear Hoodies",
+							},
+							{
+								"hexTitle": "Jackets",
+								"hexImgURL": "images/teddy-prefall/small-teddy-prefall-men-jackets.jpg",
+								"hexImgAlt": "Pre-fall 2020 Teddy Bear Jackets",
+							},
+							{
+								"hexTitle": "Shoes",
+								"hexImgURL": "images/teddy-prefall/small-teddy-prefall-men-shoes.jpg",
+								"hexImgAlt": "Pre-fall 2020 Teddy Bear Shoes",
+							}
+						],
+						"hexSideClass": "hex__container_right"
+					} %}
+
+					{# MEN Teaser #}
+					{% include "./includes/hot-teaser.twig" with {
+						"sideClass": "hot-teaser_right",
+						"smallImgURL": "images/spring-summer-hot/small-hot-men-cap.jpg",
+						"hexImgURL": [
+							"images/spring-summer-hot/big-hot-men-hex.png",
+						]
+					} %} 
+					{# end MEN #}
+
+					{# WOMEN #}
+					{% include "./includes/collection.twig" with {
+						"buyURL": "https://www.plein.com/ru/en/women/new-arrivals/",
+						"mainImg": [
+							{
+								"mainImgURL": "images/teddy-prefall/big-teddy-prefall-women.jpg",
+								"mainImgAlt": "Pre-fall Teddy Bead Wonn Collection"
+							},
+						],
+						"hexContent": [
+							{
+								"hexTitle": "Denim",
+								"hexImgURL": "images/teddy-prefall/small-teddy-prefall-women-denim.jpg",
+								"hexImgAlt": "Pre-fall 2020 Teddy Bear Denim",
+							},
+							{
+								"hexTitle": "Jackets",
+								"hexImgURL": "images/teddy-prefall/small-teddy-prefall-women-jackets.jpg",
+								"hexImgAlt": "Pre-fall 2020 Teddy Bear Jackets",
+							},
+							{
+								"hexTitle": "High Heels",
+								"hexImgURL": "images/teddy-prefall/small-teddy-prefall-women-shoes.jpg",
+								"hexImgAlt": "Pre-fall 2020 Teddy Bear High Heels",
+							}
+						],
+						"hexSideClass": "hex__container_left"
+					}%}
+
+					{# WOMEN Teaser #}
+					{% include "./includes/hot-teaser.twig" with {
+						"sideClass": "hot-teaser_left",
+						"smallImgURL": "images/spring-summer-hot/small-hot-women-bag.jpg",
+						"hexImgURL": [
+							"images/spring-summer-hot/big-hot-women-hex-01.png",
+							"images/spring-summer-hot/big-hot-women-hex-02.png",
+						]
+					} %} 
+					{# end WOMEN #}
+
+
+
+
+					{# disabled sections #}
+
+					{# {% include "./static/html/hidden-pp-logo.html" %} #}
+
+					{# {% include "./static/html/hidden-men-women-slider.html" %} #}
+
+					{# {% include "./static/html/hidden-men-women-buttons.html" %} #}
+
+					{# {% include "./static/html/hidden-fall-collection.html" %} #}
+
+					{# {% include "./static/html/hidden-fragrance.html" %} #}
+
+					{# {% include "./static/html/hidden-discover-more.html" %} #}
+
+					{# /disabled sections #}
+
+					{% include "./static/html/newsletter-popup.html" %}
+
+
+				</div>{# b-content #}
+			</div>{# b-homepage #}
+
+		</div>{# main #}
+	</div>{# wrapper pt_storefront #}
+
+	{% include "./static/html/footer.html" %}
+
+	{% include "./static/html/footer-scripts-styles.html" %}
+
+
+</body>
+</html>

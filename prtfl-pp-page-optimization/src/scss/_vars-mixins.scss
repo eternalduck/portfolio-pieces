@@ -1,0 +1,143 @@
+// March, 2021
+
+//================
+// Brand colors
+//================
+$gray-lite: #f7f7f7;
+
+//================
+// Grid
+//================
+// I've extracted all media, cleaned them up & decided to save only these:
+// @media only screen and (min-width: 768px)
+// @media only screen and (min-width: 1025px)
+// @media only screen and (min-width: 1280px)
+// @media only screen and (min-width: 1440px)
+// @media only screen and (min-width: 768px) and (max-width: 1279px)
+// @media only screen and (min-width: 1024px) and (max-width: 1279px)
+// 
+// @media only screen and (max-width: 500px)
+// @media only screen and (max-width: 767px) 
+// @media only screen and (max-width: 1024px)
+
+// responsive notes:
+// general mobile before 768! (max-width: 767) || (min-width: 768)
+// header menu unfolds at 1025 up
+// header menu icons become desk-small at 768 up
+// footer sections become row at 768 up
+// buttons become row at ~510 up
+// slider transforms to desk at 768 up
+
+@mixin min-768 {
+	@media only screen and (min-width: 768px) {
+		@content;
+	}
+}
+
+@mixin min-1025 {
+	@media only screen and (min-width: 1025px) {
+		@content;
+	}
+}
+
+@mixin min-1280 {
+	@media only screen and (min-width: 1280px) {
+		@content;
+	}
+}
+
+@mixin min-1440 {
+	@media only screen and (min-width: 1440px) {
+		@content;
+	}
+}
+@mixin min-768-max-1279 {
+	@media only screen and (min-width: 768px) and (max-width: 1279px) {
+		@content;
+	}
+}
+
+@mixin min-1024-max-1279 {
+	@media only screen and (min-width: 1024px) and (max-width: 1279px) {
+		@content;
+	}
+}
+
+@mixin max-500 {
+	@media only screen and (max-width: 500px) {
+		@content;
+	}
+}
+@mixin max-767 {
+	@media only screen and (max-width: 767px) {
+		@content;
+	}
+}
+@mixin max-1024 {
+	@media only screen and (max-width: 1024px) {
+		@content;
+	}
+}
+
+@mixin print {
+	@media print {
+		@content;
+	}
+}
+
+// @mixin content-width {
+// 	margin: 0 auto;
+// 	width: 100%;
+// 	max-width: 400px;
+// 	min-width: 300px;
+// 	padding-left: 15px;
+// 	padding-right: 15px;
+// 	@include sm {
+// 		max-width: 540px;
+// 		padding-left: 0;
+// 		padding-right: 0;
+// 	}
+// 	@include md {
+// 		max-width: 720px;
+// 	}
+// 	@include lg {
+// 		max-width: 960px;
+// 	}
+// 	@include xl {
+// 		max-width: 1140px;
+// 	}
+// }
+
+//================
+// Common elements
+//================
+@mixin shadow {
+	box-shadow: 0 4px 24px rgba(205, 205, 205, .5);
+}
+
+@mixin section-padding {
+	padding-top: 50px;
+	padding-bottom: 70px;
+	@include lg {
+		padding-top: 85px;
+		padding-bottom: 120px;
+	}
+}
+
+//================
+// Helpers
+//================
+@mixin centered {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+@mixin reset-centered {
+	margin-right: 0;
+	margin-left: 0;
+}
+
+@mixin hover-transition {
+	transition: all .2s ease-in;
+}
+
