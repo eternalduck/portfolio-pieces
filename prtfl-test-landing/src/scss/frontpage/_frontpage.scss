@@ -1,0 +1,16 @@
+.frontpage {
+	background-color: $almost-white;
+	h2,
+	.subtitle {
+		text-align: center;
+	}
+}
+
+//================
+// Sections includes
+//================
+@import "intro";
+@import "features";
+@import "coffee";
+@import "giftset";
+@import "combo";
