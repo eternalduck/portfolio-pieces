@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Banks</title>
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/menu.min.css">
+	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="css/slick.css">
+	<link rel="stylesheet" href="css/debug.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/slick.min.js"></script>
+
+
+
+
+</head>
+<body>
+<div class="bg-top">	
+	<div class="container-fluid topmenu">
+		<div class="row">
+			<!-- main site header -->
+			<header class="top-menu">
+			    <div class="top-menu-box">
+			        <div class="top-menu-wrapper">
+			            <div class="top-menu" data-equalizer="">
+			                <div class="top-menu-logo-wrapper" data-equalizer-watch="">
+			                    <div class="top-menu-logo">
+			                        <a href="/">
+			                            <img src="data:image/png;base64,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" alt=""/>
+			                        </a>
+			                    </div>
+			                </div>
+			                <div class="menu-items-wrapper" data-equalizer-watch="">
+			                    <div class="menu-items">
+			                        <div class="menu-items-block-wrapper-1">
+			                            <div class="menu-items-block-1">
+			                                <div class="menu-item-wrapper">
+			                                    <div class="menu-item has-submenu">
+			                                        <a href="http://www.completo.ru/"><span>Комплето</span></a>
+			                                        <div class="submenu-wrapper">
+			                                            <ul class="submenu">
+			                                                <li class="submenu-item">
+			                                                    <div class="submenu-item-link">
+			                                                        <a href="http://www.completo.ru/about/">О компании</a>
+			                                                    </div>
+			                                                </li>
+															<li class="submenu-item">
+			                                                    <div class="submenu-item-link">
+			                                                        <a href="/#stages">Этапы нашей работы</a>
+			                                                    </div>
+			                                                </li>
+			                                                <li class="submenu-item">
+			                                                    <div class="submenu-item-link">
+			                                                        <a href="http://www.completo.ru/#section-requere-4">Чем мы занимаемся</a>
+			                                                    </div>
+			                                                </li>
+			                                                <li class="submenu-item">
+			                                                    <div class="submenu-item-link">
+			                                                        <a href="http://www.completo.ru/#section-requere-2">Кейсы</a>
+			                                                    </div>
+			                                                </li>
+
+			                                                <li class="submenu-item">
+			                                                    <div class="submenu-item-link">
+			                                                        <a href="http://www.completo.ru/about/#section-requere-2">Чем мы лучше конкурентов</a>
+			                                                    </div>
+			                                                </li>
+			                                                <li class="submenu-item">
+			                                                    <div class="submenu-item-link">
+			                                                        <a href="http://blog.completo.ru/kak-vyibrat-agentstvo-dlya-kompleksnogo-marketinga-v-internete/" target="_blank">Как выбрать агентство</a>
+			                                                    </div>
+			                                                </li>
+			                                                <li class="submenu-item">
+			                                                    <div class="submenu-item-link">
+			                                                        <a href="http://www.completo.ru/about/#faq">Частые вопросы</a>
+			                                                    </div>
+			                                                </li>
+			                                                <li class="submenu-item">
+			                                                    <div class="submenu-item-link">
+			                                                        <a href="http://www.completo.ru/about/#yandexMap">Контакты</a>
+			                                                    </div>
+			                                                </li>
+			                                                <li class="submenu-item">
+			                                                    <div class="submenu-item-link">
+			                                                        <a href="http://www.completo.ru/vacancy/">Вакансии</a>
+			                                                    </div>
+			                                                </li>
+			                                            </ul>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                                <div class="menu-item-wrapper"> 
+			                                    <div class="menu-item">
+			                                        <a href="http://blog.completo.ru/"><span>Блог</span></a>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                        </div>
+			                        <div class="menu-items-block-wrapper-2" style="width:150px;">
+			                            <div class="menu-items-block-2">
+			                                <div class="menu-item-wrapper">
+			                                    <div class="menu-item">
+			                                        <a href="http://www.completo.ru/dealers/"><span>Компаниям с <br> сетями дилеров</span></a>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                        </div>
+			                        <div class="menu-items-block-wrapper-2" style="width:150px;">
+			                            <div class="menu-items-block-2">
+			                                <div class="menu-item-wrapper">
+			                                    <div class="menu-item">
+			                                        <a href="http://www.completo.ru/b2b/"><span>Компаниям с<br> продуктами B2B</span></a>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                        </div>
+			                        <div class="menu-items-block-wrapper-3">
+			                            <div class="menu-items-block-1">
+			                                <div class="menu-item-wrapper">
+			                                    <div class="menu-item has-submenu">
+			                                        <a href="javascript:;"><span>Мы обучаем</span></a>
+			                                        <div class="submenu-wrapper">
+			                                            <ul class="submenu">
+			                                                <li class="submenu-item">
+			                                                    <div class="submenu-item-link">
+			                                                        <a href="http://www.completo.ru/webinar/">Вебинары</a>
+			                                                    </div>
+			                                                </li>
+			                                                <li class="submenu-item">
+			                                                    <div class="submenu-item-link">
+			                                                        <a href="http://www.completo.ru/breakfast/">Бизнес-завтрак</a>
+			                                                    </div>
+			                                                </li>
+			                                                <li class="submenu-item">
+			                                                    <div class="submenu-item-link">
+			                                                        <a href="http://blog.completo.ru/videocourse/">Видеокурс по интернет-маркетингу</a>
+			                                                    </div>
+			                                                </li>
+			                                                <li class="submenu-item">
+			                                                    <div class="submenu-item-link">
+			                                                        <a href="http://blog.completo.ru/white-paper/seo/">Справочник по SEO</a>
+			                                                    </div>
+			                                                </li>
+			                                                <li class="submenu-item">
+			                                                    <div class="submenu-item-link">
+			                                                        <a href="http://blog.completo.ru/sem/">СЭМ за 6 шагов </a>
+			                                                    </div>
+			                                                </li>
+			                                                <li class="submenu-item">
+			                                                    <div class="submenu-item-link">
+			                                                        <a target="_blank" href="http://maed.ru/courses/b2b-internet-marketing/">Курс: интернет-маркетинг для B2B</a>
+			                                                    </div>
+			                                                </li>
+			                                                <li class="submenu-item">
+			                                                    <div class="submenu-item-link">
+			                                                        <a target="_blank" href="http://maed.ru/nima/">Международные курсы по маркетингу</a>
+			                                                    </div>
+			                                                </li>
+			                                                <li class="submenu-item">
+			                                                    <div class="submenu-item-link">
+			                                                        <a target="_blank" href="http://www.completo.ru/checklist-for-agencies/">Чек-лист агентств</a>
+			                                                    </div>
+			                                                </li>
+			                                                <li class="submenu-item">
+			                                                    <div class="submenu-item-link">
+			                                                        <a target="_blank" href="http://blog.completo.ru/research-estate/">Исследование недвижимости</a>
+			                                                    </div>
+			                                                </li>
+			                                            </ul>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div>
+			                <div class="top-menu-phone-wrapper" data-equalizer-watch="">
+			                    <div class="top-menu-phone">+7 (495) 640-89-97</div>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+			</header>
+			<!-- /main site header  -->
+		</div>
+	</div>	
+
+	<div class="banks-intro container">
+		<div class="row">
+			<div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+				<span class="title">Исследование 2018:</span>
+				<h1>Как банки привлекают клиентов из интернета?</h1>
+				<p><b>Первое в России исследование комплекса интернет-маркетинга российских банков</b></p>
+				<p>Мы исследовали 120 сайтов банковских организаций по всем разделам интернет-маркетинга: от контента веб-сайтов до работы менеджеров на телефоне.</p>
+				<p>Мы хотели узнать, шагнул ли <b>Сбербанк</b> в ногу со временем, сколько трафика перетягивает <b>Тинькофф</b> и как хорошо все известные нам банки используют возможности интернета.</p>
+			</div>
+			<div id="sendform1" class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+				<div class="contact-form">
+					<h4>Куда отправить исследование?</h4>
+					<form class="send-report">
+						<input type="text" name="name" placeholder="Имя" required>	
+						<input type="text" name="name" placeholder="Ваш email" required>
+						<input class="yell-button" type="submit" name="submit" value="Отправить">
+					</form>	
+					<p>Нажимая кнопку, вы соглашаетесь с&nbsp;правилами обработки персональных данных</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div><!--  /bg-top   -->
+
+
+
+<div class="banks-facts container">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<h2>Интересные факты из исследования:</h2>
+		</div>
+		<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+			<div class="row">
+				<div class="block col-lg-4 col-md-12 col-sm-12 col-xs-12">
+					<img src="images/logo-sm-01.png" alt="">
+					<img src="images/logo-sm-02.png" alt="">
+					<p>В топ антирейтинга сайтов с&nbsp;наибольшим показателем отказов вошли Райффайзенбанк и&nbsp;“Возрождение”</p>
+				</div>
+				<div class="block col-lg-4 col-md-12 col-sm-12 col-xs-12">
+					<img src="images/logo-sm-03.png" alt="">
+					<p>Сбербанк превзошел ближайшего конкурента в 7 раз по целевому трафику</p>
+				</div>
+				<div class="block col-lg-4 col-md-12 col-sm-12 col-xs-12">
+					<img src="images/logo-sm-04.png" alt="">
+					<p>Первое место рейтинга по привлечению трафика &mdash;  Всероссийский банк развития регионов</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+			<div class="row">
+				<div class="offset-left">
+					<div class="block col-lg-4 col-md-12 col-sm-12 col-xs-12">
+						<p><span class="big-num">22%</span>заходов на сайты банков &mdash; рекламные</p>
+					</div>
+					<div class="block col-lg-4 col-md-12 col-sm-12 col-xs-12">
+						<img src="images/icon-hot.png" alt="">
+						<p>Банки работают в-основном с теплым трафиком</p>
+					</div>
+					<div class="block download-pdf col-lg-4 col-md-12 col-sm-12 col-xs-12">
+						<a href="#sendform1" class="yell-button">Скачать .pdf (1.5 Mb)</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+
+
+
+<div class="banks-logos container">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<h2>Мы исследовали <b>120 банков</b>, в том числе:</h2>
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<img src="images/logo-01.png" alt="">
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<img src="images/logo-02.png" alt="">
+		</div>	
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<img src="images/logo-03.png" alt="">
+		</div>	
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<img src="images/logo-04.png" alt="">
+		</div>	
+		<div class="clearfix"></div>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<img src="images/logo-05.png" alt="">
+		</div>	
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<img src="images/logo-06.png" alt="">
+		</div>	
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<img src="images/logo-07.png" alt="">
+		</div>		
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<img src="images/logo-08.png" alt="">
+		</div>	
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<img src="images/logo-09.png" alt="">
+		</div>	
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<img src="images/logo-10.png" alt="">
+		</div>	
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<img src="images/logo-11.png" alt="">
+		</div>	
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<img src="images/logo-12.png" alt="">
+		</div>	
+		<div class="clearfix"></div>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<img src="images/logo-13.png" alt="">
+		</div>	
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<img src="images/logo-14.png" alt="">
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<img src="images/logo-15.png" alt="">
+		</div>	
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<img src="images/logo-16.png" alt="">
+		</div>	
+		<div class="download-pdf col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<a href="#sendform1" class="yell-button">Скачать .pdf (1.5 Mb)</a>
+		</div>	
+	</div>
+</div>
+
+
+
+<div class="banks-rating container">
+	<div class="row">
+		<div class="download-pdf col-lg-12 col-md-12 col-sm-12 com-xs-12">
+			<h2>Узнайте рейтинг банковских сайтов</h2>
+			<div class="img-holder">
+				<img src="images/rating-mob.jpg" alt="" class="mob">
+				<img src="images/rating-tabl.jpg" alt="" class="tabl">
+				<img src="images/rating.jpg" alt="" class="desk">
+
+			</div>	
+			<a href="#sendform1" class="yell-button">Скачать .pdf (1.5 Mb)</a>
+		</div>
+	</div>
+</div>
+
+
+<div class="clearfix"></div>
+<div class="banks-slider container-fluid">	
+	<div class="bg-slider row">
+		<div class="col-lg-12 col-md-12 col-sm-12 com-xs-12">
+			<div class="slider-cont">
+				<div class="slide-title">Банковские карты</div>
+				<div class="report-slider">
+					<div class="slide" data-title="Банковские карты"><img src="images/slides/image01.png" alt="" ></div>
+					<div class="slide" data-title="SMM-трафик"><img src="images/slides/image02.png" alt="" ></div>
+					<div class="slide" data-title="Онлайн-чат"><img src="images/slides/image03.png" alt="" ></div>
+					<div class="slide" data-title="Объём трафика"><img src="images/slides/image04.png" alt="" ></div>
+					<div class="slide" data-title="Антирейтинг &laquo;Привлечение&raquo;"><img src="images/slides/image05.png" alt="" ></div>
+				</div>
+			</div>
+		</div>
+			
+	</div>
+	<div class="row">
+		<div class="download-pdf col-lg-12 col-md-12 col-sm-12 com-xs-12">
+			<a href="#sendform1" class="yell-button">Скачать .pdf (1.5 Mb)</a>
+		</div>	
+	</div>	
+</div>
+<div class="clearfix"></div>
+
+
+<div class="banks-metrics container">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<h2>Что мы исследовали на сайтах<br>банковских организаций? </h2>
+		</div>
+		<div class="block">
+			<div class="list-content col-lg-4 col-md-6 col-sm-6 col-xs-12">
+				<div class="heading clearfix">
+					<img src="images/icon-m-01.png" alt="">
+					<h3>Контент сайтов</h3>
+				</div>
+				<ul>
+					<li>Полезный и доверительный контент</li>
+					<li>Информация о банке</li>
+					<li>Потребительский кредит</li>
+					<li>Ипотечный кредит</li>
+					<li>Автокредит</li>
+					<li>Рефинансирование</li>
+					<li>Вклады</li>
+					<li>Карты</li>
+					<li>Переводы</li>
+					<li>Акции</li>
+				</ul>	
+			</div>
+
+			<div class="list-funct col-lg-4 col-md-6 col-sm-6 col-xs-12">
+				<div class="heading clearfix">
+					<img src="images/icon-m-03.png" alt="">
+					<h3>Функционал</h3>
+				</div>
+				<ul>
+					<li>Поиск</li>
+					<li>Функционал для пользователей</li>
+					<li>Личный кабинет</li>
+					<li>Мобильное приложение</li>
+					<li>Скорость загрузки страниц</li>
+				</ul>
+			</div>
+
+			<div class="list-conv col-lg-4 col-md-6 col-sm-6 col-xs-12">
+				<div class="heading clearfix">
+					<img src="images/icon-m-06.png" alt="">
+					<h3>Конвертация</h3>
+				</div>	
+				<ul>
+					<li>Страница Контакты (отделения и банкоматы)</li>
+					<li>Точки контакта</li>
+					<li>Активные виджеты</li>
+				</ul> 
+			</div>
+
+			<div class="list-attr col-lg-4 col-md-6 col-sm-6 col-xs-12">
+				<div class="heading clearfix">
+					<img src="images/icon-m-04.png" alt="">
+					<h3>Привлечение <br>клиентов</h3>
+				</div>
+				<ul>
+					<li>Объем трафика</li>
+					<li>Источники трафика</li>
+					<li>Контекстная реклама</li>
+					<li>Трафик из органического поиска</li>
+					<li>Упоминания в социальных сетях</li>
+				</ul>
+			</div>
+
+			<div class="list-aud col-lg-4 col-md-6 col-sm-6 col-xs-12">
+				<div class="heading clearfix">
+					<img src="images/icon-m-07.png" alt="">
+					<h3>Поведенческие <br>показатели аудитории</h3>
+				</div>
+				<ul>
+					<li>Время нахождения на сайте</li>
+					<li>Глубина просмотра</li>
+					<li>Показатель отказов</li>
+					<li>Доля целевого трафика</li>
+				</ul>	
+			</div>
+
+
+			<div class="list-clients col-lg-4 col-md-6 col-sm-6 col-xs-12">
+				<div class="heading clearfix">
+					<img src="images/icon-m-02.png" alt="">
+					<h3>Работа с клиентами</h3>
+				</div>
+				<ul>
+					<li>Группы в социальных сетях</li>
+					<li>Email-расслыка</li>
+				</ul>	
+			</div>
+
+
+			<div class="list-secret col-lg-4 col-md-6 col-sm-6 col-xs-12">
+				<div class="heading clearfix">
+					<img src="images/icon-m-05.png" alt="">
+					<h3>Тайный покупатель</h3>
+				</div>
+				<ul>
+					<li>Голосовое меню</li>
+					<li>Вежливость</li>
+					<li>Профессионализм</li>
+					<li>Запись разговора</li>
+				</ul>	
+			</div>	
+
+		
+			<div class="list-usab col-lg-4 col-md-6 col-sm-6 col-xs-12">
+				<div class="heading clearfix">
+					<img src="images/icon-m-08.png" alt="">
+					<h3>Юзабили-аудит</h3>
+				</div>
+				<ul>
+					<li>Мобильность</li>
+					<li>Навигация</li>
+				</ul>	
+			</div>
+		</div>
+		</div>	
+</div>
+
+
+
+
+
+<div class="banks-research container">
+	<div class="row">
+		<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+			<h2>Кто проводил анализ банковских&nbsp;сайтов?</h2>
+			<img src="images/logo-completo.png" alt="">	
+			<ul>
+				<li>Маркетинговая Группа &laquo;Комплето&raquo;, работаем на digital-рынке с&nbsp;2007 года</li>
+				<li>Сэкономили бюджеты на рекламу для клиентов на&nbsp;120&nbsp;000&nbsp;000&nbsp;рублей</li>
+				<li>Реализовано более 150&nbsp;стратегий интернет-маркетинга</li>
+				<li>Увеличили прибыль для 60&nbsp;компаний</li>
+				<li>Работаем выделенными командами под&nbsp;каждого клиента</li>
+				<li>Начинаем работу с разработки Стратегии Электронного Маркетинга</li>
+			</ul>	
+		</div>
+
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="banks-cert row">
+				<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+					<img src="images/cert.jpg" alt="">
+					<p>Сертифицируем маркетологов и&nbsp;интернет-маркетологов по&nbsp;международным стандартам</p>
+				</div>
+				<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+					<img src="images/guild.jpg" alt="">
+					<p>Возглавляем цех интернет-маркетинга в&nbsp;Гильдии Маркетологов России</p>
+				</div>
+			</div>		
+		</div>
+
+		<div class="form-holder col-lg-4 col-md-12 col-sm-12 col-xs-12 pull-right">
+			<div class="contact-form">
+				<h4>Куда отправить исследование?</h4>
+				<form class="send-report">
+					<input type="text" name="name" placeholder="Имя" required>
+					<input type="text" name="name" placeholder="Ваш email" required>
+					<input class="yell-button" type="submit" name="submit" value="Отправить">
+				</form>	
+				<p>Нажимая кнопку, вы соглашаетесь с&nbsp;правилами обработки персональных данных</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="container">
+	<div class="bank-links row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<h2>А также...</h2>
+		</div>
+		
+		<div class="btn-video col-lg-6 col-md-6 col-sm-6 col-xs-12">
+			<a class="yell-button" href="https://www.youtube.com/user/Completoru" target="_blank">Смотрите видео наших спикеров</a>
+		</div>	
+		<div class="btn-blog col-lg-6 col-md-6 col-sm-6 col-xs-12">
+			<a class="yell-button" href="http://blog.completo.ru" target="_blank">Читайте материалы в нашем блоге</a>
+		</div>
+	</div>
+	<div class="social-wrapper row">	
+		<div class="social-txt col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<p>Изучайте все наши материалы и&nbsp;присоединяйтесь к&nbsp;нам. Мы открыты для&nbsp;общения!</p>
+		</div>
+		<div class="social-btns col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<a class="up-button"></a>
+			<a class="social-link" href="https://www.facebook.com/completo.ru" target="_blank">
+                <div class="social-icon facebook-icon"></div>
+            </a>
+            <a class="social-link" href="https://vk.com/completoru" target="_blank">
+                <div class="social-icon vk-icon"></div>
+            </a>
+            <a class="social-link" href="http://www.youtube.com/user/Completoru" target="_blank">
+                <div class="social-icon youtube-icon"></div>
+            </a>
+            <a class="social-link" href="https://twitter.com/Completo_Ru" target="_blank">
+                <div class="social-icon twitter-icon"></div>
+            </a>
+            <a class="social-link" href="https://plus.google.com/u/0/108844631106026222603/about" target="_blank">
+                <div class="social-icon googleplus-icon"></div>
+            </a>
+		</div>
+	</div> 
+</div>
+
+<div class="clearfix"></div>
+	<div class="container-fluid bottommenu">
+	<!-- main site footer-->
+	<div class="bottom-menu-wrapper">
+	     <div class="bottom-menu" data-equalizer="">
+	        <div class="bottom-menu-logo-wrapper" data-equalizer-watch="" style="height: 58px;">
+	            <div class="bottom-menu-logo">
+	                <a href="/">
+	                    <img src="data:image/png;base64,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" alt="">
+	                </a>
+	            </div>
+	        </div>
+	        <div class="menu-items-wrapper" data-equalizer-watch="" style="height: 58px;">
+	            <div class="menu-items">
+	                <div class="menu-items-block-wrapper-1">
+	                    <div class="menu-items-block-1">
+	                        <div class="menu-item-wrapper">
+	                            <div class="menu-item has-submenu">
+	                                <a href="http://www.completo.ru/"><span>Комплето</span></a>
+	                                <div class="submenu-wrapper">
+	                                    <ul class="submenu">
+	                                        <li class="submenu-item">
+	                                            <div class="submenu-item-link">
+	                                                <a href="http://www.completo.ru/about/">О компании</a>
+	                                            </div>
+	                                        </li>
+	                                        <li class="submenu-item">
+	                                            <div class="submenu-item-link">
+	                                                <a href="http://www.completo.ru/#section-requere-4">Чем мы занимаемся</a>
+	                                            </div>
+	                                        </li>
+	                                        <li class="submenu-item">
+	                                            <div class="submenu-item-link">
+	                                                <a href="http://www.completo.ru/#section-requere-2">Кейсы</a>
+	                                            </div>
+	                                        </li>
+
+	                                        <li class="submenu-item">
+	                                            <div class="submenu-item-link">
+	                                                <a href="http://www.completo.ru/about/#section-requere-2">Чем мы лучше конкурентов</a>
+	                                            </div>
+	                                        </li>
+						<li class="submenu-item">
+	                                             <div class="submenu-item-link">
+	                                                <a href="https://blog.completo.ru/kak-vyibrat-agentstvo-dlya-kompleksnogo-marketinga-v-internete/" target="_blank">Как выбрать агентство</a>
+	                                             </div>
+	                                        </li>
+	                                        <li class="submenu-item">
+	                                            <div class="submenu-item-link">
+	                                                <a href="http://www.completo.ru/about/#faq">Частые вопросы</a>
+	                                            </div>
+	                                        </li>
+	                                        <li class="submenu-item">
+	                                            <div class="submenu-item-link">
+	                                                <a href="http://www.completo.ru/about/#yandexMap">Контакты</a>
+	                                            </div>
+	                                        </li>
+	                                    </ul>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="menu-item-wrapper"> 
+	                            <div class="menu-item">
+	                                <a href="https://blog.completo.ru/"><span>Блог</span></a>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="menu-items-block-wrapper-2" style="width:150px;">
+	                    <div class="menu-items-block-2">
+	                        <div class="menu-item-wrapper">
+	                            <div class="menu-item">
+	                                <a href="http://www.completo.ru/dealers/"><span>Компаниям с <br> сетями дилеров</span></a>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="menu-items-block-wrapper-2" style="width:150px;">
+	                    <div class="menu-items-block-2">
+	                        <div class="menu-item-wrapper">
+	                            <div class="menu-item">
+	                                <a href="http://www.completo.ru/b2b/"><span>Компаниям с<br> продуктами B2B</span></a>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="menu-items-block-wrapper-3">
+	                    <div class="menu-items-block-1">
+	                        <div class="menu-item-wrapper">
+	                            <div class="menu-item has-submenu">
+	                                <a href="javascript:;"><span>Мы обучаем</span></a>
+	                                <div class="submenu-wrapper">
+	                                    <ul class="submenu">
+	                                        <li class="submenu-item">
+	                                            <div class="submenu-item-link">
+	                                                <a href="http://www.completo.ru/webinar/">Вебинары</a>
+	                                            </div>
+	                                        </li>
+	                                        <li class="submenu-item">
+	                                            <div class="submenu-item-link">
+	                                                <a href="http://www.completo.ru/breakfast/">Бизнес-завтрак</a>
+	                                            </div>
+	                                        </li>
+	                                               <li class="submenu-item">
+	                                                    <div class="submenu-item-link">
+	                                                        <a href="https://blog.completo.ru/videocourse/">Видеокурс по интернет-маркетингу</a>
+	                                                    </div>
+	                                                </li>
+	                                                <li class="submenu-item">
+	                                                    <div class="submenu-item-link">
+	                                                        <a href="https://blog.completo.ru/white-paper/seo/">Справочник по SEO</a>
+	                                                    </div>
+	                                                </li>
+	                                                <li class="submenu-item">
+	                                                    <div class="submenu-item-link">
+	                                                        <a href="https://blog.completo.ru/sem/">СЭМ за 6 шагов </a>
+	                                                    </div>
+	                                                </li>
+	                                                <li class="submenu-item">
+	                                                    <div class="submenu-item-link">
+	                                                        <a target="_blank" href="https://maed.ru/courses/b2b-internet-marketing/">Курс: интернет-маркетинг для B2B</a>
+	                                                    </div>
+	                                                </li>
+	                                                <li class="submenu-item">
+	                                                    <div class="submenu-item-link">
+	                                                        <a target="_blank" href="https://maed.ru/nima/">Международные курсы по маркетингу</a>
+	                                                    </div>
+	                                                </li>
+	                                                <li class="submenu-item">
+	                                                    <div class="submenu-item-link">
+	                                                        <a target="_blank" href="http://www.completo.ru/checklist-for-agencies/">Чек-лист агентств</a>
+	                                                    </div>
+	                                                </li>
+	                                                <li class="submenu-item">
+	                                                    <div class="submenu-item-link">
+	                                                        <a target="_blank" href="https://blog.completo.ru/research-estate/">Исследование недвижимости</a>
+	                                                    </div>
+	                                                </li>
+	                                    </ul>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="bottom-menu-phone-wrapper" data-equalizer-watch="" style="height: 58px;">
+	            <div class="bottom-menu-phone">+7 (495) 640-89-97</div>
+	        </div>
+	    </div>
+	</div>
+	<div class="copyright-wrapper">&copy; 1998 &ndash; 2018 Маркетинговая группа &laquo;Комплето&raquo; &mdash; <a href="/privacy_policy.rtf" target="_blank">Политика конфиденциальности</a></div>
+	<!-- /main site footer -->
+	</div>
+</body>
+</html>

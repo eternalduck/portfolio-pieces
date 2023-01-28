@@ -1,0 +1,40 @@
+@import "../vars-mixins";
+
+.about-us {
+	@include bg-and-txt($black, $white);
+	padding: 40px 0 60px;
+	@include breakUp("md") {
+		padding: 50px 0 80px;
+	}
+	&__title {
+		@include breakUp("md") {
+			// margin-left: calc(33.33% + 17px);//+wp-block-column margin
+			text-align: center;
+			margin-bottom: 40px;
+		}
+	}
+	&__content {
+		width: 60%;
+		margin: 0 auto;
+	}
+	// & #{$wp-col}:first-of-type {//img
+	// 	position: relative;
+	// 	margin-top: 30px;
+	// 	order: 2;
+	// 	z-index: 1;
+	// 	// @include max-img-100;
+	// 	@include breakUp("md") {
+	// 		order: 1;
+	// 		margin-top: 0;
+	// 		& img {width: 80%; margin: -90px 0 -50px;}//tmp
+	// 	}
+	// }
+	// & #{$wp-col}:last-of-type {//txt
+	// 	position: relative;
+	// 	z-index: 10;
+	// 	order: 1;
+	// 	@include breakUp("md") {
+	// 		order: 2;
+	// 	}
+	// }
+}

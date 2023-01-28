@@ -1,0 +1,78 @@
+//it's a complex block consisting of 4 sections
+// mind proper nesting & classes of wp-groups
+ 
+.why-blender {
+	@include bg-and-txt($white, $black);
+	// @include section-padding;
+	@include top-block-margin;
+	// @include breakDown("sm") {
+	// 	padding-bottom: 300px !important;//prlx compensation
+	// }
+	&__content {
+		& > .wp-block-group {
+			@include section-padding-small;
+		}
+	}//content
+	h2 {
+		margin-bottom: 30px;
+	}
+	@include breakUp("lg") {
+		p {
+			width: 70%;
+		}
+
+	}
+
+	//3 cards in a row
+	& .cards {
+		& > #{$wp-inner} {
+			@include flex-row-nowrap;
+		}
+		& #{$wp-group} {//item
+			@include card-border-radius;
+			@include card-padding;
+			background: $blue-white;
+			flex: 0 1 100%;
+			margin: 0 auto 50px;
+			max-width: 500px;
+			@include breakUp("lg") {
+				flex: 0 1 30%;
+				margin: 0;
+				&:nth-child(2) {
+					margin: 0 35px;
+				}
+			}
+			& p {
+				width: 100%;
+			}
+			& #{$wp-img} {
+				margin-bottom: 20px;
+			}
+		}//item
+		ul {
+			list-style-type: disc;
+			padding-left: 20px;
+			li {
+				margin-bottom: 10px;
+			}
+		}
+
+		// & #{$wp-img} {
+		// 	img {
+		// 		// object-position: center;
+		// 	}
+		// }
+
+
+	}//cards
+
+
+
+
+
+//add this class to wp-group in editor
+// template Block: Full-width required
+	.bg-blue {
+		background: $blue-white;
+	}
+}

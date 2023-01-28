@@ -1,0 +1,33 @@
+@import "../_vars-mixins";
+
+.overview {
+	@include bg-and-txt($black, $white);
+	@include section-padding;
+	&__title {
+		text-align: center;
+		@include title-margin-bottom-small;
+	}
+	&__content {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	& #{$wp-group} {//item
+		// outline: 1px dashed;
+		text-align: center;
+		margin-bottom: 40px;
+		flex: 0 1 100%;
+		@include breakUp("sm") {
+			flex: 0 1 50%;
+		}
+		& p:first-child {
+			@include txt_ultra;
+		}
+	}//item
+	// &__num {
+	// 	font-size: 90px;
+	// }
+	// &__num-title {
+	// 	color: $black;
+	// }
+}

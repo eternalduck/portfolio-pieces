@@ -1,0 +1,275 @@
+@import "vars-mixins";
+//see color classes and alternate layout below
+// content is placed in wp editor with or without columns
+// see individual tweaks by id at the bottom
+
+$teaser-padding-xs: 40px;
+$teaser-padding-lg: 60px;
+
+.teaser {
+	padding: $teaser-padding-xs 0;
+	@include breakUp("lg") {
+		padding: $teaser-padding-lg 0;
+	}
+	&__btn {
+		margin-top: 20px;
+	}
+	& #{$wp-cols} {
+		margin-bottom: 0;
+	}
+	& #{$wp-col} {
+		position: relative;
+	}
+
+	& #{$wp-img} {
+		display: none;
+		@include breakUp("md") {
+			display: block;
+			@include max-img-100;
+			& img {
+				@include out;
+				max-height: 300px;//
+				position: absolute;
+				// left: -25px;
+				bottom: -($teaser-padding-xs);
+			}
+		}//md
+		@include breakUp("lg") {
+			& img {
+				bottom: -($teaser-padding-lg);
+			}
+		}//lg
+	}//img
+
+
+//other layout
+	&_img-bottom-left {//img in the corner
+		position: relative;
+		& #{$wp-col} {
+			position: initial;
+		}
+
+		& #{$wp-img} img {
+				max-height: 200px;
+				bottom: 0;
+				left: 0;
+		}
+	}
+
+// individual styles
+&#teaser-discuss {
+	& #{$wp-img} img {
+		top: -($teaser-padding-lg);
+		bottom: auto;
+	}
+}
+&#teaser-qualifications {
+	h2 {
+		color: $brand-orange;
+	}
+}
+&#teaser-budget {
+	& #{$wp-img} img {
+		left: -80px;
+		max-width: 400px;
+		max-height: 350px;
+	}
+}
+
+&#teaser-blender {
+	@mixin imgLG {
+		top: -30px;
+		width: 200px;
+		height: 200px;
+	}
+	@mixin imgXL {
+		top: -50px;
+		width: 250px;
+		height: 250px;
+	}
+	overflow: hidden;
+	.teaser__content {
+		position: relative;
+		@include breakUp("md") {
+			padding-left: 180px;
+		}
+		@include breakUp("lg") {
+			padding-right: 170px;
+			padding-left: 170px;
+		}
+	}
+	.teaser__img {
+		position: absolute;
+		&_left {
+			display: none;
+			@include breakUp("md") {
+				display: block;
+				left: -15px;
+				top: -20px;
+				width: 180px;
+				height: 180px;
+			}
+			@include breakUp("lg") {
+				left: -50px;
+				@include imgLG;
+			}
+			@include breakUp("xl") {
+				left: -100px;
+				@include imgXL;
+			}
+		}
+		&_right {
+			display: none;
+			@include breakUp("lg") {
+				display: block;
+				right: -50px;
+				@include imgLG;
+			}
+			@include breakUp("xl") {
+				right: -100px;
+				@include imgXL;
+			}
+		}
+	}
+}
+// end individual styles
+
+
+
+//bg colors 
+	&_yellow {
+		background: $yellow;
+		color: $black;
+		@include link-color($black, $brand-gray);
+		& .btn {
+			@include button-color($brand-green, $white, $brand-green-bright, $white);
+		}
+	}
+	&_orange {
+		background: $brand-orange;
+		color: $white;
+		@include link-color($white, $gray-lite);
+		& .btn {
+			@include button-color($brand-green, $white, $brand-green-bright, $white);
+		}
+	}
+	&_green {
+		background: $brand-green;
+		color: $black;
+		@include link-color($black, $brand-gray);
+		& .btn {
+			@include button-color($brand-orange, $white, $brand-orange-lite, $white);
+		}
+	}
+	&_blue01 {
+		background: $brand-blue;
+		color: $black;
+		@include link-color($black, $brand-gray);
+	}
+	&_blue02 {
+		background: $blue;
+		color: $white;
+		@include link-color($white, $gray-lite);
+	}
+	&_liteblue {
+		background: $brand-blue-lite;
+		color: $black;
+		@include link-color($black, $brand-gray);
+	}
+	&_mint {
+		background: $mint;
+		color: $black;
+		@include link-color($black, $brand-gray);
+	}
+	&_violet {
+		background: $violet;
+		color: $white;
+		@include link-color($white, $gray-lite);
+		& .btn {
+			@include button-color($white, $violet, $white, $violet);
+		}
+	}
+	&_turq {
+		background: $turq;
+		color: $white;
+		@include link-color($white, $gray-lite);
+		& .btn {
+			@include button-color($white, $turq, $white, $turq);
+		}
+	}
+	&_litegray {
+		background: $gray-lite;
+		color: $black;
+		@include link-color($black, $brand-gray);
+		& .btn {
+			@include button-color($black, $white, $gray-dark, $white);
+		}
+	}
+	&_darkgray {
+		background: $gray-dark;
+		color: $white;
+		@include link-color($white, $gray-lite);
+		& .btn {
+			@include button-color($brand-blue, $white, $brand-blue-bright, $white);
+		}
+	}
+	&_black {
+		background: $black;
+		color: $white;
+		@include link-color($white, $gray-lite);
+		& .btn {
+			@include button-color($brand-orange, $white, $brand-orange-lite, $white);
+		}
+	}
+	&_white {
+		background: $white;
+		color: $black;
+		@include link-color($black, $brand-gray);
+		& .btn {
+			@include button-color($brand-orange, $white, $brand-orange-lite, $white);
+		}
+	}
+
+}//teaser
+
+
+	// 	$iconOffset: 45px;
+	// 	// & .teaser__left {
+	// 	.wp-block-group:first-of-type {
+	// 		grid-area: left;
+	// 		@include ms-grid-cols-rows(2, 3);
+	// 		@include txt_sm;
+	// 		padding-left: $iconOffset;
+	// 		padding-right: 12%;
+	// 		@include breakDown("sm") {
+	// 			margin-bottom: 30px;
+	// 			text-align: left;
+	// 		}
+	// 	}
+	// 	// & .teaser__right {
+	// 	.wp-block-group:last-of-type {
+	// 		grid-area: right;
+	// 		@include txt_sm;
+	// 		@include ms-grid-cols-rows(3, 4);
+	// 		text-align: left;
+	// 		padding-left: 45px;
+	// 		@include breakUp("md") {
+	// 			padding-right: 5%;
+	// 			text-align: center;
+	// 			padding-left: 0;
+	// 		}
+	// 	}
+	// 	& .teaser__link {
+	// 		position: relative;
+	// 		@include link-color($white, $gray-lite);
+	// 		&:before {
+	// 			content: "";
+	// 			display: block;
+	// 			width: 30px;
+	// 			height: 40px;
+	// 			background: url("images/icons/presentation.svg") center no-repeat;
+	// 			position: absolute;
+	// 			left: -($iconOffset);
+	// 			top: 0;
+	// 		}
+	// 	}

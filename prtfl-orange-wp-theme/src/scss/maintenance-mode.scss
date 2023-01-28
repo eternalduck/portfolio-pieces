@@ -1,0 +1,106 @@
+@import "vars-mixins";
+// Maintenance Mode
+// message markup & hardlink to this stylesheet is
+// in wp-content\plugins\slim-maintenance-mode\slim-maintenance-mode.php
+
+// default #error-page & .wp-die-message container 
+// defined in wp-includes/functions.php (better don't touch it)
+#error-page {
+	margin: 0;
+	padding: 0;
+	max-width: 100vw;
+	width: 100vw;
+	height: 100vh;
+	box-shadow: none;
+	background: #F05A23;
+	& .wp-die-message {
+		@include grid(1fr 4fr 1fr, 100px 3fr 1fr, ". . ." ". content ." ". bottomcell .");
+		background: #F05A23;
+		font-family: "Ubuntu", sans-serif;
+		font-weight: 300;
+		color: #fff;
+		margin: 0 !important;
+		width: 100vw;
+		height: 100vh;
+	}
+	& p {margin: 0;}
+	& a {color: #fff;}
+	& .content {
+		grid-area: content;
+		text-align: center;
+		width: 410px;
+		margin: 0 auto;
+	}
+	& .logo {
+		width: 100%;
+		margin: 0 auto;
+		@include grid(108px 1fr, 2fr 1fr, "logo logo" ". descr");
+	}
+	& .logo__img {
+		grid-area: logo;
+		width: 100%;
+		height: 100px;
+		background: url("images/logo__footer.svg") bottom/contain no-repeat;
+	}
+	& .logo__txt {
+		grid-area: descr;
+		align-self: start;
+		text-align: left;
+		font-weight: 400;
+		font-size: 35px;
+		margin: -10px 0 0;
+	}
+	& .txt-main {
+		font-size: 20px;
+		line-height: 1.5;
+		text-align: left;
+		margin: 100px 0 0 10px;
+	}
+	& .yt {
+		display: block;
+		text-decoration: none;
+		text-align: center;
+		margin-top: 15px;
+	}
+	& .txt_contact {
+		text-align: left;
+		padding-left: 10px;
+		font-size: 22px;
+		font-weight: 400;
+		display: block;
+		margin-top: 30%;
+	}
+	& .txt-motto {
+		grid-area: bottomcell;
+		align-self: end;
+		text-align: center;
+		font-size: 28px;
+		margin-bottom: 30px;
+		opacity: .7;
+	}
+
+	@include breakDown("md") {
+		& .container {
+			height: 90vh;
+			grid-template-rows: 50px 3fr 1fr;
+		}
+		& .content {
+			width: 350px;
+		}
+		& .logo {
+			grid-template-columns: 90px 1fr;
+		}
+		& .logo__txt {
+			font-size: 27px;
+			margin: -7px 0 0;
+		}
+		& .txt-motto {
+			font-size: 22px;
+		}
+		& .txt-main {
+			margin: 30px 0 50px 10px;
+			text-align: left;
+			font-size: 18px;
+		}
+	}
+}// #error-page

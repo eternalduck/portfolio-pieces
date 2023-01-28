@@ -1,0 +1,171 @@
+@import "../_vars-mixins";
+
+$num: "p:first-of-type";
+$txt: "p:last-of-type";
+
+.nums-cost, .nums-quality {// custom field "block-class"
+	@include section-padding;
+	&__title {
+		@include title-margin-bottom-small;
+	}
+	&__content {
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		@include breakUp("md") {
+			flex-direction: row;
+		}
+	}
+
+	& #{$wp-group} {//item
+		// @include out;
+		position: relative;
+		margin-bottom: 10px;
+		width: 60%;
+			&:nth-child(odd){
+				align-self: flex-start;
+				margin-left: 5%;
+			}
+			&:nth-child(even){
+				align-self: flex-end;
+				margin-right: 5%;
+			}
+		@include breakUp("sm") {
+			width: 50%;
+			&:nth-child(odd){
+				margin-left: 10%;
+			}
+			&:nth-child(even){
+				margin-right: 10%;
+			}
+		}
+		@include breakUp("md") {
+			flex: 0 0 19%;
+			width: auto;
+			&:nth-child(odd), 
+			&:nth-child(even){
+				align-self: center;
+				margin-right: 0;
+				margin-left: 0;
+			}
+		}
+		//general for nums
+		& #{$num} {
+			@include txt_ultra;
+			color: $brand-orange;
+			position: relative;
+			// line-height: 1;
+			@include breakUp("md") {
+				float: right;
+			}
+		}//num
+
+		//nums positions up to md (md is below in _cost & _quality)
+		&:nth-of-type(2) #{$num},
+		&:nth-of-type(4) #{$num} {
+			float: right;
+			margin-right: 5%;
+		}
+		&:nth-of-type(1) #{$num},
+		&:nth-of-type(3) #{$num},
+		&:nth-of-type(5) #{$num} {
+			margin-left: 40%;
+		}
+		// &:nth-of-type(3) #{$num} {
+		// 	color: red !important;
+		// 	margin-left: 20%;
+		// }
+		&:nth-of-type(1) #{$num},
+		&:nth-of-type(5) #{$num} {
+			margin-left: 40%;
+		}
+		@include breakUp("sm") {
+			&:nth-of-type(3) #{$num},
+			&:nth-of-type(4) #{$num} {
+				margin-left: 40%;
+			}
+		}//sm
+
+		//general for txt
+		& #{$txt} {
+			position: absolute;
+			width: 90%;
+			top: 30%;
+			font-weight: bold;
+			@include txt_big;
+			@include breakOnly("xxs") {
+				width: 100%;
+			}
+			@include breakUp("sm") {
+				width: 100%;
+			}
+			@include breakUp("md") {
+				width: 90%;
+				left: auto;
+				top: 23%;
+				@include ru-fix {
+					transform: scale(0.7);
+				}
+			}
+			@include breakUp("lg") {
+				@include ru-fix {
+					@include txt_body;
+					transform: scale(1);
+				}
+			}
+		}//txt
+	}//wp-block-group
+
+
+
+
+}//nums-cost, nums-quality
+
+//indivisual sections styling 
+
+.nums-cost {
+	@include bg-and-txt($white, $black);
+	//nums positions
+	& #{$wp-group} {
+		//nums positions in md (up to md is above in general wp-block)
+		@include breakUp("md") {
+			&:nth-of-type(1) #{$num},
+			&:nth-of-type(3) #{$num},
+			&:nth-of-type(5) #{$num} {
+				margin-bottom: 40px;
+			}
+			&:nth-of-type(2) #{$num},
+			&:nth-of-type(4) #{$num} {
+				margin-top: 40px;
+				margin-left: 0;
+			}
+		}//md
+	}//wp-block-group
+
+}//_cost
+
+.nums-quality {
+	@include bg-and-txt($black, $white);
+	.jump-nums__title {
+		color: $brand-orange;
+	}
+	//nums positions
+	& #{$wp-group} {
+		& #{$txt} {
+			text-shadow: 1px 8px 12px rgba(90, 25, 0, .0);
+		}
+		//nums positions in md (up to md is above in general wp-block)
+		@include breakUp("md") {
+			&:nth-of-type(2) #{$num},
+			&:nth-of-type(4) #{$num} {
+				margin-bottom: 40px;
+			}
+			&:nth-of-type(1) #{$num},
+			&:nth-of-type(3) #{$num},
+			&:nth-of-type(5) #{$num} {
+				margin-top: 40px;
+				margin-left: 0;
+			}
+		}//md
+	}//wp-block-group
+}//_quality

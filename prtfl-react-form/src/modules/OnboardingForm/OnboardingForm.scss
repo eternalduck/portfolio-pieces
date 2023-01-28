@@ -1,0 +1,172 @@
+@import "../../scss/_vars";
+
+
+h1 {
+	padding-right: 15px;
+	padding-left: 15px;
+	color: $dark-turq;
+	text-align: center;
+
+}
+.onboarding-form {
+	$padding-side: 15px;
+	padding-bottom: 50px;
+
+	&__section {
+		position: relative;
+		padding: 20px $padding-side;
+		margin-bottom: 30px;
+		&-title {
+			text-align: center;
+			background: $white-turq;
+			color: $dark-turq;
+		}
+		& h2 {
+			padding-left: $padding-side
+		}
+	}
+	&__section-hint {
+		padding-left: $padding-side;
+		font-size: 13px;
+		color: $base-gray;
+		margin-bottom: 20px;
+	}
+
+	&__group {
+		padding: 10px $padding-side 20px;
+		margin-bottom: 20px;
+		border-bottom: 1px solid #f2f2f2;
+		&:last-child {
+			border-bottom: none;
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+		& h3 {
+			color: $dark-turq;
+		}
+	}
+	&__logout {
+		@include media-breakpoint-down(sm) {
+			text-align: center;
+			margin-bottom: 15px;
+		}
+	}
+	&__general-error {
+		font-size: 13px;
+		line-height: 1.1;
+		color: $dark-orange;
+		margin-bottom: 40px;
+		padding-right: 30px !important;
+	}
+	&__social-container {
+		position: relative;
+		& .icon-add {
+			color: $base-lite-gray;
+			position: absolute;
+			right: 15px;
+			bottom: -15px;
+			z-index: 10;
+			font-size: 22px;
+			cursor: pointer;
+			@include hover-transit;
+			&:hover {
+				color: $base-gray;
+			}
+		}
+
+	}
+	&__social-section {
+		margin-bottom: 30px;
+		& .title-hint {
+			margin-bottom: 20px;
+		}
+	}
+	&__social {
+		position: relative;
+		& .k-textbox-container {
+			margin-top: -15px;
+		}
+		.k-autocomplete {
+			& .k-input::placeholder {
+				font-weight: 300 !important;
+				color: $base-gray !important;
+			}
+		}
+		
+		& .icon-remove {
+			color: $base-lite-gray;
+			position: absolute;
+			left: -5px;
+			bottom: 30px;
+			font-size: 12px;
+			cursor: pointer;
+			z-index: 99;
+			@include hover-transit;
+			&:hover {
+				color: $base-gray;
+			}
+			@include media-breakpoint-only(xs) {
+				left: auto;
+				right: 30px;
+			}
+		}
+		&:first-child .icon-remove {
+			display: none;
+		}
+
+	}
+}
+
+.field {
+	&__wrap {
+		position: relative;
+		padding: 5px 15px;
+		margin-bottom: 15px;
+		&_half {
+			&:last-child {
+				padding-right: 30px;
+				& .k-required {right: 15px}
+			}
+			#jobType & .k-required {right: 23px; top: 0}
+			&#passportIssueDate {margin-top: -6px}
+		}
+		&_textarea {
+			margin-top: 15px;
+		}
+		& .k-upload {margin-right: 15px;}
+	}
+	&__hint {
+		font-size: 11px;
+		color: $base-gray;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		& p {margin: 3px 0}
+		& ul {
+			list-style-type: none;
+			margin: 5px 0 0 15px;
+			padding: 0;
+		}
+		&_big {
+			font-size: 14px;
+			line-height: 1.3;
+			font-weight: lighter;
+		}
+		&+.k-checkbox+.k-checkbox-label {
+			margin: 5px 0 0;
+		}
+	}
+	&_locked {
+		position: relative;
+		& .icon-locked {
+			position: absolute;
+			right: 5px;
+			bottom: 12px;
+			color: $lite-gray;
+			padding: 10px 10px 0 0;
+			font-size: 24px;
+		}
+	}
+}
+
+
+

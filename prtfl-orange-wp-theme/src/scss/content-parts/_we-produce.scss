@@ -1,0 +1,43 @@
+@import "vars-mixins";
+
+.we-produce {
+	@include section-padding-small;
+	@include bg-and-txt($brand-orange, $white);
+	&__title {
+		@include title-margin-bottom-small;
+	}
+	&__content {
+		display: flex;
+		justify-content: space-between;
+		flex-direction: row;
+	}
+
+	#{$wp-group} {
+		flex: 0 1 30%;
+		margin-bottom: 30px;
+		@include breakUp("md") {
+			text-align: center;
+			margin-bottom: 0;
+		}//md
+		p {
+			text-align: center;
+			@include breakUp("sm") {
+				@include txt_big;
+				@include center;
+				width: 80%;
+			}
+		}
+
+	}//wp-block-group
+	& #{$wp-img} {
+		img {
+			filter: invert(1);//path is black
+			height: 90px;
+			@include breakUp("sm") {
+				height: 130px;
+			}
+		}
+	}
+
+	
+}

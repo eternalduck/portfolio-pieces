@@ -1,0 +1,517 @@
+// March 27, 2020
+// Custom styles
+// Manual: https://pplsa.studio.pro/bin/view/00.Common/studio.pro
+@import "vars-mixins";
+
+@import "debug";//remove in prod
+
+@import "preloader";
+@import "reset";
+@import "grid";
+@import "error-page";// styles are in wp-includes/functions.php
+//custom maintenance page: wp-content/plugins/slim-maintenance-mode 
+// Blocks' styles are imported in the bottom for proper inheritance, along with IE tweaks
+
+// google fonts embedded in <?php echo get_template_directory_uri(); ?>/header.php:
+// <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;0,800;1,400&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet" rel="preload" as="style">
+
+// GENERAL STYLES
+html {
+	scroll-behavior: smooth;
+}
+img {
+	object-fit: contain;
+	object-position: left;
+}
+
+// Typography
+@mixin txt_body {
+	font-size: 21px;
+	line-height: 1.6;
+	@include breakOnly("xxs") {
+		font-size: 19px;
+	}
+	@include breakUp("md") {
+		font-size: 20px;
+	}
+	@include breakUp("xl") {
+		font-size: 24px;
+		line-height: 1.5;
+	}
+}
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	@include txt_body;
+	color: $black;
+}
+
+a {
+	text-decoration: none;
+}
+
+p {
+	margin: 0 0 8px;
+}
+b, strong {
+	font-weight: bold;
+}
+
+h1, h2, h3 {
+	font-family: 'Ubuntu', sans-serif !important;
+	font-weight: bold;
+	margin: 0;
+}
+
+h1 {
+	margin-bottom: 15px;
+	line-height: 1.1;
+	font-size: 40px;
+	@include breakUp("sm") {
+		font-size: 50px;
+	}
+	@include breakUp("md") {
+		font-size: 52px;
+		margin-bottom: 20px;
+	}
+	@include breakUp("xl") {
+		font-size: 60px;
+		margin-bottom: 25px;
+	}
+}
+
+h2 {
+	margin-bottom: 12px;
+	line-height: 1.2;
+	font-size: 24px;
+	@include breakUp("sm") {
+		font-size: 26px;
+	}
+	@include breakUp("md") {
+		font-size: 28px;
+		margin-bottom: 15px;
+	}
+	@include breakUp("xl") {
+		font-size: 32px;
+		margin-bottom: 20px;
+	}
+}
+
+h3 {
+	margin-bottom: 10px;
+	line-height: 1.3;
+	font-size: 20px;
+	@include breakUp("md") {
+		font-size: 22px;
+		margin-bottom: 10px;
+	}
+	@include breakUp("xl") {
+		font-size: 26px;
+		margin-bottom: 10px;
+	}
+}
+
+@mixin txt_ultra {
+	font-family: 'Open Sans', sans-serif;//for extra bold
+	font-weight: 800;
+	line-height: 1;
+	font-size: 180px;
+	@include breakUp("lg") {
+		font-size: 200px;
+	}
+}
+
+@mixin txt_extra {
+	font-weight: bold;
+	line-height: 1;
+	font-size: 50px;
+	@include breakUp("sm") {
+		font-size: 60px;
+	}
+	@include breakUp("md") {
+		font-size: 70px;
+	}
+	@include breakUp("lg") {
+		font-size: 80px;
+	}
+	@include breakUp("xl") {
+		font-size: 90px;
+	}
+}
+
+@mixin txt_big {
+	line-height: 1.3;
+	font-size: 28px;
+	@include breakOnly("md") {
+		font-size: 26px;
+	}
+	@include breakUp("lg") {
+		font-size: 28px;
+	}
+}
+
+@mixin txt_mid {
+	font-size: 16px;
+	line-height: 1.5;
+	@include breakUp("md") {
+		font-size: 18px;
+		line-height: 1.6;
+	}
+	@include breakUp("xl") {
+		font-size: 20px;
+		line-height: 1.5;
+	}
+}
+
+@mixin txt_sm {
+	font-size: 16px;
+}
+
+@mixin txt_tiny {
+	font-size: 14px;
+	@include breakUp("xl") {
+		font-size: 12px;
+	}
+}
+
+
+
+
+.txt {
+	&_body {@include txt_body;}
+	&_ultra {@include txt_ultra;}
+	&_extra {@include txt_extra;}
+	&_big {@include txt_big;}
+	&_mid {@include txt_mid;}
+	&_sm {@include txt_sm;}
+	&_tiny {@include txt_tiny;}
+	&_bold {font-weight: 600;}
+	&_orange {color: $brand-orange;}
+	&_white {color: $white;}
+	&_blue {color: $blue;}
+}
+// end typo
+
+//==========================
+
+.btn {
+	display: inline-block;
+	// font-family: Ubuntu;
+	font-size: 18px;
+	line-height: 1;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	padding: 12px 20px;
+	white-space: nowrap;
+	border-radius: 23px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	outline: none !important;
+	border: none !important;
+	@include hover-transit;
+	@include breakUp("md") {
+		font-size: 20px;
+	}
+	& a {
+		color: inherit;
+		text-decoration: none;
+	}
+	&_wide {
+		padding-right: 35px;
+		padding-left: 35px;
+	}
+	&_big {
+		padding: 11px 30px;
+		line-height: 1.3;
+		font-size: 2rem;//24px on html base 12px
+		border-radius: 30px;
+		@include breakUp("xl") {
+			font-size: 2rem;//32px;
+		}
+	}
+	&_disabled {
+		pointer-events: none;
+		background: $gray-lite;
+		color: $white;
+		&:hover, &:active {
+			background: $gray-lite;
+		}
+	}
+
+	&.btn_green{
+		@include button-color($brand-green, $white, $brand-green-bright, $white);
+	}
+	&.btn_orange {
+		@include button-color($brand-orange, $white, $brand-orange-lite, $white);
+	}
+	&.btn_blue{
+		@include button-color($blue, $white, $brand-blue-bright, $white);
+	}
+	&.btn_black {
+		@include button-color($black, $white, $gray-dark, $white);
+	}
+
+}//btn
+
+
+// Lazy-loaded embeds
+// for custom embeds, not for all
+// see also js part
+// <div class="portfolio-preview__video">
+// 	<div class="youtube-embed" data-embed="%ID%"> 
+// 		<div class="play-button"></div> 
+// 	</div>
+// </div>
+
+.youtube-embed {
+	background-color: #000;
+	position: relative;
+	padding-top: 56%;
+	overflow: hidden;
+	cursor: pointer;
+	border-radius: 10px;
+	img {
+		position: absolute;
+		width: 100%;
+		top: -17%;
+		left: 0;
+		opacity: 0.8;
+	}
+	iframe {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+	}
+	.play-button {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		background: url("images/icons/yt-red.svg") center/contain no-repeat;
+		width: 90px;
+		height: 60px;
+		opacity: 0.9;
+		z-index: 1;
+		transform: translate3d( -50%, -50%, 0 );
+		&:hover {
+			opacity: 1;
+		}
+	}
+}//youtube-embed
+
+// popup - js/fancybox
+.popup {
+	&__container {
+		display: none;
+	}
+	&_form {
+		padding: 40px 0 !important;
+		background: $almost-white;
+		border-radius: 10px;
+	}
+//js-lib tweaks, see also js/fancybox/fancybox.css
+	& .fancybox-content {
+		display: none;
+		padding: 5px;
+		width: 100%;
+		left: 0;
+		@include breakUp("md") {
+			padding: 20px;
+		}
+		@include breakUp("lg") {
+			padding: 20px;
+			width: 98%;
+			left: 1%;
+		}
+		@include breakUp("xxl") {
+			max-width: 1400px;
+			left: 50%;
+			margin-left: -700px;
+		}
+	}
+	& .fancybox-close-small {
+		background: url("images/icons/close.svg") 0 0 no-repeat;
+		width: 48px;
+		height: 48px;
+		border: 0;
+		padding: 0;
+		position: absolute;
+		right: 20px;
+		top: 20px;
+		cursor: pointer;
+		z-index: 401;
+		@include hover-transit;
+		&:hover {
+			// background: url("images/icons/fancybox-close-hover.svg") 0 0 no-repeat;
+			opacity: .9;
+		}
+		&:active {
+			opacity: .9;
+			// background: url("images/icons/fancybox-close-active.svg") 0 0 no-repeat;
+		}
+	}
+}//popup
+
+
+#go-up {//sits in header
+	opacity: 0;//fades in by custom.js
+	background: url("images/icons/go-up.svg") center/100% no-repeat;
+	mix-blend-mode: difference;
+	width: 35px;
+	height: 35px;
+	opacity: 0.5;
+	cursor: pointer;
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+	z-index: 999;
+	transition: opacity .3s ease-in;
+	&:hover {
+		opacity: .8;
+		animation: bounce 1s infinite linear;
+	}
+	@keyframes bounce {
+		0%, 100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-10px);
+		}
+	}
+}//go-up
+
+.page-wrap {
+	background: $white;
+	@include top-block-margin;
+}
+.overflow-hidden {
+	overflow: hidden;
+}
+//styles for default wp page template
+.default-page,
+.single-page,
+.single-post {
+	@include page-padding;
+}
+body.single-page,
+body.single-post {
+	padding: 0 !important;
+}
+
+//IE fail disclaimer (see _ie-tweaks.scss)
+.deprecated {display: none;}
+
+// hide reCAPTCHA badge (or make it smaller?)
+.grecaptcha-badge {visibility: hidden;}
+
+div > img {vertical-align: bottom;}
+
+////////////////////////
+// WPtweaks
+////////////////////////
+.size-auto, 
+.size-full,
+.size-large,
+.size-medium,
+.size-thumbnail {
+	max-width: 100%;
+	height: auto;
+}
+.screen-reader-text {display: none}
+li.widget {list-style-type: none}
+//fix flex folding for our breakpoint
+#{$wp-cols} {
+	@include breakDown("sm") {
+		flex-wrap: wrap;
+	}
+	@include breakUp("md") {
+		flex-wrap: nowrap;
+	}
+}
+
+// columns tweak
+#{$wp-col} {
+	@include breakDown("sm") {
+		flex-basis: 100% !important;
+		&:nth-child(2n) {
+			margin-left: 0;
+		}
+	}
+}
+
+#{$wp-img} {
+	margin-bottom: 0;
+}
+//////////////////////////
+////Easter eggs
+////////////////////////////
+
+.spark {
+	background: url("images/icons/egg/spark01.png") center/100% no-repeat;
+	width: 90px;
+	height: 90px;
+	position: absolute;
+	top: 100px;
+	left: 100px;
+	z-index: 999;
+	animation: shine .2s ease-out;
+}
+@keyframes shine {
+	0% {
+		transform: translate(0, 0);
+	}
+	100% {
+		transform: translate(200px, 200px);
+	}
+
+}
+
+//inc
+@import "header-footer";
+
+// Universal blocks
+@import "content-parts/partners";
+@import "content-parts/why-studio";
+@import "content-parts/form";
+@import "content-parts/cost-quality";
+@import "content-parts/teaser";
+
+// Frontpage
+@import "content-parts/front-top";
+@import "content-parts/front-offers";
+@import "content-parts/front-portfolio";
+
+// Production page
+@import "content-parts/prod-top";
+@import "content-parts/we-do";
+@import "content-parts/all-services";
+@import "content-parts/sync-pipes";
+@import "content-parts/for-co-prod";
+
+//Portfolio page
+@import "posts-portfolio/portfolio";
+
+//Distribution page
+@import "content-parts/distrib-intro";
+@import "content-parts/overview";
+@import "posts-distribution/distribution";
+
+// About Us page
+@import "content-parts/about-us";
+@import "content-parts/our-team";
+@import "content-parts/remote";
+@import "content-parts/course";
+@import "content-parts/job";
+
+//Our Pipeline page
+@import "content-parts/we-produce";
+@import "content-parts/our-pipe";
+@import "content-parts/why-blender";
+
+// etc
+@import "cookies-plugin";
+
+@import "ie-tweaks";//fkn ie must die!

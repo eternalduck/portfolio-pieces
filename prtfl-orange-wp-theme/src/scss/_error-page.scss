@@ -1,0 +1,49 @@
+@import "vars-mixins";
+
+.page404 {
+	color: $almost-white;
+	background: $brand-gray;
+	@include page-padding;
+	padding-top: 120px;
+	min-height: calc(100vh - #{$footer-height-mob});
+	@include breakUp("md") {
+		padding-top: 180px;
+	}
+	@include breakUp("lg") {
+		min-height: calc(100vh - #{$footer-height-desk});
+	}
+	& #go-back {
+		@include underline($brand-blue);
+	}
+	&__content {
+		display: flex;
+		flex-direction: column;
+		@include breakUp("md") {
+			flex-direction: row;
+		}
+	}
+	&__item {
+		&:first-child {//txt
+			flex: 5;
+			padding-top: 80px;
+			text-align: center;
+			@include breakUp("md") {
+				text-align: left;
+			}
+		}
+		&:last-child {//img
+			flex: 7;
+			@include max-img-100;
+			& .image {
+				transform: scaleX(-1);
+			}
+		}
+		font-size: 20px;
+		line-height: 1.5;
+		& a {color: #fff;}
+	}
+}//page 404
+
+// Maintenance Mode is in /maintenance-mode.scss (is compiled to theme's root) which is included together with message markup in wp-content\plugins\slim-maintenance-mode\slim-maintenance-mode.php
+
+

@@ -1,0 +1,17 @@
+@import "../../scss/_vars";
+
+#go-up {
+	color: $base-lite-gray;
+	font-size: 48px;
+	z-index: 100;
+	transition: color .2s ease-in;
+	cursor: pointer;
+	&:hover {
+		color: $mid-gray;
+	}
+	footer & {
+		position: absolute;
+		top: -55px;
+		right: 5px;
+	}
+}

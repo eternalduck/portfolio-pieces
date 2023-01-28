@@ -1,0 +1,157 @@
+// Tweaks for GDPR Cookie Compliance plugin https://wordpress.org/plugins/gdpr-cookie-compliance/
+//bottom bar
+#moove_gdpr_cookie_info_bar {
+	border-top: none !important;
+	background-color: rgba(255, 255, 255, 0.9) !important;
+	& .moove-gdpr-info-bar-content p,
+	& .moove-gdpr-info-bar-content a {
+		font-weight: normal !important;
+	}
+	& .mgbutton {
+		@include hover-transit;
+		&:hover {
+			background: $brand-orange-lite !important;
+		}
+	}
+
+}
+
+//popup overlay
+.lity {
+	background: rgba(0,0,0,0.75) !important;
+}
+
+//popup
+#moove_gdpr_cookie_modal {
+	min-height: auto !important;
+	& .moove-gdpr-modal-content {
+	//popup dimensions
+		max-width: 900px !important;
+		@media all and (max-width: 767px) {
+			& .moove-gdpr-modal-right-content {
+				height: auto !important;
+			}
+		}
+
+		//left sidebar
+		& .moove-gdpr-modal-left-content {
+			padding: 40px 30px !important;
+			//logo
+			& .moove-gdpr-company-logo-holder {
+				position: absolute;
+				left: 30px;
+				bottom: 50px;
+				margin-bottom: 0 !important;
+				& img {
+					max-width: 55px !important;
+				}
+			}
+
+			//copyright
+			& .moove-gdpr-branding-cnt {
+				left: 30px !important;
+				bottom: -18px !important;
+				& a {
+					color: #333 !important;
+					font-size: 10px !important;
+					font-weight: normal !important;
+				}
+			}
+			& #moove-gdpr-menu li {
+			//tabs switch inactive
+				a, button {
+					background-color: #fff !important;
+					&:hover {
+						color: #000 !important;
+					}
+				}
+			//tabs switch active
+				&.menu-item-selected {
+					a, button {
+						background-color: #f1f1f1 !important;
+						color: #000 !important;
+						cursor: default;
+					}
+				}
+			}//li
+		}//left-content
+
+		//save btn
+		& .moove-gdpr-button-holder a.mgbutton,
+		& .moove-gdpr-button-holder button.mgbutton {
+			font-size: 20px !important;
+			@include hover-transit;
+			&:hover {
+				background: $brand-orange-lite !important;
+				border: none !important;
+				color: #fff !important;
+			}
+		}
+		//close btn
+		& .moove-gdpr-modal-close {
+			width: 30px !important;
+			height: 30px !important;
+			top: 10px !important;
+			right: 10px !important;
+			i, span.gdpr-icon {
+				width: 30px !important;
+				height: 30px !important;
+				font-size: 32px !important;
+				line-height: 30px !important;
+			}
+			span.gdpr-icon {
+				background: transparent !important;
+				color: #ccc !important;
+				border: 1px solid transparent !important;
+				&:hover {
+					// color: #fff !important;
+					border: 1px solid transparent !important;
+					// background: $brand-orange-lite !important;
+				}
+
+			}
+		}//close
+	}//modal-content
+}
+
+// floating settings btn
+//to keep icon in footer
+body {position: relative}
+
+#moove_gdpr_save_popup_settings_button {
+	position: absolute !important;
+	bottom: 5px !important;
+	left: 50% !important;
+	margin-left: -65px;
+	opacity: .4;
+	z-index: 10 !important;
+	@include breakUp("lg") {
+		left: 20px !important;
+		margin-left: 0;
+	}
+	&:hover {
+		background-color: transparent !important;
+	}
+	// txt block
+	& span.moove_gdpr_text {
+		display: block !important;
+		font-size: 12px !important;
+		text-transform: none !important;
+		cursor: pointer;
+	}
+	//icon block
+	& span.moove_gdpr_icon {
+		min-width: auto !important;
+
+	}
+	// change icon
+	& .gdpr-icon.moovegdpr-advanced {
+			width: 20px;
+			height: 20px;
+			background: url("/wp-content/themes/studio/images/icons/cookie.svg") center/contain no-repeat;
+			cursor: pointer;
+			&:before {display: none !important;}
+		}
+	
+}
+

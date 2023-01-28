@@ -1,0 +1,17 @@
+$progress-height: 4px;
+.progress {
+	position: fixed;
+	right: 0;
+	width: 100%;
+	height: $progress-height;
+	background: transparent;
+	top: $header-height-xs - $progress-height;
+	@include breakUp("lg") {
+		top: $header-height-lg - $progress-height;
+	}
+	&__bar {
+		width: 0;
+		height: 100%;
+		background: linear-gradient(90deg, #85B73E 0%, #A0E63B 88.26%);
+	}
+}

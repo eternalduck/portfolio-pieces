@@ -1,0 +1,81 @@
+//bottstrap native mixins reference
+// @include media-breakpoint-down(xs) { ... }
+// @include media-breakpoint-down(sm) { ... }
+// @include media-breakpoint-down(md) { ... }
+// @include media-breakpoint-down(lg) { ... }
+// @include media-breakpoint-up(xs) { ... }
+// @include media-breakpoint-up(sm) { ... }
+// @include media-breakpoint-up(md) { ... }
+// @include media-breakpoint-up(lg) { ... }
+// @include media-breakpoint-up(xl) { ... }
+
+// @include media-breakpoint-only(xl) { ... }
+// @include media-breakpoint-between(xl) { ... }
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+// based on UI-Kit palette (figma)
+$white: #ffffff;
+$dark-gray: #2D2C2F;
+$white-gray: #fefefe;
+
+$dark-orange: #BD461F;
+$brand-orange: #F15927;
+$brand-lite-orange: #F8A982;
+$lite-orange: #F9D5C3;
+$white-orange: #fdfaf8;
+
+$dark-green: #7B9A3D;
+$brand-green: #A3CE4B;
+$brand-lite-green: #CFE3A4;
+$lite-green: #ECF8D2;
+
+$dark-blue: #067197;
+$brand-blue: #56CAF3;
+$brand-lite-blue: #B2E2F9;
+$lite-blue: #DAF3FF;
+$base-gray: #5A595E;
+$base-lite-gray: #C8C8C8;
+$mid-gray: #999999;
+$lite-gray: #EDEDED;
+
+$dark-turq: #1B414F;//rgba(27, 35, 79)
+$base-turq: #38829D;
+$base-lite-turq: #D9E4E8;
+$mid-turq: #97BCCA;
+$white-turq: #F6FAFC;
+
+$mid-red: #F55A5A;
+$base-red: #E41010;
+$lite-red: #FFE8E8;
+
+
+$deep-shadow: 0 3px 10px rgba(27, 35, 79, 0.2),
+	0 1px 5px rgba(0, 0, 0, 0.2);
+$edit-popup-shadow: 0 0 15px $base-lite-turq,
+	3px 3px 15px $dark-turq;
+
+@mixin media-breakpoint-xxs {
+	@media (max-width: 400px) {
+      @content;
+    }
+}
+@mixin hover-transit {
+	transition: color .2s ease-in;
+}
+@mixin dashed-underline {
+	cursor: pointer;
+	border-bottom: 1px dashed;
+	&:hover {
+		border-bottom: 1px transparent dashed;
+	}
+}
+@mixin solid-underline {
+	cursor: pointer;
+	border-bottom: 1px solid;
+	transition: border-bottom .25s ease-in;
+	&:hover {
+		border-bottom: 1px transparent solid;
+	}
+}

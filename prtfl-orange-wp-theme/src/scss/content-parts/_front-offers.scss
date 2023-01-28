@@ -1,0 +1,218 @@
+@import "_vars-mixins";
+
+.offers {
+	@include link-color($brand-orange, $brand-orange-lite);
+	&__bg {
+		@include max-img-100;
+	}
+	& h1 {
+		color: $brand-orange;
+		white-space: nowrap;
+	}
+
+	&_3d, &_2d {
+		padding: 60px 0 50px;
+		overflow: hidden;
+		@include breakUp("md") {
+			padding: 0;
+			height: 700px;
+		}
+		@include breakUp("lg") {
+			height: 100vh;
+			min-height: 650px;
+			max-height: 800px;
+		}
+		@include breakUp("xl") {
+			min-height: 800px;
+			max-height: 950px;
+		}
+	}
+	&_3d {
+		@include bg-and-txt($black, $white);
+		// overflow: hidden;
+		&__grid {
+			position: relative;
+			@include breakUp("md") {
+				@include grid(5fr 7fr, auto auto, "txt right" "left links");
+			}
+		}
+		&__txt {
+			grid-area: txt;
+			@include ms-grid-cols-rows(1, 2, 1, 2);
+			z-index: 10;
+			@include breakUp("md") {
+				margin-top: 17%;
+			}
+		}
+		&__links {
+			grid-area: links;
+			@include ms-grid-cols-rows(2, 3, 2, 3);
+			z-index: 20;
+			align-self: end;
+			@include link-color($brand-orange, $brand-orange-lite);
+			margin-bottom: 50px;
+			@include breakUp("md") {
+				margin-bottom: 150px;
+			}
+		}
+		&__left {
+			grid-area: left;
+			@include ms-grid-cols-rows(1, 2, 2, 3);
+			margin: 0 auto;
+			width: 78%;
+			@include breakUp("md") {
+				width: auto;
+			}
+			@include breakUp("xl") {
+				position: absolute;
+				bottom: 70px;
+				left: -70px;
+			}
+		}
+		&__right {
+			display: none;
+			@include breakUp("md") {
+				display: block;
+				grid-area: right;
+				@include ms-grid-cols-rows(2, 3, 1, 2);
+				// margin-top: 80px;
+				z-index: 10;
+				position: absolute;
+				top: 70px;
+				right: -40px;
+			}
+		}
+	}// 3d
+
+	&_2d {
+		@include bg-and-txt($white, $black);
+		// overflow: visible;
+		@include breakUp("md") {
+			height: 600px;
+		}
+		&__grid {
+			position: relative;
+			@include breakUp("sm") {
+				@include grid(6fr 6fr, auto, "txt img-center");
+			}
+			@include breakUp("lg") {
+				@include grid(2fr 5fr 5fr, auto, ". img-center txt");
+			}
+		}
+		// & h1 {
+		// 	margin-bottom: 30px;
+		// }
+		&__txt {
+			grid-area: txt;
+			align-self: center;
+			@include ms-grid-cols-rows(1, 2);
+			// @include ms-just-align-self(auto, center);
+			@include link-color($brand-orange, $brand-orange-lite);
+			@include breakUp("lg") {
+				@include ms-grid-cols-rows(3, 4);
+				margin-top: -50px;
+			}
+			@include breakUp("lg")-only {
+				margin-left: 30px;
+			}
+		}
+
+		&__top-left {
+			display: none;
+			@include breakUp("lg") {
+				display: block;
+				// display: grid;
+				position: absolute;
+				width: 17%;
+				top: 0;
+				left: -50px;
+			}
+			& img {
+				top: 0;
+				left: 0;
+			}
+
+		}
+		
+		&__bottom-right {
+			display: none;
+			@include breakUp("lg") {
+				display: block;
+				// display: grid;
+				position: absolute;
+				bottom: 0;
+				right: -130px;
+				width: 40%;
+			}
+			@include breakUp("xl") {
+				width: 45%;
+				right: -200px;
+			}
+			& img {
+				bottom: 0;
+				right: 0;
+			}
+		}
+		&__center {
+			grid-area: img-center;
+			@include ms-grid-cols-rows(2, 3);
+			// @include ms-just-align-self(auto, center);
+			align-self: center;
+			margin: 40px auto 40px;
+			width: 80%;
+			@include breakUp("xl") {
+				margin-top: 30px;
+				width: 75%;
+			}
+		}
+
+	}// 2d
+
+
+}// offers
+
+
+
+
+// &__top-right {//sits between sections to avoid hidden overflow
+		// 	position: relative;
+		// 	height: 0;
+		// 	& img {
+		// 		position: absolute;
+		// 		z-index: 10;
+		// 		top: 400px;
+		// 		left: 5%;
+		// 		width: 80px;
+		// 		@include breakUp("sm") {
+		// 			top: -30px;
+		// 			right: 23%;
+		// 			left: auto;
+		// 		}
+		// 		@include breakUp("md") {
+		// 			right: 36%;
+		// 		}
+		// 		@include breakUp("lg") {
+		// 			top: -60px;
+		// 			right: 23%;
+		// 			width: 130px;
+		// 		}
+		// 	}//img
+		// }
+		// &__bottom-left {
+		// 	display: none;
+		// 	@include breakUp("lg") {
+		// 		display: block;
+		// 		position: absolute;
+		// 		bottom: 0;
+		// 		left: -80px;
+		// 		width: 24%;
+		// 	}
+		// 	@include breakUp("xl") {
+		// 		left: -150px;
+		// 		width: 22%;
+		// 	}
+		// 	& img {
+		// 		bottom: 0;
+		// 		left: 0;
+		// 	}
+		// }

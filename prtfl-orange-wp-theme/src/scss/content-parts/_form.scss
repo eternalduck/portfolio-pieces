@@ -1,0 +1,268 @@
+@import "../_vars-mixins";
+
+// popup styles are in main style.scss
+.form {
+	background: $almost-white;
+	&__grid {
+		@include breakUp("lg") {
+			column-gap: 30px;
+			padding: 0 15px;
+		}
+		@include breakUp("xl") {
+			padding: 0;
+		}
+	}
+
+	&_single-section {
+		@include section-padding;
+		background: $almost-white;
+	}
+
+	&_contact {
+		& .form__grid {
+			@include breakUp("lg") {
+				@include grid(6fr 6fr, auto, "form img");
+			}
+		}// grid
+	}// _contact
+
+	&_order {
+		& .form__grid {
+			@include breakUp("lg") {
+				@include grid(7fr 5fr, auto auto auto auto, "title title" "form img" "form descr" "form .");
+			}
+		}// grid
+		.form__img {
+			margin-bottom: 30px;
+			align-self: start;
+		}
+	}// _services
+	&__title {
+		grid-area: title;
+		margin-bottom: 15px;
+		@include breakUp("md") {
+			margin-bottom: 35px;
+		}
+	}
+
+	& .wpcf7,
+	&__form {
+		grid-area: form;
+		width: 100%;
+		position: relative;
+		.form_contact & {
+			@include ms-grid-cols-rows(1, 2);
+		}
+		.form_order & {
+			@include ms-grid-cols-rows(1, 2, 2, 5);
+		}
+	}
+
+	// &__descr {
+	& .form__grid h2 + p {
+		// outline: 1px solid magenta;
+		grid-area: descr;//_order
+		@include ms-grid-cols-rows(2, 3, 3, 4);
+		margin-bottom: 20px;
+		@include breakUp("md") {
+			margin-bottom: 40px;
+		}
+	}// descr
+
+
+	&__img {
+		display: none;
+		@include breakUp("lg") {
+			display: block;
+			grid-area: img;
+			justify-self: end;
+			align-self: end;
+			text-align: right;
+			margin-bottom: 80px;
+			& img {
+				width: 100%;
+			}
+			.form_contact & {
+				@include ms-grid-cols-rows(2, 3);
+			}
+			.form_order & {
+				@include ms-grid-cols-rows(2, 3, 2, 3);
+			}
+		}//lg
+	}
+	&__item {
+		margin: 0 0 25px;
+	}
+	&__label {
+		display: block;
+		margin-bottom: 8px;
+	}
+@mixin formfields {
+	width: 100%;
+	background: $gray-mid-lite;
+	font-family: 'Ubuntu', sans-serif !important;
+	font-size: 18px;
+	border: 1px solid transparent;
+	border-radius: 10px;
+	outline: none;
+	@include hover-transit;
+	@include breakUp("md") {
+		font-size: 16px;
+	}
+	&:hover {
+		background: $gray-lite;
+	}
+	&:focus {
+		background: $almost-white;
+		border: 1px solid $gray-mid-lite;
+	}
+}
+	&__field {
+		@include formfields;
+		height: 55px;
+		padding: 10px;
+	}
+	&__area {
+		@include formfields;
+		padding: 10px;
+		height: 200px;
+	}
+
+	&__submit-container {
+		margin-bottom: 20px;
+		display: flex;
+		flex-direction: column;
+		justify-items: center;
+		text-align: center;
+		position: relative;
+		@include breakUp("md") {
+			text-align: left;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: space-between;
+		}
+	}
+	&__submit-descr {
+		order: 1;
+		padding-bottom: 25px;
+		@include breakUp("md") {
+			flex: 0 0 75%;
+			order: 2;
+			padding: 5px 0 0 5%;
+		}
+	}
+	&__submit {
+		order: 2;
+		cursor: pointer;
+		padding: 10px 40px;
+		border: none;
+		outline: none;
+		align-self: center;
+		@include breakUp("md") {
+			flex: 0 0 15%;
+			order: 1;
+			align-self: start;
+		}
+	}
+
+// Type of Project & Technology fields 
+	&__checks-wrap {
+		display: flex;
+		flex-direction: row;
+		justify-content: start;
+		flex-wrap: wrap;
+	}
+
+// Contact Form plugin tweaks
+
+//form tag-checkboxes
+	& .wpcf7-form-control-wrap {
+		margin: 8px 10px 20px 0;
+		&:last-child {margin-right: 0};
+	}
+	& .wpcf7-list-item-label {
+		background: $gray-dark;
+		border-radius: 23px;
+		color: #fff;
+		font-size: 16px;
+		font-weight: 500;
+		white-space: nowrap;
+		padding: 10px 20px;
+		user-select: none;
+		cursor: pointer;
+	}
+	& span.wpcf7-list-item {
+		margin: 0;
+	}
+	& .wpcf7-list-item {
+		& input[type="checkbox"] {
+			display: none;
+		}
+		& input[type="checkbox"] + .wpcf7-list-item-label:hover {
+			background: $gray-mid;
+		}
+		& input[type="checkbox"]:checked + .wpcf7-list-item-label,
+		& input[type="checkbox"]:checked + .wpcf7-list-item-label:hover {
+			background: $brand-green;
+			color: #333;
+		}
+	}//.wpcf7-list-item
+
+//override default loading animation on submit
+	div.wpcf7 .ajax-loader {
+		display: none;
+		@include breakUp("md") {
+			display: block;
+			position: absolute;
+			left: 80px;
+			top: 10px;
+			left: 10px;
+			width: 20px;
+			height: 20px;
+			background-image: url("images/icons/redo.svg");
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+	}
+
+// Form Errors
+//error under a field & invalid field
+	& .wpcf7-not-valid-tip {
+		color: $yellow;
+		font-size: 14px;
+		padding-top: 5px;
+	}
+	& .wpcf7-not-valid {
+		background: $yellow-lite;
+	}
+
+//general error/success near the submit
+	& div.wpcf7-response-output {
+		font-size: 15px;
+		text-align: center;
+		padding: 10px 20px;
+		border: none;
+		border-radius: 10px;
+		margin: 0;
+		z-index: 10;
+		@include breakUp("lg") {
+			text-align: left;
+		}
+	}
+	form.sent .wpcf7-response-output {
+		background: $brand-green;
+	}
+	.wpcf7 form.invalid .wpcf7-response-output {
+	// form.spam &,
+	// form.unaccepted & {
+		color: $red;
+		border: 2px solid $red-lite;
+	}
+	// & div.wpcf7-validation-errors, 
+	// & div.wpcf7-acceptance-missing,
+	// & div.wpcf7-spam-blocked
+	// & div.wpcf7-mail-sent-ok 
+// end contact-form tweaks
+
+
+}//form

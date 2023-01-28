@@ -1,0 +1,222 @@
+@import "../_vars-mixins";
+
+.front-top {
+	background: $black url("images/front-top__light_mob.svg") top/cover no-repeat;
+	overflow: hidden;
+	// height: calc(100vh - #{$header-height-xs});
+	// min-height: 850px;
+	// @include breakUp("md") {
+	// 	height: calc(100vh - #{$header-height-xs});
+	// }
+	@include breakUp("sm") {
+		background: $black url("images/front-top__light.svg") top/cover no-repeat;
+	}
+	@include breakUp("lg") {
+		height: calc(100vh - #{$header-height-lg});
+		max-height: 1000px;
+	}
+
+	&__grid {
+		height: 100%;
+		position: relative;
+		@include grid(6fr 2fr 4fr, auto auto auto, "logo logo logo" "content content content" "bottom-left . bottom-right");
+		@include breakUp("md") {
+			@include grid(3fr 6fr 3fr, auto auto, "top-left logo top-right" "bottom-left content bottom-right");
+
+		}
+		@include breakUp("lg") {
+			@include grid(3.5fr 5fr 3.5fr, 1fr 3fr, "top-left logo top-right" "bottom-left content bottom-right");
+
+		}
+
+	}// grid
+
+	&__logo, 
+	&__content {
+		// outline: 1px dashed blue;
+		justify-self: center;
+		@include breakUp("lg") {
+			margin-right: auto;
+			margin-left: auto;
+			width: 90%;
+		}
+	}
+	&__logo {
+		grid-area: logo;
+		margin-top: 20px;
+		align-self: end;
+		width: 300px;
+		@include breakOnly("xxs") {
+			width: 250px;
+		}
+		@include breakUp("sm") {
+			margin-top: 40px;
+			width: 350px;
+		}
+		@include breakUp("md") {
+			width: 400px;
+			margin-top: 60px;
+		}
+		@include breakUp("lg") {
+			width: 500px;
+			align-self: center;
+		}
+	}
+	&__logo-img {
+		max-width: 100%;
+		margin: 0 auto;
+		@include breakUp("lg") {
+			margin: 0 auto;
+		}
+	}
+	&__logo-txt {
+		color: #4D4D4F;//logo's black
+		line-height: 1;
+		font-size: 26px;
+		padding-left: 78px;
+		font-weight: 700;
+		white-space: nowrap;
+		@include breakOnly("xxs") {
+			font-size: 22px;
+			padding-left: 65px;
+		}
+		@include breakUp("sm") {
+			font-size: 30.5px;
+			padding-left: 90px;
+
+		}
+		@include breakUp("md") {
+			font-size: 36.5px;
+			padding-left: 105px;
+			margin-top: -10px;
+		}
+		@include breakUp("lg") {
+			font-size: 43px;
+			padding-left: 130px;
+
+		}
+	}
+
+	&__content {
+		grid-area: content;
+		margin-top: 30px;
+		@include breakUp("sm") {
+			margin-top: 40px;
+
+		}
+		@include breakUp("md") {
+			margin-top: 50px;
+		}
+		@include breakUp("lg") {
+			margin-top: 40px;
+		}
+	}
+
+	&__txt-01 {
+		// outline: 1px dashed green;
+		padding-left: 40px;
+		padding-right: 15px;
+		margin-bottom: 40px;
+		margin-right: auto;
+		margin-left: auto;
+		width: 90%;
+		max-width: 600px;
+		@include breakUp("md") {
+			width: 100%;
+			padding-left: 0;
+			padding-right: 0;
+		}
+		@include breakUp("lg") {
+			margin-bottom: 70px;
+		}
+		@include breakUp("xl") {
+			margin-bottom: 90px;
+		}
+	}//txt-01
+
+	&__txt-02 {
+		// outline: 1px dashed blue;
+		position: relative;
+		padding-left: 140px;
+		padding-right: 15px;
+		margin-bottom: 30px;
+		max-width: 500px;
+		margin-right: auto;
+		margin-left: auto;
+		@include breakUp("md") {
+			margin-bottom: 60px;
+			padding-right: 0;
+		}
+		@include breakUp("xl") {
+			margin-left: 100px;
+		}
+		& img {
+			position: absolute;
+			top: 0;
+			left: 15px;
+			width: 110px;
+			margin-right: 15px;
+			@include breakOnly("md") {
+				width: 90px;
+				left: 20px;
+			}
+		}
+	}//txt-02
+	&__btn-contaner {
+		text-align: center;
+		margin-top: 20px;
+		@include breakUp("lg") {
+			text-align: left;
+		}
+	}
+
+
+	&__bg {
+		max-width: 100%;
+		&_top-left,
+		&_top-right {
+			display: none;
+			@include breakUp("md") {
+				display: block;
+			}
+			@include breakUp("lg") {
+				max-width: 80%;
+			}
+		}
+		&_bottom-left,
+		&_bottom-right {
+			@include breakUp("lg") {
+				max-width: 90%;
+			}
+		}
+		&_top-left {
+			grid-area: top-left;
+			justify-self: start;
+			align-self: start;
+		}
+		&_top-right {
+			grid-area: top-right;
+			justify-self: end;
+			align-self: start;
+		}
+		&_bottom-left {
+			grid-area: bottom-left;
+			justify-self: end;
+			align-self: end;
+			@include breakUp("lg") {
+				margin-right: -30px;
+			}
+		}
+		&_bottom-right {
+			grid-area: bottom-right;
+			justify-self: start;
+			align-self: end;
+			@include breakUp("lg") {
+				margin-left: -30px;
+			}
+		}
+	}// bg
+
+
+}//front-top
+

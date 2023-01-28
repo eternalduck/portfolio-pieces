@@ -1,0 +1,170 @@
+.manual-link,
+.templ-link {
+  position: absolute;
+  top: -26px;
+  color: #56CAF3;
+  font-size: 15px;
+  z-index: 99999;
+}
+
+.manual-link {
+  right: 200px;
+}
+
+.templ-link {
+  right: 350px;
+}
+
+.wp-block {
+  max-width: 100% !important;
+}
+
+.block-editor-block-list__block img,
+.block-editor-block-list__block .insert-page img {
+  max-width: 150px;
+}
+
+.block-editor-block-list__block .insert-page .partners img {
+  max-height: 50px;
+}
+
+.block-editor-block-list__block[aria-label="Block: Group"] {
+  outline: 1px dashed #008816;
+}
+
+.block-editor-block-list__block[aria-label="Block: Group"]:before {
+  content: "Group";
+  font-size: 10px;
+  color: #008816;
+  position: absolute;
+  top: -20px;
+  left: 0;
+}
+
+.block-editor-block-list__block[aria-label="Block: Columns"] {
+  outline: 1px dashed #0024E0;
+}
+
+.block-editor-block-list__block[aria-label="Block: Columns"]:before {
+  content: "Columns";
+  font-size: 10px;
+  color: #0024E0;
+  position: absolute;
+  top: -20px;
+  left: 0;
+}
+
+.block-editor-block-list__layout > .block-editor-block-list__block {
+  outline: 1px dotted #777;
+  padding: 20px;
+}
+
+.block-editor-block-list__layout > .block-editor-block-list__block > .block-editor-block-list__layout > .block-editor-block-list__block {
+  outline: 1px dotted #CCCCCC;
+  padding: 15px;
+}
+
+.edit-post-layout__metaboxes .acf-image-uploader {
+  width: 200px;
+}
+
+.block-editor-block-list__block .btn {
+  padding: 5px 15px;
+  border: 2px solid;
+  border-radius: 20px;
+}
+
+.block-editor-block-list__block .popup__container {
+  height: 50px;
+  outline: 1px solid #777;
+  overflow: hidden;
+  position: relative;
+}
+
+.block-editor-block-list__block .popup__container:before {
+  content: "popup";
+  position: absolute;
+  top: 2px;
+  left: 10px;
+  font-size: 14px;
+  color: #777;
+  left: auto;
+  right: 10px;
+  color: #999;
+}
+
+.block-editor-block-list__block .popup__container#form-contact,
+.block-editor-block-list__block .popup__container#form-order {
+  display: none;
+}
+
+span.update-plugins {
+  display: none !important;
+}
+
+.yoast_premium_upsell {
+  display: none !important;
+}
+
+.yoast-sidebar__section {
+  display: none !important;
+}
+
+#yoast-indexation-warning {
+  display: none !important;
+}
+
+#wpbody-content .yoast-notification.notice-warning.is-dismissible {
+  display: none !important;
+}
+
+.trp-controls-section-content {
+  display: none !important;
+}
+
+#w3-total-cache-update {
+  display: none;
+}
+
+.wcp-custom-form .upgrade-message {
+  display: none !important;
+}
+
+.add-new-folder,
+.wcp-hide-show-buttons .toggle-buttons {
+  background: #777 !important;
+  border-color: #777 !important;
+}
+
+.wcp-hide-show-buttons {
+  top: 2px !important;
+}
+
+.wcp-container .route {
+  margin-bottom: 12px;
+}
+
+.wcp-container .route .title {
+  font-weight: normal;
+}
+
+.tree-structure-content {
+  display: none !important;
+}
+
+span.total-count,
+.wcp-container .route span.total-count {
+  font-size: 12px !important;
+}
+
+.wcp-folder-upgrade-button,
+tr[data-slug="safe-svg"] td .row-actions span:last-child,
+tr[data-slug="smart-slider-3"] td .row-actions span:last-child,
+tr[data-slug="translatepress-multilingual"] .go_pro,
+tr[data-slug="wordpress-seo"] td .row-actions span:nth-child(2) {
+  display: none !important;
+}
+
+tr td .row-actions span.delete {
+  display: inline-block !important;
+}

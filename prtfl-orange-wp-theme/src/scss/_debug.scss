@@ -1,0 +1,64 @@
+// @import "vars-mixins";
+
+.grid-container {outline: 1px dotted yellow}
+.grid-content {outline: 1px dashed pink;}
+//wp tweak
+// html{margin-top: 0 !important;}
+// #wpadminbar{display:none}
+//end wp tweak
+
+
+
+body:before {
+	position: fixed;
+	top: 5px;
+	right: 5px;
+	font-size: 14px;
+	z-index: 999999;
+}
+
+body:before {
+	content: "XS (before 575)";
+	color: cyan;
+}
+@include breakOnly("xxs") {
+	body:before {
+		content: "XXS-only (max-width: 400)";
+		color: red;
+	}
+}
+
+@include breakUp("sm") {
+	body:before {
+		content: "SM (min-width: 576)";
+		color: #777;
+	}
+}
+@include breakUp("md") {
+	body:before {
+		content: "MD (min-width: 750)";
+		color: blue;
+	}
+
+}
+@include breakUp("lg") {
+	body:before {
+		content: "LG (min-width: 992)";
+		color: lime;
+	}
+
+}
+@include breakUp("xl") {
+	body:before {
+		content: "XL (min-width: 1400)";
+		color: #000;
+	}
+
+}
+@include breakUp("xxl") {
+	body:before {
+		content: "XXL (min-width: 2000)";
+		color: magenta;
+	}
+
+}

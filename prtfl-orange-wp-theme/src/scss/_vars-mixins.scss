@@ -1,0 +1,371 @@
+// March 27, 2020
+// Global vars & mixins
+
+// brand colors
+// based on UI-Kit palette (figma)
+
+$black: #333;
+$white: #fff;
+$almost-white: #FBFBFB;
+$brand-orange: #F15927;
+$brand-orange-lite: #FAA073;
+$brand-orange-dark: #BD461F;
+
+$brand-green: #7BCF00;
+$brand-green-lite: #CDFA8B;
+$brand-green-dark: #6CAD0D;
+$brand-green-bright: #A4E71D;
+
+$brand-blue: #56CAF3;
+$brand-blue-lite: #B0E4FF;
+$brand-blue-bright: #7C9DFA;
+$blue: #5280FF;
+$blue-lite: #60D5FF;
+$blue-white: #E4F6FF;
+$blue-dark: #3C62CB;
+
+$mint: #A7F2F8;
+$turq: #38829D;
+$turq-blue: #1DA4BC;
+
+$yellow: #FFC700;
+$yellow-lite: #FFF8BD;
+
+$red: #EB5757;
+$red-lite: #FFE9E9;
+$pink: #FFB4B7;
+$very-pink: #FFA0F2;
+
+$magenta: #FC7FFF;
+
+$brand-gray: #5A595E;
+$gray-dark: #4D4D4F;
+$gray-mid: #7B7B80;
+$gray-mid-lite: #ddd;
+$gray-lite: #eee;
+
+$violet: #4E007D;
+
+// typography (main style are in _typography.scss)
+
+//wp classes
+$wp-group: ".wp-block-group";
+$wp-inner: ".wp-block-group__inner-container";
+$wp-group-inner: ".wp-block-group > .wp-block-group__inner-container";
+$wp-img: ".wp-block-image";
+$wp-cols: ".wp-block-columns";
+$wp-col: ".wp-block-column";
+
+
+/////////////////////////////////
+// Responsive Grid
+
+$breakPoints: (
+	// min-width
+	"print": "print",
+	"xs": "500px",//no need?
+	"sm": "576px",
+	"md": "750px",
+	"lg": "992px",
+	"xl": "1400px",
+	"xxl": "2200px"
+);
+
+@mixin breakUp($breakpoint) {
+	@media screen and (min-width: #{map-get($breakPoints, $breakpoint)}) {
+		@content;
+	}
+}
+
+$breakDownPoints: (
+	//max-width
+	"xs": "575px",
+	"sm": "749px",
+	"md": "991px",
+	"lg": "1199px",
+);
+
+@mixin breakDown($breakpoint) {
+	@media screen and (max-width: #{map-get($breakDownPoints, $breakpoint)}) {
+		@content;
+	}
+}
+
+$breakOnlyPoints: (
+	"xxs": "(max-width: 400px)",
+	"sm": "(min-width: 576px) and (max-width: 749px)",
+	"md": "(min-width: 750px) and (max-width: 991px)",
+	"lg": "(min-width: 992px) and (max-width: 1199px)"
+);
+
+@mixin breakOnly($breakpoint) {
+	@media screen and #{map-get($breakOnlyPoints, $breakpoint)} {
+		@content;
+	}
+}
+
+// Example
+// 	@include breakUp('sm') {
+// 		background-color: aqua;
+// 	};
+
+/////////////////////////////////
+//For language-specific fixes
+@mixin ru-fix {
+	body.translatepress-ru_RU & {
+		@content;
+	}
+}
+
+
+$header-height-xs: 55px;
+$header-height-lg: 65px;
+@mixin header-height {
+	height: $header-height-xs;
+	@include breakUp("lg") {
+		height: $header-height-lg;
+	}
+}
+
+$footer-height-mob: 400px;
+$footer-height-desk: 250px;
+
+@mixin top-block-margin {
+	margin-top: $header-height-xs;
+	@include breakUp("lg") {
+		margin-top: $header-height-lg;
+	}
+}
+
+//needed for some img abs positioning
+$section-padding-top-xxs: 50px;
+$section-padding-top-xs: 70px;
+$section-padding-top-md: 80px;
+$section-padding-top-lg: 100px;
+$section-padding-top-xl: 110px;
+
+$section-padding-bottom-xxs: 70px;
+$section-padding-bottom-xs: 90px;
+$section-padding-bottom-md: 100px;
+$section-padding-bottom-lg: 120px;
+$section-padding-bottom-xl: 130px;
+
+@mixin section-padding {
+	padding: $section-padding-top-xs 0 $section-padding-bottom-xs;
+	@include breakOnly("xxs") {
+		padding: $section-padding-top-xxs 0 $section-padding-bottom-xxs;
+	}
+	@include breakUp("md") {
+		padding: $section-padding-top-md 0 $section-padding-bottom-md;
+	}
+	@include breakUp("lg") {
+		padding: $section-padding-top-lg 0 $section-padding-bottom-lg;
+	}
+	@include breakUp("xl") {
+		padding: $section-padding-top-xl 0 $section-padding-bottom-xl;
+	}
+}
+
+@mixin section-padding-mid {
+	padding: 50px 0 60px;
+	@include breakUp("lg") {
+		padding: 80px 0 90px;
+	}
+}
+
+@mixin section-padding-small {
+	padding: 40px 0 50px;
+	@include breakUp("lg") {
+		padding: 50px 0 60px;
+	}
+}
+
+@mixin page-padding {
+	padding: 70px 0 90px;
+	@include breakOnly("xxs") {
+		padding: 50px 0 70px;
+	}
+	@include breakUp("md") {
+		padding: 80px 0 100px;
+	}
+	@include breakUp("lg") {
+		padding: 90px 0 110px;
+	}
+	@include breakUp("xl") {
+		padding: 100px 0 120px;
+	}
+}
+
+
+@mixin card-padding {
+	padding: 40px 30px;
+	@include breakOnly("xxs") {
+		padding: 30px 15px;
+	}
+	@include breakUp("md") {
+		padding: 35px 25px;
+	}
+	@include breakUp("lg") {
+		padding: 50px 30px;
+	}
+}
+
+@mixin card-border-radius {
+	border-radius: 20px;
+}
+
+@mixin title-margin-bottom {
+	margin-bottom: 50px;
+	@include breakOnly("xxs") {
+		margin-bottom: 40px;
+	}
+	@include breakUp("md") {
+		margin-bottom: 50px;
+	}
+	@include breakUp("lg") {
+		margin-bottom: 60px;
+	}
+	@include breakUp("xl") {
+		margin-bottom: 70px;
+	}
+}
+
+@mixin title-margin-bottom-small {
+	margin-bottom: 30px;
+	@include breakUp("md") {
+		margin-bottom: 40px;
+	}
+	@include breakUp("xl") {
+		margin-bottom: 50px;
+	}
+}
+
+@mixin flex-row-nowrap {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	@include breakUp("lg") {
+		flex-wrap: nowrap;
+	}
+}
+
+@mixin bg-and-txt($bg, $clr: auto) {
+	background: $bg;
+	color: $clr;
+	& a {
+		color: $clr;
+		@include underline($clr);
+	}
+}
+
+
+@mixin link-color($clr, $hoverclr) {
+	& a {
+		color: $clr;
+		border-bottom: 1px solid $hoverclr;
+		@include hover-transit;
+		&:hover {
+			color: $hoverclr;
+			border-bottom: 1px solid transparent;
+		}
+	}
+}
+
+//play triangle bg-element
+@mixin play-white {
+	background: url("images/bg__play_white.svg") center/contain no-repeat;
+}
+@mixin play-orange {
+	background: url("images/bg__play_orange.svg") center/contain no-repeat;
+}
+
+
+// shadows
+@mixin deep-shadow {
+	box-shadow: 0 3px 10px rgba(27, 35, 79, 0.2),
+	0 1px 5px rgba(0, 0, 0, 0.2);
+}
+@mixin mid-shadow {
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+@mixin header-shadow {
+	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@mixin underline($clr: auto) {
+	text-decoration: none;
+	cursor: pointer;
+	border-bottom: 1px solid $clr;
+	transition: border-bottom .1s ease-in;
+	&:hover {
+		border-bottom: 1px transparent solid;
+	}
+}
+
+@mixin center {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+@mixin hover-transit {
+	transition: all .15s ease-in;
+}
+
+@mixin max-img-100 {
+	& img {
+		max-width: 100%;
+	}
+}
+
+@mixin max-height-img-100 {
+	& img {max-height: 100%;}
+}
+
+@mixin button-color($bg, $txt, $hoverbg, $hovertxt) {
+	background: $bg;
+	color: $txt;
+	&:hover, &:active {
+		background: $hoverbg;
+		color: $hovertxt;
+	}
+}
+
+// Grid
+
+@mixin grid($cols, $rows, $areas: none) {
+	display: grid;
+	grid-template-columns: $cols;
+	grid-template-rows: $rows;
+	grid-template-areas: $areas;
+}
+
+// Content width
+@mixin grid-content-width {
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: 15px;
+	padding-left: 15px;
+	@include breakUp("sm") {
+		width: 540px;
+		padding-right: 0;
+		padding-left: 0;
+	}
+	@include breakUp("md") {width: 720px;}
+	@include breakUp("lg") {width: 960px;}
+	@include breakUp("xl") {width: 1140px;}
+}
+
+//for debug
+@mixin out {
+	outline: 1px dashed;
+}
+
+
+// for IE
+@mixin ms-grid-cols-rows($colStart, $colEnd, $rowStart: auto, $rowEnd: auto){
+	-ms-grid-column: $colStart  !important;
+	-ms-grid-column-span: 1;
+	-ms-grid-row: $rowStart;
+	-ms-grid-row-span: 1;
+}

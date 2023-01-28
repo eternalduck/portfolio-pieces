@@ -1,0 +1,10 @@
+export const rowCenter = 'row justify-content-center no-gutters'
+export const rowBetween = 'row justify-content-between align-items-center'
+export const defaultWidth = 'col-xl-6 col-md-7 col-sm-10 col-12'
+export const titleRowCenter = 'onboarding-form__section-title ' + rowCenter
+export const fieldDefaultWidth = 'field__wrap ' + defaultWidth
+export const fieldHalfWidth = 'field__wrap field__wrap_half col-sm-6 col-12'
+export const section = 'onboarding-form__section'
+export const group = 'onboarding-form__group'
+export const hint = 'field__hint k-text'
+export const hintBig = 'field__hint field__hint_big k-text'

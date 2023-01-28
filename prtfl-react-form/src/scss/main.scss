@@ -1,0 +1,141 @@
+@import "_vars";
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700&display=swap&subset=cyrillic-ext');
+@import url('https://fonts.googleapis.com/css?family=Literata:400,400i,500,500i,700&display=swap&subset=cyrillic');
+body {
+	background: $white-gray;
+	color: $dark-gray;
+	font-family: "Roboto", sans-serif;;
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Literata', serif;
+	color: $dark-turq;
+	// font-family: "Ubuntu", sans-serif;
+}
+// debug
+// [class*="col-"] {outline: 1px dotted magenta}
+// div[class*="container"] {outline: 1px dashed lime}
+
+.popup {
+	&__overlay {
+		background: rgba(0, 0, 0, .4);
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		cursor: pointer;
+
+		&_hidden {
+			display: none;
+		}
+	}
+	&__close {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		color: $dark-gray;
+		font-size: 24px;
+		cursor: pointer;
+	}
+	&__content {
+		overflow: auto;
+		position: relative;
+	}
+}
+.k-popup {
+	box-sizing: border-box !important
+}
+.tooltip {
+	display: none;
+	padding: 10px 15px;
+	font-size: 12px;
+	position: absolute;
+	top: -40px;
+	left: 20px;
+	background: $white;
+	font-family: Roboto, sans-serif;
+	font-weight: lighter;
+	transition: all .3s ease-in;
+	box-shadow: $deep-shadow;
+	border-radius: 3px;
+	z-index: 999;
+	@include media-breakpoint-down(sm) {
+		right: 20px;
+		left: auto;
+	}
+	&__container {
+		position: relative;
+	}
+	&__title {
+		font-size: 12px;
+		font-weight: 600;
+	}
+	&__trigger{
+		// cursor: help;
+		&:hover+.tooltip,
+		&:hover .tooltip {display: block}
+	}
+}
+.underline {
+	&_solid {
+		text-decoration: none;
+		&:hover {text-decoration: none;}
+		& span {
+			@include solid-underline;
+		}
+	}
+	&_dashed {
+		text-decoration: none;
+		&:hover {text-decoration: none;}
+		& span {
+			@include dashed-underline;
+		}
+	}
+}
+
+// ==========================
+// ======= Kendo overrides
+// ==========================
+.k-textbox-container,
+.k-textbox,
+.k-dropdown,
+.k-autocomplete,
+.k-textarea {
+	width: 100% !important;
+}
+.k-input {
+	font-size: 17px
+}
+.k-required {
+	font-size: 24px;
+	position: absolute;
+	top: 20px;
+	right: 0;
+	color: $brand-orange !important;
+	.k-state-invalid~& {
+		font-size: 32px;
+		color: $dark-orange;
+	}
+}
+.k-button {
+	padding: 8px 30px;
+	& .btn-icon {
+		margin-left: 12px;
+		margin-bottom: 2px;
+	}
+	&.btn-small {
+		background: $lite-gray;
+		font-size: 12px;
+		color: $mid-gray;
+		padding: 5px 15px;
+		text-transform: none;
+	}
+}
+@include media-breakpoint-down(xs) {
+	.k-datepicker {
+		width: 100% !important;
+	}
+}

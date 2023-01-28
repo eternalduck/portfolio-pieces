@@ -1,0 +1,33 @@
+@import "../vars-mixins";
+
+.job {
+	@include bg-and-txt($brand-green, $black);
+	padding: 100px 0 50px;
+	& .btn {
+		display: block;
+		width: 85%;
+		margin: 40px auto 20px;
+		@include breakUp("sm") {
+			width: auto;
+			display: inline-block;
+			
+		}
+	}
+	& #{$wp-img} img {
+		max-height: 170px;
+		object-position: center;
+		@include breakUp("sm") {
+			margin-top: -130px;
+			max-height: 150px;
+			object-position: right;
+		}
+		@include breakUp("md") {
+			max-height: 280px;
+			margin-top: -30px;
+		}
+		@include breakUp("lg") {
+			max-height: 330px;
+			margin-top: -100px;
+		}
+	}
+}

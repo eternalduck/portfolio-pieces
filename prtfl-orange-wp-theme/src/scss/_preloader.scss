@@ -1,0 +1,58 @@
+// @import "vars-mixins";
+
+//added to header.php
+// <div class="preloader">
+// 	<div class="preloader__bg">
+// 		<div class="preloader__spinner"></div>
+// 	</div>
+// </div>
+
+.preloader {//is faded out by assets/js/global.js
+	background: $white;//$brand-orange;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 99999;
+	visibility: visible;//for .loaded
+	opacity: 1;
+	transition: all 0.5s ease-out .3s;
+	.loaded & {//class added in assets/js/global.js
+			visibility: hidden;
+			opacity: 0;
+			z-index: -1;
+	}
+	&__bg {
+		background: $white;
+		width: 200px;
+		height: 200px;
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		margin-top: -100px;
+		margin-left: -100px;
+	}
+	&__spinner {
+			background: url("images/logo__tomato.svg") center/contain no-repeat;
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -50px;
+			margin-left: -50px;
+			z-index: 999;
+			animation: bounce 1.5s infinite linear;
+	}
+
+	@keyframes bounce {
+		0%, 100% {
+			transform: scale(1) rotate(-10deg);
+		}
+		50% {
+			transform: scale(.9) rotate(10deg);
+		}
+	}
+
+}

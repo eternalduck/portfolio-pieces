@@ -1,0 +1,500 @@
+@import "_vars-mixins";
+
+//see cloud animation at bottom
+// see backup if Trains section html at bottom
+.prtfl {
+	@include bg-and-txt($brand-blue, $black);
+	overflow: hidden;
+	transform: translateY(0px);//fix for z-index of bg
+	&__title {
+		@include link-color($white, $gray-lite);
+		margin: 60px 0 270px;
+		@include breakUp("md") {
+			margin: 80px 0 260px;
+		}
+		@include breakUp("lg") {
+			margin: 110px 0 280px;
+		}
+
+
+	}
+	& h2 {
+		@include link-color($black, $brand-gray);
+	}
+
+	&__txt {
+		grid-area: txt;
+		@include ms-grid-cols-rows(1, 2, 2, 3);
+		@include breakUp("lg") {
+			@include ms-grid-cols-rows(2, 3, 1, 2);
+		}
+		@include breakOnly("md") {
+			padding-left: 35px;
+		}
+	}
+	&__video {
+		background-color: #555;
+		grid-area: video;
+		@include ms-grid-cols-rows(1, 2, 1, 2);
+		@include breakUp("lg") {
+			@include ms-grid-cols-rows(3, 4, 1, 2);
+		}
+		width: 100%;
+		height: 300px;
+		border-radius: 10px;
+		overflow: hidden;
+		@include breakOnly("xxs") {
+			height: 250px;
+		}
+		@include breakUp("md") {
+			width: 533px;
+			height: 300px;
+
+		}
+	}
+
+	&__bg-img {
+		z-index: -1;
+		@include max-img-100;
+	}// bg
+
+
+
+&_turnip, &_dolly {
+	&__grid {
+		&:before, &:after {
+			content: "";
+			display: block;
+			position: absolute;
+			z-index: -1;
+		}
+	}
+	& h3 {
+		color: $brand-orange;
+	}
+}
+
+	&_turnip {
+		margin-bottom: 240px;
+		@include breakOnly("xxs") {
+			margin-bottom: 200px;
+		}
+		@include breakUp("sm") {
+			margin-bottom: 260px;
+		}
+		@include breakUp("md") {
+			margin-bottom: 300px;
+		}
+		@include breakUp("lg") {
+			margin-bottom: 500px;
+		}
+		@include breakUp("xl") {
+			margin-bottom: 570px;
+		}
+
+		&__grid {
+			position: relative;
+			@include grid(12fr, auto auto, "video" "txt");
+			@include breakUp("lg") {
+				@include grid(1fr 5fr 5fr 1fr, auto, " . txt video .");
+			}
+		}// grid
+
+		&__bg {
+			&_xs-sm {
+				background: #FFE500;
+				border-radius: 150px 150px 150px 110px;
+				@include breakOnly("xxs") {
+					border-radius: 90px;
+				}
+				@include breakUp("sm") {
+					border-radius: 175px 170px 200px 120px;
+				}
+				@include breakUp("md") {
+					background: none;
+					border-radius: 0;
+				}
+			}// bg xs-sm
+			&_md-up {
+				@include breakUp("md") {
+					background: #FFE500;
+					border-radius: 250px;
+				}
+			}// bg md-up
+
+
+			&:before {
+				background: url("images/portfolio__turnip-top.svg") center/contain no-repeat;
+				top: -220px;
+				left: 50%;
+				margin-left: -340px;
+				width: 680px;
+				height: 260px;
+			}
+			&:after {
+				background: url("images/portfolio__turnip-bottom.svg") center/contain no-repeat;
+				left: 50%;
+				bottom: -50px;
+				margin-left: -150px;
+				width: 300px;
+				height: 55px;
+				@include breakUp("md") {
+					bottom: -100px;
+					margin-left: -237px;
+					width: 475px;
+					height: 143px;
+				}
+			}
+		}// bg
+
+
+
+		&__video {
+			margin: 100px auto 0;
+			@include breakUp("md") {
+				margin: 130px auto 0;
+			}
+			@include breakUp("lg") {
+				margin: 145px 0 200px;
+			}
+		}
+		&__txt {
+			margin: 20px 0 70px;
+			@include breakUp("sm") {
+				margin: 20px 0 60px;
+			}
+			@include breakUp("md") {
+				margin: 20px 8% 100px;
+			}
+			@include breakUp("lg") {
+				margin: 145px 30px 200px;
+			}
+			& h3 {
+				margin-bottom: 5px;
+				&+p {@include txt_mid;}
+			}
+		}
+
+		&__cloud-1 {
+			position: absolute;
+			top: -365px;
+			left: 0;
+			z-index: -2;
+			display: none;
+			@include breakUp("lg") {
+				display: block;
+				top: -200px;
+				left: -27%;
+			}
+		}
+		&__cloud-2 {
+			display: none;
+			@include breakUp("md") {
+				display: block;
+				position: absolute;
+				bottom: -70px;
+				right: -23%;
+				z-index: -1;
+			}
+			@include breakUp("lg") {
+				z-index: 1;
+			}
+		}
+		&__ded {
+			position: absolute;
+			z-index: 1;
+			top: -150px;
+			right: 0;
+			width: 400px;
+			@include breakOnly("xxs") {
+				top: -95px;
+				width: 250px;
+			}
+			@include breakUp("sm") {
+				top: -190px;
+				width: 550px;
+			}
+			@include breakUp("md") {
+				right: 14%;
+			}
+			@include breakUp("lg") {
+				right: 8%;
+			}
+		}
+
+	}// prtfl_turnip
+
+
+	&_dolly {
+		margin-bottom: 100px;
+		background: #fff;
+		border-radius: 85px;
+		@include breakUp("md") {
+			background: none;
+			margin-bottom: 80px;
+		}
+		@include breakUp("lg") {
+			margin-bottom: 130px;
+		}
+		@include breakUp("xl") {
+			margin-bottom: 160px;
+		}
+		&__grid {
+			position: relative;
+			background: #fff;
+			border-radius: 317px 280px 280px 280px;
+			@include grid(12fr, auto auto, "video" "txt");
+			
+			@include breakUp("lg") {
+				border-radius: 280px;
+				@include grid(0.5fr 6.5fr 4fr 1fr, auto, " . txt video .");
+			}
+			&:before {
+				background: url("images/portfolio__cloud-big-left.svg") center/contain no-repeat;
+				width: 520px;
+				height: 490px;
+				top: -45px;
+				left: -50%;
+				@include breakUp("md") {
+					top: 35px;
+					top: 170px;
+				}
+				@include breakUp("lg") {
+					top: 100px;
+					left: -25%;
+				}
+			}
+			&:after {
+				background: url("images/portfolio__cloud-big-right.svg") center/contain no-repeat;
+				width: 440px;
+				height: 440px;
+				right: -30%;
+				top: -25px;
+				@include breakUp("md") {
+					top: 120px;
+				}
+				@include breakUp("lg") {
+					right: -20%;
+				}
+			}
+		}//grid
+
+
+		&__txt {
+			& h3 {white-space: nowrap;}
+			margin: 20px 0 60px;
+			@include breakUp("md") {
+				margin: 20px 8% 130px;
+				& table {
+					& h3 {margin-bottom: 5px;}
+					& tr:nth-child(2) td:last-child {
+						padding-left: 50px;
+					}
+					& tr:last-child td {
+						@include txt_tiny;
+					}
+				}
+			}//md
+			@include breakUp("lg") {
+				margin: 130px 30px 100px;
+				& table {
+					margin-top: 10px;
+					font-size: 90%;
+					& tr:nth-child(2) td:last-child {
+						padding: 12px 0 5px 15px;
+					}
+				}//table
+			}//lg
+		}
+
+		&__video {
+			margin: 60px auto 0;
+			@include breakUp("md") {
+				margin: 190px auto 0;
+			}
+			@include breakUp("lg") {
+				margin: 130px 0 100px;
+			}
+		}
+
+		&__cloud-3 {
+			position: absolute;
+			top: -390px;
+			left: -27%;
+			@include breakDown("md") {
+				display: none;
+			}
+		}
+		&__dolly {
+			position: absolute;
+			left: 5%;
+			top: -160px;
+			z-index: 1;
+			& img {
+				width: 470px; 
+				display: block;}
+			@include breakOnly("xxs") {
+				top: -100px;
+				& img {width: 400px;}
+			}
+			@include breakUp("sm") {
+				left: 6%;
+				top: -190px;
+				& img {width: 100%;}
+			}
+			@include breakUp("md") {
+				top: -150px;
+			}
+			@include breakUp("lg") {
+				left: 12%;
+				top: -260px;
+				& img {width: 750px;}
+			}
+			@include breakUp("xl") {
+				left: 12%;
+				top: -310px;
+				& img {width: 800px;}
+
+			}
+		}
+
+	}// prtfl_dolly
+
+	&_trains {
+		margin-bottom: 400px;
+		@include breakOnly("xxs") {
+		margin-bottom: 300px;
+		}
+		@include breakUp("sm") {
+			margin-bottom: 450px;
+		}
+		@include breakUp("md") {
+			margin-bottom: 500px;
+		}
+		@include breakUp("lg") {
+			margin-bottom: 480px;
+		}
+		@include breakUp("xl") {
+			margin-bottom: 540px;
+		}
+		&__grid {
+			position: relative;
+			@include grid(12fr, auto auto, "video" "txt");
+			
+			@include breakUp("lg") {
+				@include grid(1fr 5fr 5fr 1fr, auto, " . video txt .");
+			}
+		}// grid
+
+		&__video {
+			margin: 0 auto;
+			@include ms-grid-cols-rows(1, 2, 1, 2);
+			@include breakUp("lg") {
+				@include ms-grid-cols-rows(2, 3, 1, 2);
+			}
+		}
+
+		&__txt {
+			@include ms-grid-cols-rows(1, 2, 2, 3);
+			margin-top: 20px;
+			@include breakUp("md") {
+				margin: 20px 8% 30px;
+			}
+			@include breakUp("lg") {
+				@include ms-grid-cols-rows(3, 4, 1, 2);
+				margin: 0 0 0 30px;
+			}
+		}
+
+		&__train {
+			position: absolute;
+			z-index: 1;
+			left: 2%;
+			width: 80%;
+			bottom: -390px;
+			@include breakOnly("xxs") {
+				bottom: -290px;
+			}
+			@include breakUp("sm") {
+				width: 85%;
+				bottom: -450px;
+			}
+			@include breakUp("md") {
+				bottom: -510px;
+
+			}
+			@include breakUp("lg") {
+				width: 100%;
+				bottom: -490px;
+				left: -17%;
+			}
+			@include breakUp("xl") {
+				bottom: -480px;
+				left: -21%;
+			}
+		}
+		&__cloud-4 {
+			display: none;
+			@include breakUp("md") {
+				display: block;
+				position: absolute;
+				right: -26%;
+				bottom: 60px;
+				bottom: -130px;
+			}
+		}
+
+	}// prtfl_trains
+
+
+}// prtfl
+
+
+.cloud {
+	&_left {
+		animation: left 80s infinite linear;
+	}
+	&_right {
+		animation: right 80s infinite linear;
+	}
+
+
+
+
+	@keyframes left {
+		0%, 100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateX(-300px);
+		}
+	}//keys left
+
+	@keyframes right {
+		0%, 100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateX(300px);
+		}
+	}//keys left
+}//cloud
+
+
+
+// <div id="prtfl_trains" class="prtfl_trains grid-container">
+// 	<div class="prtfl_trains__grid grid-content">
+// 		<div class="prtfl_trains__txt prtfl__txt">
+// 			<?php the_field("prtfl_trains__txt");?>
+// 		</div>
+// 		<div class="prtfl_trains__video prtfl__video" id="front-video-trains">
+// 			<iframe width="100%" height="100%" src="https://www.youtube.com/embed/<?php the_field("prtfl_trains__video");?>" frameborder="0" allowfullscreen></iframe>
+// 		</div>
+// 		<div class="prtfl__bg-img prtfl_trains__train">
+// 			<img src="<?php the_field('prtfl_trains__train');?>" alt=""/>
+// 		</div>
+// 		<div class="prtfl__bg-img prtfl_trains__cloud-4">
+// 			<img src="<?php the_field('prtfl_trains__cloud-4');?>" alt="" class="cloud_left"/>
+// 		</div>
+// 	</div>
+// </div>

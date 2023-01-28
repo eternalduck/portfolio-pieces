@@ -1,0 +1,137 @@
+@import "vars-mixins";
+
+.remote {
+	background: $black;
+	position: relative;
+	&__title {
+		mix-blend-mode: difference;
+		color: $white;
+		text-align: center;
+		margin-top: 50px;
+		margin-bottom: calc(100vw/10);
+		@include breakUp("md") {
+			margin-top: 75px;
+			margin-bottom: 0;
+		}
+	}
+	&__content {
+		// overflow: hidden;//?
+		width: 90%;
+		margin-left: 5%;
+		padding-top: 100px;
+		@include breakUp("md") {
+			width: 60%;
+			margin-left: 15%;
+			padding-top: 170px;
+		}
+		@include breakUp("lg") {
+			width: 30%;
+			padding-top: 200px;
+		}
+		@include breakUp("xl") {
+			margin-left: 22%;
+			width: 23%;
+			padding-top: 230px;
+		}
+
+	}
+
+	& #{$wp-group} {//item
+		mix-blend-mode: difference;
+		color: #009fdc;//special shade to get $brand-orange in "difference" blending mode
+		margin-bottom: 150px;
+		position: relative;
+		z-index: 99;
+		@include breakUp("md") {
+			margin-bottom: 150px;
+		}
+		@include breakUp("lg") {
+			margin-bottom: 200px;
+		}
+		&:last-child {
+			margin-bottom: 200px;
+			@include breakUp("md") {
+				margin-bottom: 200px;
+			}
+			@include breakUp("lg") {
+				margin-bottom: 300px;
+			}
+			@include breakUp("xl") {
+				margin-bottom: 350px;
+			}
+		}//last-child
+	// too long word fix
+		@include breakOnly("xxs") {
+			&:nth-child(7) {
+				& p:first-child {
+					font-size: 38px;
+				}
+			}
+		}
+	// end long word fix
+		& p:first-child {//big words
+			@include txt_extra;
+		}
+	}
+	& .grid-content {
+		position: relative;
+	}
+	&__bg-holder {
+		position: absolute;
+		top: calc(100vw/10);
+		bottom: -50px;
+		right: 0;
+		left: 0;
+		@include breakUp("sm") {
+			top: calc(100vw/10*1.5);
+			bottom: -40px;
+		}
+		@include breakUp("md") {
+			top: 65px;
+			left: 60px;
+		}
+		@include breakUp("lg") {
+			top: 90px;
+			bottom: 0;
+			left: 90px;
+		}
+		@include breakUp("xl") {
+			left: 170px;
+			top: 95px;
+			bottom: 70px;
+		}
+	}
+
+	&__bg {//white triangle
+		@include play-white;
+		position: sticky;
+		left: 0;
+		top: 0;
+		width: 330px;
+		height: 330px;
+		background-position: 0 center;
+		padding: 120px 0;
+		box-sizing: content-box;
+		z-index: 1;
+		@include breakOnly("xxs") {
+			width: 300px;
+			height: 300px;
+		}
+		@include breakUp("md") {
+			width: 370px;
+			height: 370px;
+		}
+		@include breakUp("lg") {
+			width: 450px;
+			height: 450px;
+		}
+		@include breakUp("xl") {
+			width: 470px;
+			height: 470px;
+		}
+
+
+	}
+
+
+}

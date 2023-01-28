@@ -1,0 +1,129 @@
+//////////////////
+// Sidebar with Menus
+body.fixed {
+	position: fixed;
+	top: 0;
+	right: 17px;
+	bottom: 0;
+	left: 0;
+}
+
+.sidebar {
+	@include mid-shadow;
+	overflow: hidden;
+	position: fixed;
+	background: $white;
+	top: 50px;//$header-height-xs;
+	left: 0;
+	bottom: 0;
+	z-index: 9999;
+	transition: transform .3s ease-in-out;
+	transform: translateX(-100%);
+	width: 100%;
+	height: 100%;
+	padding: 80px 30px;
+	@include breakUp("md") {
+		padding: 30px 70px;
+	}
+	@include breakUp("lg") {
+		top: 0;
+		width: 990px;
+		padding: 100px;
+	}
+	@include breakUp("xl") {
+		width: 1100px;
+	}
+	&.open {//js class
+		transform: translateX(0);
+	}
+
+	&__lang {
+		position: absolute;
+		top: 15px;
+		right: 0;
+		& .trp-language-switcher-container {
+			padding-right: 17px;
+			a span {font-size: 25px}
+		}
+		@include breakUp("md") {//main header menu appears on LG but lang does on MD already 
+			display: none;
+		}
+	}
+	&__menu {
+		column-gap: 30px;
+		transition: width .1s ease-in;
+		@include breakUp("md") {
+			columns: 2 auto;
+		}
+		@include breakUp("lg") {
+			columns: 3 auto;
+		}
+		@include breakDown("sm") {
+			text-align: center;
+			& .sub-menu {
+				display: none;
+			}
+		}
+
+		& > .menu-item {//list blocks
+			// @include out;
+			break-inside: avoid;
+			margin-bottom: 30px;
+			@include breakUp("lg") {
+				margin-bottom: 60px;
+			}
+			& a {//main item
+				color: $brand-orange;
+				@include underline($brand-orange-lite);
+				font-size: 28px;
+				@include breakUp("md") {
+					font-size: 22px;
+				}
+				@include breakUp("lg") {
+					font-size: 28px;
+				}
+			}
+		}
+		& .sub-menu {
+			& > .menu-item {//other items, hidden up to md
+				margin-top: 0;
+				@include breakUp("lg") {
+					margin-top: 12px;
+					a {
+						font-size: 20px;
+					}
+				}//lg
+				& a {
+					color: $brand-gray;
+					@include underline($gray-mid-lite);
+					font-size: 16px;
+				}
+			}
+
+		}
+	}//menu
+	&__toggle {
+		//visually sits in header__grid
+		position: fixed;
+		top: 15px;
+		left: 15px;
+		background: url("images/icons/burger.svg") center/100% no-repeat;
+		width: 28px;
+		height: 28px;
+		cursor: pointer;
+		z-index: 10000;
+		transition: background .2s ease-in;
+		@include breakUp("lg") {
+			top: 20px;
+		}
+		@include breakUp("xl") {
+			width: 34px;
+			height: 34px;
+			top: 15px;
+		}
+		&.toggled {//shown in open sidebar
+			background: url("images/icons/close.svg") center/100% no-repeat;
+			z-index: 10000;
+		}
+	}//toggle
+}// end sidebar

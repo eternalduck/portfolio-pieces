@@ -1,0 +1,28 @@
+@import "../../../scss/_vars";
+.input-error {
+	margin-top: 5px;
+	font-size: 11px;
+	color: $dark-orange;
+
+	&_empty {
+		display: none;
+
+		.k-state-invalid.k-state-empty~& {
+			display: block;
+		}
+		.k-state-empty~& {
+			display: none
+		}
+	}
+
+	&_invalid {
+		display: none;
+
+		.k-state-empty.k-state-invalid~& {
+			display: none
+		}
+		.k-state-invalid~& {
+			display: block;
+		}
+	}
+}

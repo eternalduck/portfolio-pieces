@@ -1,0 +1,155 @@
+@import "vars-mixins"; 
+//link to the manual is added by backend.js 
+.manual-link,
+.templ-link {
+	position: absolute;
+	top: -26px;
+	color: $brand-blue;
+	font-size: 15px;
+	z-index: 99999;
+}
+.manual-link {
+	right: 200px;
+}
+.templ-link {
+	right: 350px;
+}
+
+//make editor wider!
+.wp-block {max-width: 100% !important;}
+
+//make content preview images smaller
+.block-editor-block-list__block img,
+.block-editor-block-list__block .insert-page img {
+	max-width: 150px;
+}
+.block-editor-block-list__block .insert-page .partners img {
+	max-height: 50px;
+
+}
+
+//add visible border to a content block & group
+@mixin blockbefore($txt, $clr) {
+	outline: 1px dashed $clr;
+	&:before {
+		content: $txt;
+		font-size: 10px;
+		color: $clr;
+		position: absolute;
+		top: -20px;
+		left: 0;
+	}
+}
+
+.block-editor-block-list__block[aria-label="Block: Group"] {
+	@include blockbefore("Group", #008816);
+}
+
+.block-editor-block-list__block[aria-label="Block: Columns"] {
+	@include blockbefore("Columns", #0024E0);
+}
+
+.block-editor-block-list__layout > .block-editor-block-list__block {
+	outline: 1px dotted #777;
+	padding: 20px;
+	& > & {
+		outline: 1px dotted #CCCCCC;
+		padding: 15px;
+
+	}
+}
+
+// make acf images previews small
+.edit-post-layout__metaboxes .acf-image-uploader {
+	width: 200px;
+}
+
+//=========================
+// Design-specific tweaks
+//=========================
+// style button in editor
+.block-editor-block-list__block {
+	& .btn {
+		padding: 5px 15px;
+		border: 2px solid;
+		border-radius: 20px;
+	}
+}
+//hide content's popup content and show form's type
+@mixin before {
+		position: absolute;
+		top: 2px;
+		left: 10px;
+		font-size: 14px;
+		color: #777;
+}
+.block-editor-block-list__block .popup__container {
+	height: 50px;
+	outline: 1px solid #777;
+	overflow: hidden;
+	position: relative;
+	&:before {
+		content: "popup";
+		@include before;
+		left: auto;
+		right: 10px;
+		color: #999;
+	}
+}
+
+// hide forms embedded in template
+.block-editor-block-list__block .popup__container#form-contact,
+.block-editor-block-list__block .popup__container#form-order{
+	display: none;
+}
+
+//=========================
+//REMOVE ADS
+//=========================
+//hide plugins update alert from side menu
+span.update-plugins {display: none !important;}
+//in yoast settings
+.yoast_premium_upsell {display: none !important;}
+.yoast-sidebar__section {display: none !important;}
+#yoast-indexation-warning {display: none !important;}
+//on other pages
+#wpbody-content .yoast-notification.notice-warning.is-dismissible {display: none !important;}
+.trp-controls-section-content {display: none !important;}
+//disable wp-cache annoying update notification
+#w3-total-cache-update {display: none;}
+
+//folders ad on pages page
+.wcp-custom-form .upgrade-message {display: none !important;}
+//folders btn color
+.add-new-folder,
+.wcp-hide-show-buttons .toggle-buttons {
+	background: #777 !important;
+	border-color: #777 !important;
+}
+//toggle sidebar btn
+.wcp-hide-show-buttons {
+	top: 2px !important;
+}
+//folder names
+.wcp-container .route {
+	margin-bottom: 12px;
+}
+.wcp-container .route .title {
+	font-weight: normal;
+}
+//hide top bar on "all pages"
+.tree-structure-content {display: none !important;}
+
+//page number in folder
+span.total-count,
+.wcp-container .route span.total-count {font-size: 12px !important;}
+
+//remove call-to-upgrades on plugins page
+.wcp-folder-upgrade-button,
+tr[data-slug="safe-svg"] td .row-actions span:last-child,
+tr[data-slug="smart-slider-3"] td .row-actions span:last-child,
+tr[data-slug="translatepress-multilingual"] .go_pro,
+tr[data-slug="wordpress-seo"] td .row-actions span:nth-child(2)
+ {display: none !important;}
+tr td .row-actions span.delete {display: inline-block !important;}
+

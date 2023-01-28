@@ -1,0 +1,139 @@
+#error-page {
+  margin: 0;
+  padding: 0;
+  max-width: 100vw;
+  width: 100vw;
+  height: 100vh;
+  box-shadow: none;
+  background: #F05A23;
+}
+
+#error-page .wp-die-message {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 4fr 1fr;
+  grid-template-columns: 1fr 4fr 1fr;
+  -ms-grid-rows: 100px 3fr 1fr;
+  grid-template-rows: 100px 3fr 1fr;
+      grid-template-areas: ". . ." ". content ." ". bottomcell .";
+  background: #F05A23;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  color: #fff;
+  margin: 0 !important;
+  width: 100vw;
+  height: 100vh;
+}
+
+#error-page p {
+  margin: 0;
+}
+
+#error-page a {
+  color: #fff;
+}
+
+#error-page .content {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: content;
+  text-align: center;
+  width: 410px;
+  margin: 0 auto;
+}
+
+#error-page .logo {
+  width: 100%;
+  margin: 0 auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 108px 1fr;
+  grid-template-columns: 108px 1fr;
+  -ms-grid-rows: 2fr 1fr;
+  grid-template-rows: 2fr 1fr;
+      grid-template-areas: "logo logo" ". descr";
+}
+
+#error-page .logo__img {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: logo;
+  width: 100%;
+  height: 100px;
+  background: url("images/logo__footer.svg") bottom/contain no-repeat;
+}
+
+#error-page .logo__txt {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: descr;
+  -ms-grid-row-align: start;
+      align-self: start;
+  text-align: left;
+  font-weight: 400;
+  font-size: 35px;
+  margin: -10px 0 0;
+}
+
+#error-page .txt-main {
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: left;
+  margin: 100px 0 0 10px;
+}
+
+#error-page .yt {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 15px;
+}
+
+#error-page .txt_contact {
+  text-align: left;
+  padding-left: 10px;
+  font-size: 22px;
+  font-weight: 400;
+  display: block;
+  margin-top: 30%;
+}
+
+#error-page .txt-motto {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  grid-area: bottomcell;
+  -ms-grid-row-align: end;
+      align-self: end;
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+  opacity: .7;
+}
+
+@media screen and (max-width: 991px) {
+  #error-page .container {
+    height: 90vh;
+    -ms-grid-rows: 50px 3fr 1fr;
+    grid-template-rows: 50px 3fr 1fr;
+  }
+  #error-page .content {
+    width: 350px;
+  }
+  #error-page .logo {
+    -ms-grid-columns: 90px 1fr;
+    grid-template-columns: 90px 1fr;
+  }
+  #error-page .logo__txt {
+    font-size: 27px;
+    margin: -7px 0 0;
+  }
+  #error-page .txt-motto {
+    font-size: 22px;
+  }
+  #error-page .txt-main {
+    margin: 30px 0 50px 10px;
+    text-align: left;
+    font-size: 18px;
+  }
+}

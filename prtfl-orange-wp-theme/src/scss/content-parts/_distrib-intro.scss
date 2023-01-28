@@ -1,0 +1,56 @@
+
+
+.distrib-intro {
+	@include bg-and-txt($brand-green, $black);
+	@include section-padding;
+	&__title {display: none;}
+	& h2 {
+		margin-bottom: 30px;
+	}
+	& p:first-of-type {
+		width: 60%;
+	}
+	//3 cards in a row
+	& .cards {
+		& > #{$wp-inner} {
+			@include flex-row-nowrap;
+		}
+		& #{$wp-group} {//item
+			@include bg-and-txt($white, $black);
+			@include card-border-radius;
+			@include card-padding;
+			flex: 0 1 100%;
+			margin: 0 auto 50px;
+			max-width: 450px;
+			@include breakUp("lg") {
+				flex: 0 1 32%;
+				margin: 0;
+				&:nth-child(2) {
+					margin: 0 35px;
+				}
+			}
+			& p {
+				// width: 90%;
+				&:first-child {//item header circle
+					font-family: 'Open Sans', sans-serif;//for extra bold
+					background: $brand-green;
+					color: $white;
+					margin: 0 auto 20px;
+					width: 100px;
+					height: 100px;
+					font-size: 60px;
+					font-weight: 800;
+					// line-height: 1.4;//!
+					// vertical-align: top;
+					text-align: center;
+					border-radius: 50%;
+
+				}
+			}
+		}//item
+	}//cards
+
+
+
+
+}

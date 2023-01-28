@@ -1,0 +1,54 @@
+@import "vars-mixins";
+// $black bg by default
+// &_light - light theme, add class when inserting the block
+
+.partners {
+	@include bg-and-txt($black, $white);
+	@include section-padding;
+	// &_light & {//not used yet
+	// 	background: $almost-white;
+	// 	color: $black;
+	// 	& .wp-block-group:nth-child(3) img {//invert white Trailer Studio's logo
+	// 		filter: invert(100%);
+	// 	}
+	// }
+	&__title {
+		text-align: center;
+		@include title-margin-bottom;
+	}
+	&__content {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		@include breakUp("lg") {
+			justify-content: center;
+		}
+	}
+	& #{$wp-group} {//item
+		// @include out;
+		@include txt_sm;
+		flex: 1 0 100%;
+		margin-bottom: 50px;
+		@include breakUp("md") {
+			flex: 0 1 48%;
+			margin-bottom: 50px;
+			& h3, & p {width: 80%;}
+		}
+		@include breakUp("lg") {
+			flex: 0 1 33%;
+			margin-bottom: 60px;
+		}
+	}
+	& #{$wp-img} {//logo
+		height: 60px;
+		margin-bottom: 20px;
+		text-align: left;
+		@include breakUp("lg") {
+			margin-bottom: 30px;
+		}
+		& img {
+			height: 100%;
+		}
+	}
+
+}// partners

@@ -1,0 +1,125 @@
+@import "../vars-mixins";
+
+.our-team {
+	@include bg-and-txt($yellow, $black);
+	@include section-padding;
+	overflow: hidden;
+	&__content {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+	& h1 {
+		margin-bottom: 60px;
+	}
+	& #{$wp-group} {//item
+		// @include out;
+		flex: 0 1 45%;
+		margin-bottom: 50px;
+		@include breakUp("md") {
+			flex: 0 1 33%;
+		}
+		& p {
+			width: 90%;
+			&:nth-of-type(2) {
+				color: $brand-gray;
+				font-size: 18px;
+			}
+		}
+
+		// hover effect colors
+		&:nth-of-type(1) #{$wp-img}:before {border-color: $white}
+		&:nth-of-type(2) #{$wp-img}:before {border-color: $brand-orange}
+		&:nth-of-type(3) #{$wp-img}:before {border-color: $brand-green}
+		&:nth-of-type(4) #{$wp-img}:before {border-color: $violet}
+		&:nth-of-type(5) #{$wp-img}:before {border-color: $gray-mid}
+		&:nth-of-type(6) #{$wp-img}:before {border-color: $yellow-lite}
+		&:nth-of-type(7) #{$wp-img}:before {border-color: $turq}
+		&:nth-of-type(8) #{$wp-img}:before {border-color: $magenta}
+		&:nth-of-type(9) #{$wp-img}:before {border-color: $brand-blue}
+		//end effect colors
+
+	}//item
+
+
+
+//img with hover effect
+@mixin dimensions {//because fkn wp-img that's why
+	width: 160px;
+	height: 160px;
+	@include breakOnly("xxs") {
+		width: 140px;
+		height: 140px;
+	}
+	@include breakUp("sm") {
+		width: 200px;
+		height: 200px;
+	}
+	@include breakUp("lg") {
+		width: 230px;
+		height: 230px;
+	}
+}
+	& #{$wp-img} {
+		@include dimensions;
+		position: relative;
+		z-index: 10;
+		img {
+			@include dimensions;
+			// border-radius: 50%;//set in admin
+			object-fit: cover;
+			object-position: center;
+		}
+		&:hover:before {//effect
+			content: "";
+			display: block;
+			position: absolute;
+			width: 110px;
+			height: 110px;
+			margin-top: -75px;
+			margin-left: -75px;
+			top: 50%;
+			left: 50%;
+			border-radius: 50%;
+			border: 20px solid;
+			z-index: -1;
+			animation: waves 2s infinite;
+			@include breakOnly("xxs") {
+				width: 65px;
+				height: 65px;
+				margin-top: -51px;
+				margin-left: -51px;
+			}
+			@include breakUp("sm") {
+				width: 150px;
+				height: 150px;
+				margin-top: -95px;
+				margin-left: -95px;
+			}
+			@include breakUp("lg") {
+				width: 180px;
+				height: 180px;
+				margin-top: -110px;
+				margin-left: -110px;
+			}
+		}
+	}//wp-img
+
+	@keyframes waves {
+		0 {
+			opacity: 0;
+		}
+		1% {
+			opacity: 1;
+		}
+		100% {
+			width: 300px;
+			height: 300px;
+			margin-top: -151px;
+			margin-left: -151px;
+			border-width: 1px;
+			opacity: 0;
+		}
+	}
+
+}

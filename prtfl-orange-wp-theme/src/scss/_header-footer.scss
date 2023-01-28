@@ -1,0 +1,276 @@
+@import "progressbar";
+@import "sidebar";
+@import "menu";
+
+
+//////////////////
+// Header
+
+.header {
+	width: 100%;
+	padding: 0 15px;
+	@include header-shadow;
+	background: $white;
+	position: fixed;
+	top: 0;
+	// padding: 12px 0;
+	z-index: 999;
+	&__menu {
+		display: none;
+		@include breakUp("lg") {
+			margin-top: -7px;
+			display: block;
+			grid-area: menu;
+			justify-content: center;
+			z-index: 9;//so that dropdown won't be interrupted by progressbar
+		}
+	}
+
+	
+	&__grid {
+		//empty cell is for .sidebar__toggle
+		@include header-height;
+		@include grid(1.5fr 5.5fr 5fr, auto, ". logo btn");
+		align-items: center;
+		@include breakUp("sm") {
+			@include grid(1fr 6fr 5fr, auto, ". logo btn");
+		}
+		@include breakUp("md") {
+			@include grid(1fr 5fr 4.5fr 1.5fr, auto, ". logo btn lang");
+			
+		}
+		@include breakUp("lg") {
+			@include grid(0.5fr 2fr 7fr 1.5fr 1fr, auto, ". logo menu btn lang");
+		}
+		@include breakUp("xl") {
+			@include grid(0.5fr 2.5fr 7fr 2fr 1fr, auto, ". logo menu btn lang");
+		}
+	}//grid
+
+	&__logo {
+		grid-area: logo;
+		justify-self: start;
+		background: url("images/logo__header.svg") center/contain no-repeat;// old: img set by <?php the_custom_logo(); ?>
+		display: block;
+		text-decoration: none;
+		outline: none;
+		position: relative;
+		width: 120px;
+		height: 30px;
+		& a {
+			display: block;
+			height: 100%;
+			border: none;
+			body.home & {cursor: default;}
+		}
+		@include breakUp("md") {
+			background: url("images/logo-spinner__bg.svg") center/contain no-repeat;
+			width: 150px;
+			height: 37px;
+			&:hover .header__logo-spinner {
+				transform: rotate(360deg);
+				transition: transform 1s;
+				border: none;
+			}
+		}
+		@include breakUp("xl") {
+			width: 170px;
+			height: 42px;
+		}
+	}
+	&__logo-spinner {
+		display: none;
+		@include breakUp("md") {
+			display: block;
+			background: url("images/logo-spinner__spinner.svg") center/contain no-repeat;
+			position: absolute;
+			z-index: 50;
+			width: 25px;
+			height: 25px;
+			top: 6px;
+			left: 2px;
+		}
+		@include breakUp("xl") {
+			width: 27px;
+			height: 27px;
+			top: 8px;
+			left: 2px;
+		}
+	}
+
+	&__btn {//header-form-btn widget
+		grid-area: btn;
+		justify-self: end;
+		list-style-type: none;
+		& a {//btn itself
+			padding: 8px 12px;
+			font-size: 14px;
+			@include breakUp("md") {
+				font-size: 18px;
+			}
+			@include ru-fix {
+				font-size: 12px;
+			}
+		}
+	}//btn
+	&__lang {
+		grid-area: lang;
+		justify-self: end;
+		@include breakDown("sm") {
+			display: none;
+		}
+	}
+
+}// end header
+
+//////////////////
+// Footer
+.footer {
+	background: $black;
+	& li {list-style-type: none;}
+	&__grid {
+		@include grid(1fr, 1fr 2fr 1fr 2fr 1fr, "contact" "logo" "slogan" "social" "copy");
+		height: $footer-height-mob;
+		justify-items: center;
+		@include breakUp("lg") {
+			@include grid(1fr 1fr 1fr, 1fr, "contact center social");
+			height: $footer-height-desk;
+			align-items: center;
+		}
+	}
+
+	&__contact {
+		grid-area: contact;
+		align-self: center;
+		margin-top: 65px;
+		@include breakUp("lg") {
+			justify-self: start;
+			margin-top: 0;
+		}
+		& a {
+			color: $white;
+			text-decoration: none;
+			@include underline($brand-orange);
+		}
+	}
+	&__logo {//logo is added in footer-logo widget
+		width: 150px;
+		height: 37px;
+		grid-area: logo;
+		align-self: center;
+		@include breakUp("md") {
+			width: 163px;
+			height: 40px;
+			margin-top: 25px;
+		}
+		@include breakUp("lg") {
+			grid-area: center;
+			align-self: start;
+			margin-top: 40px;
+		}
+	}
+	&__social {
+		grid-area: social;
+		align-self: center;
+		width: 60%;
+		max-width: 270px;
+		@include breakUp("lg") {
+			justify-self: end;
+		}
+	}
+
+	&__slogan {
+		grid-area: slogan;
+		color: $white;
+		font-weight: 500;
+		opacity: .7;
+		@include breakUp("lg") {
+			grid-area: center;
+		}
+	}
+	&__copy {
+		grid-area: copy;
+		color: $white;
+		margin-bottom: 60px;
+		opacity: .5;
+		& p {@include txt_tiny;}
+		@include breakUp("lg") {
+			grid-area: center;
+			align-self: end;
+			margin-bottom: 50px;
+		}
+	}
+
+}// end footer
+
+//////////////////
+// Language Menu
+.lang-menu {
+	text-align: center;
+	& .trp-language-switcher-container {
+		display: inline-block;
+		float: none !important;
+		&:first-of-type {
+			margin-right: 5px;
+		}
+		& a {
+			color: $black;
+			text-decoration: none;
+			border-bottom: none;
+			font-size: 18px;
+			@include hover-transit;
+			@include underline($gray-mid-lite);
+			@include breakUp("md") {
+				font-size: 20px;
+			}
+			&:hover {
+				color: $brand-orange;
+			}
+		}
+
+	}
+	//make current lang bold
+	@mixin current-lang {
+		font-weight: bold;
+		pointer-events: none;
+	}
+	body.translatepress-en_US & .menu-item-920 a {
+		@include current-lang;
+	}
+	body.translatepress-ru_RU & .menu-item-919 a {
+		@include current-lang;
+	}
+}// end lang-menu
+
+//////////////////
+// Social Menu
+.social {
+	align-self: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	& .menu-item {
+			font-size: 0;
+		& a {
+			width: 40px;
+			height: 40px;
+			background: $brand-orange;
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			& .svg-icon {
+				fill: #fff;
+				width: 22px;
+				height: 22px;
+			}
+		}
+		&.menu-item-26 {//vk icon fix
+			& .svg-icon {
+				width: 30px;
+				height: 30px;
+			}
+		}
+	}// icons are added in class-studio-svg-icons.php
+}// end social

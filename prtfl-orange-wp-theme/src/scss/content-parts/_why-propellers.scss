@@ -1,0 +1,51 @@
+@import "_vars-mixins";
+
+.why-studio {
+	@include bg-and-txt($black, $white);
+	@include section-padding;
+
+	&__title {
+		@include title-margin-bottom;
+		color: $brand-orange;
+	}
+	&__content {
+		@include breakUp("md") {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+	}
+
+	& #{$wp-group} {//item
+		// @include out;
+		max-width: 80%;
+		margin: 0 auto 50px;
+		@include breakUp("md") {
+			max-width: 100%;
+			flex: 0 1 46%;
+			margin-bottom: 80px;
+		}
+		@include breakUp("lg") {
+			& p {
+				width: 75%;
+			}
+		}
+		& h2 {color: $brand-orange;}
+	}
+	& #{$wp-img} {
+		// margin-bottom: 20px;
+		@include breakUp("md") {
+			text-align: left;
+			margin-bottom: 10px;
+		}
+		& img {
+			max-width: 100%;
+			border-radius: 10px;
+			// @include breakOnly("sm") {
+			// 	max-width: 250px;
+			// }
+		}
+	}
+
+
+}

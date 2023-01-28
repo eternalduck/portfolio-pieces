@@ -1,0 +1,187 @@
+@import "../vars-mixins";
+
+.course {
+	@include bg-and-txt($gray-dark, $white);
+	padding: 100px 0 50px;
+	position: relative;
+	& h1 {margin-bottom: 40px}
+	&__content {
+		& p:first-of-type {
+			font-size: 26px;
+			line-height: 1.2;
+			margin-bottom: 20px;
+			@include breakUp("lg") {
+				width: 80%;
+				font-size: 30px;
+				margin-bottom: 30px;
+			}
+		}
+	}//__content
+
+	& #{$wp-cols} {
+		margin-bottom: 0;//for img positioning
+		@include breakDown("sm") {
+			// & #{$wp-col}:first-child {//make txt wider while img hidden
+			// 	flex-basis: 100% !important;
+			// 	flex-grow: 1;
+			// }
+			// & #{$wp-col}:last-child {//hide img
+			// 	display: none;
+			// }
+		}
+
+		& #{$wp-img} {//Artur :)
+			position: absolute;//rel to .course
+			bottom: -10px;
+			right: 15px;
+			& img {
+				object-position: right;//!!
+				height: 220px;
+				@include breakUp("md") {
+					height: 400px;
+				}
+				@include breakUp("lg") {
+					height: 480px;
+				}
+			}
+		}
+	}//columns
+
+//add this class to wp-group in editor
+	.intro {//1st block, for img positioning
+		position: relative;
+		padding-bottom: 100px;
+		z-index: 1;//for prlx shift
+	}
+	.bg-dark {//2nd block
+		background: $black;
+		padding-bottom: 80px;
+		margin-bottom: -40px;
+		z-index: 9;//for prlx shift
+		position: relative;//for prlx shift
+	}
+
+}//course
+
+// h2, toggles course program, custom.js
+.program-toggle {
+	display: inline-block;
+	border-bottom: 1px dashed;
+	cursor: pointer;
+	margin-top: 60px;
+	margin-bottom: 30px;
+	&:hover {
+		border-bottom: 1px dashed transparent;
+	}
+	&:after {
+		content: "";
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		margin-left: 10px;
+		background: url("images/icons/chevron-down-white.svg") center no-repeat;
+		transform: none;
+	}
+	&.toggled {
+		cursor: default;
+		&:hover {
+			border-bottom: 1px dashed transparent;
+		}
+		&:after {
+			transform: rotate(180deg);
+		}
+	}
+
+	&.toggled + .program {//unfolded items container
+		height: 100%;
+		opacity: 1;
+	}
+	& + .program {//folded items container
+		height: 0;
+		opacity: 0;
+		overflow: hidden;
+		transition: all .3s ease-in;
+	}
+
+}//program-toggle
+
+
+// items container
+.program > #{$wp-inner} {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-content: flex-start;
+	padding-top: 5px;
+	@include breakUp("md") {
+		justify-content: space-between;
+	}
+
+	& > #{$wp-group} {//item
+		flex: 0 1 90%;
+		margin-right: auto;
+		margin-left: auto;
+		margin-bottom: 40px;
+		padding: 20px 30px;
+		@include card-border-radius;
+		border: 1px solid $gray-mid;
+		@include breakUp("sm") {
+			flex: 0 1 45%;
+			padding: 20px;
+		}
+		@include breakUp("md") {
+			flex: 0 1 30%;
+		}
+		@include breakUp("lg") {
+			padding: 20px 40px;
+		}
+		& #{$wp-cols} {//item header
+			margin-bottom: 0;
+			flex-wrap: nowrap;//wp-styles override
+			& #{$wp-col} {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				&:first-of-type {//num
+					margin-right: 20px;
+					margin-bottom: 0;
+					flex-grow: 0 !important;//wp-styles override
+					flex-basis: 10% !important;//wp-styles override
+					p {//num
+						color: $brand-orange;
+						font-size: 70px;
+						line-height: 1 !important;
+						font-weight: bold;
+					}
+				}
+				&:last-of-type {//txt
+					p {
+						font-size: 20px;
+						font-weight: bold;
+						text-align: left;
+					}
+					margin-left: 18px !important;//wp-styles override
+					flex-basis: 90% !important;//wp-styles override
+				}
+			}//wp-block-column
+			& + p {
+				@include txt_mid;
+				// padding-left: 15px;
+			}
+		}//columns
+
+	}//group
+
+}//.program #{$wp-inner}
+
+
+
+
+
+
+
+
+
+
+
+

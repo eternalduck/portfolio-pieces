@@ -1,0 +1,73 @@
+// March 27, 2020
+//It's a custom css grid inspired by Bootstrap 4 breakpoints
+// all blocks columns are based on 1/12fr
+
+
+//=== Mobile-first ===================
+.grid-container {
+	width: 100%;
+	// display: -ms-grid;
+	// -ms-grid-columns: 5px 1fr 15px;
+	// -ms-grid-rows: 1fr;
+	display: grid;
+	grid-template-columns: 15px 1fr 15px;
+	grid-template-rows: 1fr;
+	grid-template-areas: ". content .";
+	@include ms-grid-cols-rows(5px 1fr 15px, 1fr);
+}
+
+.grid-content {
+	width: 100%;
+	grid-area: content;
+	// -ms-grid-column: 2;
+	grid-column-start: 2;
+	grid-column-end: 3;
+}
+
+.content-width {
+	@include grid-content-width;
+}
+//for template Block: Full-width, all content should be wrapped in groups!
+.content-fullwidth {
+	& > #{$wp-group-inner} {
+		@include grid-content-width;
+	}
+}
+
+//===Big Mobile - SM: min-width: 576 ===================
+@include breakUp("sm") {
+	.grid-container {
+		grid-template-columns: 1fr 540px 1fr;
+		@include ms-grid-cols-rows(1fr 540px 1fr, 1fr);
+	}
+}
+
+//=== Tablet - MD: min-width: 750 (was 768 in bootstrap) ===================
+@include breakUp("md") {
+	.grid-container {
+		grid-template-columns: 1fr 720px 1fr;
+		@include ms-grid-cols-rows(1fr 720px 1fr, 1fr);
+	}
+}
+
+
+//=== Small Desk - LG: min-width: 992 ===================
+@include breakUp("lg") {
+	.grid-container {
+		grid-template-columns: 1fr 960px 1fr;
+		@include ms-grid-cols-rows(1fr 960px 1fr, 1fr);
+	}
+}
+
+//=== Desk - XL: min-width: 1200 ===================
+@include breakUp("xl") {
+	.grid-container {
+		grid-template-columns: 1fr 1140px 1fr;
+		@include ms-grid-cols-rows(1fr 1140px 1fr, 1fr);
+	}
+}
+
+//=== Largest Desk - XXL: min-width: 2200 ===================
+// @include xxl {
+// .grid-container is still 1140px
+// }
